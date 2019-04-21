@@ -1,0 +1,63 @@
+h1{ letter-spacing: 4px;
+text-align:center;
+font-family: verdana,impact;
+color: #400040; 
+}
+
+.pg-titl-bdr-btm {
+    width: 600px;
+    height: 2px;
+    background-color: #28b57c;}
+    
+.listequestion {list-style-type: circle; 
+color:#400080 !important;
+margin-left: 10%;
+letter-spacing:1px;
+}
+
+
+.listequestion1{list-style-type: circle; 
+color:#400080 !important;
+margin-left: 10%;
+letter-spacing:1px;
+}
+
+#listequestion{color:#400080 !important;text-decoration:none !important;}
+#listequestion1{color:#400080 !important;text-decoration:none !important;}
+ 
+ #listequestion:hover{color:#400040 !important;}
+ #listequestion1:hover{color:#400040 !important;}
+ 
+ 
+#blc{height:260px; background:#400040;}
+#faqh{
+height:300px;} 
+
+#faqi{
+height:250px;}
+
+#bg{background:lightgrey;
+height:280px;}
+
+#faq1{border-left: 1px solid #400040 ;}
+
+h5{text-align:left; margin-left:25%; letter-spacing:2px;}
+
+h6{text-align: center; margin:none;}
+
+#questionmark{float:right;
+margin-top:15%;}
+
+#bird{color:black;
+margin-top:5%;
+margin-left:41%;
+margin-right:25%;
+ }
+
+#questionmark2{float:left;
+margin-top:15%;}
+
+#top{color:#400080;}
+#top:hover{color:darkcyan; animation: shake 0.8s; animation-iteration-count: infinite; }
+@keyframes shake { 90% { transform: translate(1px, 2px) rotate(0deg); }}
+

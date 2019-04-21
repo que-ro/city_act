@@ -1,0 +1,24 @@
+.form-gap {
+    padding-top: 100px;
+}
+
+#Modifier mon profil{letter-spacing:1px;
+font-family:Verdana!important;}
+
+form{ 
+color:#400040;
+left:27%;
+top:15%;
+font-family: "arial black", "Verdana";
+}
+
+
+.footer-gap{padding-top: 390px;}
+
+#keepmodifications{background:#400040;
+border:none;
+margin-left:62%;
+margin-top:50px;}
+
+#keepmodifications:hover{background:#400080;
+border:none;}

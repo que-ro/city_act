@@ -1,0 +1,168 @@
+.form-control:focus {
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #422918;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #422918;
+}
+
+#div_map_y_filter
+{
+	height:55em;
+}
+
+#map
+{
+	height:50em;
+}
+
+#row_filters
+{
+	min-height:5em;
+}
+
+/* Permet d'enlever le style de dropdown menu du bootstrap */
+.dropdown-toggle {
+  background-color: transparent;
+}
+
+/* Div containing the filters and add project buttons */
+#div_filtersofmap
+{
+	border: 1px solid #E8E8E8;
+}
+
+/* Class of all the drop_down menu, bootstrap class */
+.dropdown-menu
+{
+	width:15em;
+}
+
+/* Class for all the dropdown buttons */
+.btn_dropdown
+{
+	background-color:  darkcyan !important;
+	border:none;
+}
+
+.btn_dropdown:hover
+{
+	opacity:0.7;
+	border:none
+}
+
+/* Id for the filter button */
+#btn_filtre
+{
+	background-color:#400040;
+	border:none;
+}
+
+#btn_filtre:hover
+{
+	background-color:#400040;
+	border:none !important;
+	opacity:0.7;
+}
+
+/* Checkbox of the dropdown menu */
+.dropdown_checkbox
+{
+	font-size:1em;
+}
+
+/* Title of the checkbox of the dropdown menu */
+.list-group-item-heading
+{
+	font-size:1em;
+}
+
+/* Labels of the checkbox of the dropdown menu */
+.label_of_filterscheckbox
+{
+	display: block !important;
+	text-align:left !important;
+}
+
+.btn_ajout
+{
+	
+}
+
+.btn_of_btn_ajout
+{
+	color:black !important;
+}
+
+.btn_of_btn_ajout:hover
+{
+	color:white !important;
+	opacity:0.9 !important;
+	background-color: #400040 !important;
+	border:none !important;
+}
+
+#div_all_marqueurs
+{
+	height:55em;
+}
+
+#div_all_marqueurs_overflowscroll
+{
+	max-height: 55em; 
+	overflow:scroll; 
+	-webkit-overflow-scrolling: touch;
+}
+
+.li_descri_marqueur
+{
+	background-color: white !important;	
+}
+
+.div_descriyimage_marqueur
+{
+	width:10em;
+}
+
+.div_descri_of_marqueur
+{
+	width:10em;	
+}
+
+.div_img_of_marqueur
+{
+	height:10em; 
+	border-right:1px solid grey;
+}
+
+.div_titre_marqueur
+{
+ 	border-bottom:1px solid grey; 
+}
+
+.h_titre_marqueur
+{
+	color: darkcyan;
+	font-size:1.2em;
+}
+
+.h_category_y_souscategory
+{
+	color: #400040;
+	font-size:1.2em;
+}
+
+.p_marqueur_description
+{
+
+	font-size:1em;
+}
+
+
+
+
+

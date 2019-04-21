@@ -1,0 +1,715 @@
+
+<!DOCTYPE html >
+<html>
+<head>
+<title>CityAct | Carte des signalements</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+
+<link href="/css/css_map.css" 
+	rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Not connected -->
+<div th:unless="${session.containsKey('user')}">
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+
+<!-- Connected -->
+<div th:if="${session.containsKey('user')}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+	<div class="container-fluid mt-5">
+		<div class="row">
+			<div class="col-sm-12 mt-5">
+				<div class="row">
+					<div class="col-sm-8" id="div_map_y_filter">
+						<div class="row">
+							<div class="col-sm-12" id="div_filtersofmap">
+
+								<div class="row my-auto" id="row_filters">
+									<!-- 							<form class="form-inline col-sm-2">
+								<div class="input-group input-group-btn mx-auto">
+          							<input class="form-control py-2" type="search" placeholder="Où chercher?" id="pac-input">
+      								<span class="input-group-append">
+       									<button class="btn btn-outline-secondary" type="button">
+            								<i class="fa fa-search"></i>
+        								</button>
+      								</span>
+        						</div>
+							</form> -->
+
+									<form class="form-inline col-sm-8">
+										<div class="dropdown col-sm-4">
+											<button
+												class="btn btn-secondary dropdown-toggle btn-block btn_dropdown"
+												type="button" id="btn_category" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">
+												Catégorie</button>
+											<div class="dropdown-menu" aria-labelledby="btn_category">
+												<div class="list-group">
+													<div
+														class="dropdown_checkbox checkbox list-group-item col-12 py-1">
+														<div class="row">
+															<input class="form-check-input col-2 my-auto"
+																id="input_category_signalement" type="checkbox" value=""
+																> <label
+																class="col-9 label_of_filterscheckbox"
+																for="input_category_signalement">Signalements</label>
+														</div>
+
+													</div>
+													<div
+														class="dropdown_checkbox checkbox list-group-item col-12 py-1">
+														<div class="row">
+															<input class="form-check-input col-2 my-auto"
+																id="input_category_ambientpower" type="checkbox"
+																value=""> <label
+																class="col-9 label_of_filterscheckbox"
+																for="input_category_ambientpower">Ambient Power</label>
+														</div>
+
+													</div>
+													<div
+														class="dropdown_checkbox checkbox list-group-item col-12 py-1">
+														<div class="row">
+															<input class="form-check-input col-2 my-auto"
+																id="input_category_propamenagement" type="checkbox"
+																value=""> <label
+																class="col-9 label_of_filterscheckbox"
+																for="input_category_propamenagement">Proposition
+																d'aménagements</label>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+
+
+
+
+
+
+
+										<div class="dropdown col-sm-4">
+											<button
+												class="btn btn-secondary dropdown-toggle btn-block btn_dropdown"
+												type="button" id="btn_souscategory" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false">
+												Sous-Catégories</button>
+											<div class="dropdown-menu" aria-labelledby="btn_souscategory">
+												<div class="list-group">
+													<div class="list-group-item">
+														<h3 class="list-group-item-heading col-12">Signalements</h3>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_moburbain" type="checkbox"
+																	value=""> <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_moburbain">Mobilier
+																	urbain</label>
+															</div>
+														</div>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_voirie" type="checkbox" value=""
+																	> <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_voirie">Voirie</label>
+															</div>
+														</div>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_degradation" type="checkbox"
+																	value=""> <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_degradation">Dégradations</label>
+															</div>
+														</div>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_objabandaonnes" type="checkbox"
+																	value=""> <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_objabandaonnes">Objets
+																	abandonnés</label>
+															</div>
+														</div>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_signautre" type="checkbox"
+																	value=""> <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_signautre">Signalements
+																	autres</label>
+															</div>
+														</div>
+													</div>
+
+
+													<div class="list-group-item">
+														<h3 class="list-group-item-heading col-12">Proposition
+															d'aménagements</h3>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_temporaire" type="checkbox"
+																	value=""> <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_temporaire">Temporaire</label>
+															</div>
+														</div>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_permanent" type="checkbox"
+																	value=""> <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_permanent">Permanent</label>
+															</div>
+														</div>
+													</div>
+
+													<div class="list-group-item">
+														<h3 class="list-group-item-heading col-12">Ambient
+															Power</h3>
+														<div class="checkbox col-12 py-1">
+															<div class="row">
+																<input class="form-check-input col-2 my-auto"
+																	id="input_souscategory_ambientpower" type="checkbox"
+																	value="" > <label
+																	class="col-9 label_of_filterscheckbox"
+																	for="input_souscategory_ambientpower">Aucune
+																	sous-catégorie</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-sm-4">
+											<button type="submit" class="btn btn-primary btn-block"
+												id="btn_filtre">Filtrez</button>
+										</div>
+
+									</form>
+
+									<form class="form-inline col-sm-3">
+										<button
+											class="btn btn-secondary dropdown-toggle btn-block btn_dropdown"
+											type="button" id="btn_ajout" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">Ajoutez
+											un marqueur !</button>
+										<div class="dropdown-menu" aria-labelledby="btn_ajout">
+											<button
+												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout">Signalements</button>
+											<button
+												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout">Ambient
+												Power</button>
+											<button
+												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout">Propositions
+												d'aménagements</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<script>
+							/*  Script qui va permettre d'éviter que les dropdown se ferment à chaque clics à côtés */
+							$(document).on('click', '.dropdown', function(e) {
+								e.stopPropagation();
+							});
+						</script>
+
+
+						<div class="row">
+							<div class="col-sm-12" id="map"></div>
+						</div>
+					</div>
+
+					<script>
+						var map, infoWindow, pos;
+
+						function CenterControl(controlDiv, map) {
+
+							// Set CSS for the control border.
+							var controlUI = document.createElement('div');
+							controlUI.style.backgroundColor = '#fff';
+							controlUI.style.border = '2px solid #fff';
+							controlUI.style.borderRadius = '3px';
+							controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+							controlUI.style.cursor = 'pointer';
+							controlUI.style.marginBottom = '22px';
+							controlUI.style.textAlign = 'center';
+							controlUI.title = 'Click to recenter the map';
+							controlDiv.appendChild(controlUI);
+
+							// Set CSS for the control interior.
+							var controlText = document.createElement('div');
+							controlText.style.color = 'rgb(25,25,25)';
+							controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+							controlText.style.fontSize = '16px';
+							controlText.style.lineHeight = '38px';
+							controlText.style.paddingLeft = '5px';
+							controlText.style.paddingRight = '5px';
+							controlText.innerHTML = 'Center Map';
+							controlUI.appendChild(controlText);
+
+							// Setup the click event listeners: simply set the map to Chicago.
+							controlUI.addEventListener('click', function() {
+								map.setCenter(pos);
+							});
+
+						}
+
+						/* 					 // Create the search box and link it to the UI element.
+						 var input = document.getElementById('pac-input');
+						 var searchBox = new google.maps.places.SearchBox(input);
+						
+						 // Bias the SearchBox results towards current map's viewport.
+						 map.addListener('bounds_changed', function() {
+						 searchBox.setBounds(map.getBounds());
+						 }); */
+
+						function initMap() {
+							map = new google.maps.Map(document
+									.getElementById('map'), {
+								center : {
+									lat : -34.397,
+									lng : 150.644
+								},
+								zoom : 14
+							});
+							infoWindow = new google.maps.InfoWindow;
+
+							// Try HTML5 geolocation.
+							if (navigator.geolocation) {
+								navigator.geolocation
+										.getCurrentPosition(
+												function(position) {
+													pos = {
+														lat : position.coords.latitude,
+														lng : position.coords.longitude
+													};
+
+													infoWindow.setPosition(pos);
+													infoWindow
+															.setContent('Location found.');
+													infoWindow.open(map);
+													map.setCenter(pos);
+												}, function() {
+													handleLocationError(true,
+															infoWindow,
+															map.getCenter());
+												});
+							} else {
+								// Browser doesn't support Geolocation
+								handleLocationError(false, infoWindow, map
+										.getCenter());
+							}
+
+							// Create the DIV to hold the control and call the CenterControl()
+							// constructor passing in this DIV.
+							var centerControlDiv = document
+									.createElement('div');
+							var centerControl = new CenterControl(
+									centerControlDiv, map);
+
+							centerControlDiv.index = 1;
+							map.controls[google.maps.ControlPosition.TOP_CENTER]
+									.push(centerControlDiv);
+						}
+
+						function handleLocationError(browserHasGeolocation,
+								infoWindow, pos) {
+							infoWindow.setPosition(pos);
+							infoWindow
+									.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
+											: 'Error: Your browser doesn\'t support geolocation.');
+							infoWindow.open(map);
+						}
+					</script>
+
+					<script>
+						/*  Script qui va permettre d'éviter que les dropdown se ferment à chaque clics à côtés */
+						$(document).on('click', '.dropup', function(e) {
+							e.stopPropagation();
+						});
+					</script>
+
+					<div class="col-sm-4" id="div_all_marqueurs">
+						<div class="row">
+							<div class="list-group col-sm-12"
+								id="div_all_marqueurs_overflowscroll">
+								<ul class="list-group">
+
+
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="list-group-item li_descri_marqueur">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img src="resources/images/persagotiere3-2_915.jpg" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6 class="h_titre_marqueur">Titre : Projet
+																	d'aménagements dans le centre</h6>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 class="h_category_y_souscategory">Catégorie :
+																	sous-catégorie</h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description">aaaaaa Nulla quis
+																	turpis rhoncus sem hendrerit tincidunt eleifend non
+																	felis. Donec iaculis quis lorem non luctus. In hac
+																	habitasse platea dictumst.</p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</li>
+
+
+								</ul>
+
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div th:insert="~{footer::footer}"></div>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDXFTORjfXpPSkt7ZEuotSXE4UtvZk0T8&callback=initMap"
+		async defer></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+ -->
+</body>
+</html>
+

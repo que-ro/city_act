@@ -1,0 +1,104 @@
+.btn1 {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.btn1:hover {
+  background-color: darkcyan !important;
+  color: white;
+  opacity:.8;
+  border:none!important;
+} 
+
+
+
+.btn1 {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+ 
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: transparent!important;
+  border: 2px solid white!important;
+/*   opacity:.7; */
+  color: white;
+
+  font-size: 1.3em !important;
+  
+  padding:  8px 28px;
+/*   border: none; */
+  cursor: pointer;
+  border-radius: 50px!important;
+  text-align: center;
+  font-family:"Poppins"!important, verdana ;
+  text-transform: uppercase;
+  letter-spacing: 4px!important;
+ 
+/*   font-weight: bold; */
+/*   font-stretch: extra-expanded; */
+  
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+  
+/* .btn{ font-family: "Poppins", sans-serif; */
+/* text-transform: uppercase; */
+/* font-weight: 50; */
+/* font-size: 16px; */
+/* letter-spacing: 1px; */
+/* display: inline-block; */
+/* padding: 8px 28px; */
+/* border-radius: 50px; */
+/* transition: 0.5s; */
+/* margin: 10px; */
+/* border: 2px solid #fff; */
+/* color: #fff; */
+
+
+/* background-color: transparent; */
+
+/* box-sizing: border-box;} */
+/* .btn { */
+/*   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+/* } */
+
+
+.pg-titl-bdr-btm {
+    width: 300px;
+    height: 2px;
+    background-color: #28b57c;}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;}
+  
+#titre{text-align:center;
+font-family: verdana,impact;
+color: #400040; }
+
+/* .irc_mi{ */
+/* background-size: cover; */
+/* no-repeat; */
+/* width:100%;}  */
+
+.masthead {
+  height: 85vh;
+  min-height: 500px;
+  background-image: url("https://bdaecpm.files.wordpress.com/2015/07/place-kleber.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h5, #Pourqui{text-align:center; font-family: Verdana, bold;}
+p, #whom{text-align: justify;}
+
+h5, #Pourquoi{text-align:center; font-family: Verdana, bold;}
+p, #why{text-align: justify;}
+
+
+h5, #Comment{text-align:center; font-family: Verdana, bold;}
+p, #how{text-align : justify;
+}
+
+

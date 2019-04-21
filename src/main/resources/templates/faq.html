@@ -1,0 +1,211 @@
+
+<!DOCTYPE html >
+<html class="ink">
+<head>
+<title>CityAct | FAQ</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+
+<link href="/css/css_faq.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh5U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+</head>
+
+
+<!-- Not connected -->
+<div th:unless="${session.containsKey('user')}">
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+
+<!-- Connected -->
+<div th:if="${session.containsKey('user')}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<h1> Foire aux questions</h1>
+<hr class="pg-titl-bdr-btm">
+
+
+<br>
+<div id="faqi" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div  class="col-sm-6"><i id="bird" class="fas fa-comments fa-10x"></i></div>
+<div class="col-sm-3"></div>
+</div></div>
+<br>
+
+<div class="container-fluid faq" >
+<div class="row faq">
+<div class="col-md-6 faq " >
+<ul class="listequestion">
+<li> <a id="listequestion" href="#1."> Comment ça marche ? </a></li>
+<li> <a id="listequestion" href="#2."> Qui peut contribuer ? </a></li>
+<li> <a id="listequestion"href="#3."> Ma géolocalisation est incorrecte, que faire? </a></li>
+<li> <a id="listequestion"href="#4."> Comment choisir les projets à afficher sur ma carte ?</a> </li>
+<li> <a id="listequestion"href="#5."> Comment puis-je m'inscrire ?</a> </li>
+<li> <a id="listequestion"href="#6."> Pourquoi dois-je renseigner ma date de naissance ?</a> </li>
+<li> <a id="listequestion"href="#7."> J'ai oublié mes identifiants de connexion, que puis-je faire ? </a></li>
+</ul>
+</div>
+
+<div id="faq1"class="col-md-6 faq" >
+<ul class="listequestion1">
+<li> <a id="listequestion1"href="#8."> Quelle est la durée moyenne d'attente avant qu'un signalement soit traité ? </a></li>
+<li> <a id="listequestion1"href="#9."> Quand est-ce qu'un signalement est traité ? </a></li>
+<li> <a id="listequestion1"href="#10."> Sommes nous avertis lorsqu'un évènement est achevé ? </a></li>
+<li> <a id="listequestion1"href="#11."> Comment sont choisis les projets d'aménagements ? </a></li>
+<li> <a id="listequestion1" href="#12."> Qu'est-ce que l'Ambient Power ? </a></li>
+<!-- <li> Votre question n’est pas dans la liste ? Posez-la nous et on vous répond au plus vite ! </li> -->
+</ul>
+</div>
+</div>
+</div>
+<br>
+
+
+<div id="blc" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-12">
+</div></div></div>
+<br>
+
+
+<h5 id="1.">1. Comment ça marche ?</h5>
+<div id="faqh" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="2.">2. Qui peut contribuer ?</h5>
+<div id="faqh" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6" ><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="3.">3. Ma géolocalisation est incorrecte, que faire?</h5>
+<div id="faqh" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="4.">4. Comment choisir les projets à afficher sur ma carte ?</h5>
+<div id="faqh"  class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg"class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="5.">5. Comment puis-je m'inscrire ?</h5>
+<div id="faqh"  class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="6.">6. Pourquoi dois-je renseigner ma date de naissance ?</h5>
+<div id="faqh" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="7.">7. J'ai oublié mes identifiants de connexion, que puis-je faire ?</h5>
+<div id="faqh"class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="8.">8. Quelle est la durée moyenne d'attente avant qu'un signalement soit traité ?</h5>
+<div id="faqh" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="9.">9. Quand est-ce qu'un signalement est traité ?</h5>
+<div id="faqh" class="container-fluid"> 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6"><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="10.">10. Sommes nous avertis lorsqu'un évènement est achevé ?</h5>
+<div id="faqh" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6 "><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="11.">11. Comment sont choisis les projets d'aménagements ?</h5>
+<div id="faqh" class="container-fluid"> 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg" class="col-sm-6 "><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumstvjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"></div>
+</div>
+
+<h5 id="12.">12. Qu'est-ce que l'Ambient Power ?</h5>
+<div id="faqh" class="container-fluid" > 
+<div class="row"> 
+<div class="col-sm-3"></div>
+<div id="bg"class="col-sm-6" ><p>aaaaaa Nulla quis urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac
+habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfjsijdpùqjh.  urpis rhoncus sem hendrerit tincidunt eleifend non felis. Donec iaculis quis lorem non luctus. In hac habitasse platea dictumst^vjdfhiuheisjcqjpsp dqiclfq iqfoijqmpoqj qfùqisfjvs sidfpsùfjvs oijvswlovnsl sifvsnlkfi ksih ospfj</p></div></div>
+<div class="col-sm-3"><i id="top" onclick="topFunction()" class="fas fa-angle-up fa-4x" title="Retour en haut"></i></div>
+</div>
+
+<script>
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
+</script>
+
+<br>
+<h6><i>Votre question n’est pas dans la liste ? Posez-la nous et on vous répond au plus vite !</i></h6>
+<br>
+
+<div th:insert="~{footer::footer}"></div>
+
+

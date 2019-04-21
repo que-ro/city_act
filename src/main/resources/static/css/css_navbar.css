@@ -1,0 +1,14 @@
+.navbar-brand{color:white !important; font-size:1.4em;}
+
+.navbar-expand-sm{background-color:#408080CC;}
+
+#aC{color:white;}
+#aC:hover{color:#400040; opacity:0.6;}
+.div,#center{
+    border-color: white;
+      border-right-style: solid;
+        border-left-style: solid;
+        border-width: 1px ;  }
+
+.div,#right, nav-item{ text-align: right;}
+.div,#center, navbar-nav,nav-item {text-align: center;}

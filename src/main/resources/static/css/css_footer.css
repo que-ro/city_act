@@ -1,0 +1,37 @@
+
+
+#footer {
+/* 	 background: #00838f !important; */
+	background:darkcyan !important;
+/* position: sticky; */
+/* left: 0; */
+/*   bottom: 0; */
+/*   width: 100%; */
+    
+} 
+
+#website1{color:white !important;
+ font-family:"Poppins"!important, verdana ;
+  text-transform: uppercase;
+  letter-spacing: 4px!important;
+  text-align: left;
+  text-decoration:none !important;}
+  
+   #website1:hover{color:#400080!important;}
+  
+  #website2{color:white !important;
+  text-align: center;
+  letter-spacing: 2px!important;
+  text-decoration:none !important;
+  }
+  
+  #website2:hover{color:#400080!important;}
+  
+  #website3{color:white !important;
+ font-family:"Poppins"!important, verdana ;
+  text-transform: uppercase;
+  letter-spacing: 4px!important;
+  text-align: right;
+  text-decoration:none !important;}
+  
+   #website3:hover{color:#400080!important;}

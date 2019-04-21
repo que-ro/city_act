@@ -1,0 +1,118 @@
+
+<!DOCTYPE html >
+<html class="ink">
+<head>
+<title>CityAct | Modifier mon profil</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+<link href="/css/css_modifierprofil.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+</head>
+
+<!-- Not connected -->
+<div th:unless="${session.containsKey('user')}">
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+
+<!-- Connected -->
+<div th:if="${session.containsKey('user')}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+<div class="form-gap"></div>
+ <h5 id="Modifier mon profil">Modifier mon profil</h5>
+<div id="prof" class="container-fluid" style="border: 1px solid red">
+<div class="row">
+<div class="col-sm-3"></div>
+<form>
+<div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="inputEmail4">Prénom</label>
+      <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom">
+    </div>
+   
+    
+    <div class="form-group col-sm-6">
+      <label for="inputnom">Nom</label>
+      <input type="text"class="form-control" id="inputLastname" placeholder="Nom">
+    </div>
+ </div>
+
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    
+    <div class="form-group col-sm-6">
+      <label for="inputPassword4">Pseudo</label>
+      <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo">
+    </div>
+  </div>
+  
+    <div class="form-group">
+    <label for="inputBirthdate">Date de naissance</label>
+    <input type="date" class="form-control" id="inputBirthdate" placeholder="dd/mm/yyyy">
+  </div>
+  
+  <div class="form-group">
+    <label for="inputAddress">Adresse</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="inputPassword4">Mot de passe</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Mot de passe">
+    </div>
+     <div class="form-group col-sm-6">
+      <label for="inputPassword4">Confirmer nouveau mot de passe</label>
+      <input type="password" class="form-control" id="inputPasswordl4" placeholder="Confirmer mot de passe">
+    </div>
+    </div>
+  
+  <div class="form-row">
+    <div class="form-group col-sm-4">
+      <label for="inputCity">Ville</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="inputState">Pays</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choisir...</option>
+        <option>France</option>
+        <option>Belgique</option>
+        <option>Suisse</option>
+        <option>Andorre</option>
+        <option>Principauté de Monaco</option>
+        <option>Luxembourg</option>
+        <option>Dom-Tom France</option>
+      </select>
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="inputCP">Code Postal</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  
+  <button id="keepmodifications"type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+
+</form>
+<div class="col-sm-3"> </div>
+</div>
+</div>
+<hr>
+
+<div th:insert="~{footer::footer}"></div>

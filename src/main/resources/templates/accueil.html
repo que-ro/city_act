@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns th="http://thymeleaf.org">
+<head>
+<title>Accueil</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href=" css/css_accueil.css" >
+<link href=" /resources/css/css_accueil.css"  rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+</head>
+
+<!-- <body> -->
+
+
+
+<!-- Not connected -->
+<div th:unless="${session.containsKey('user')}">
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+
+<!-- Connected -->
+<div th:if="${session.containsKey('user')}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+<header class="masthead">
+  <div class="container h-100 ">
+    <div class="row h-100">
+      <div class="col-12">
+        <a class="btn1" href="map.jsp"> Accéder au site </a>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<section class="py-5"> 
+<h1 id="titre">CityAct</h1>
+<hr class="pg-titl-bdr-btm">
+<br><br>
+<br>
+
+
+<div class="col-sm-12">
+<div class="row">
+
+<div class="col-sm-2">
+<i id="u1"class="fas fa-users fa-10x float-right"></i>
+</div>
+
+<div class="col-sm-2" >
+	<h5 id="Pourqui">Pour qui ?</h5>
+	
+	<p id="whom">Tout le monde, que vous soyez habitant ou bien usager fréquent
+		de cet espace vous êtes invités à partager votre vision de VOTRE
+		VILLE! Parce que c'est ensemble que nous la vivons, ce doit être
+		ensemble que nous la construisons (ou améliorons).</p>
+</div>
+
+<div class="col-sm-2 " >
+<i id="u2"class="far fa-question-circle fa-10x float-right" ></i>
+</div>
+
+<div class="col-sm-2">
+	<h5 id="Pourquoi">Pourquoi ?</h5>
+	
+	<p id="why">proposition, retour impact reel, communication, parler exp
+		perso, democratie, avis citoyens -expertise pour meilleur espace pensé</p>
+</div>
+
+<div class="col-sm-2">
+<i id="u3"class="fas fa-cogs  fa-10x float-right"></i>
+</div>
+
+<div  class="col-sm-2" >
+	<h5 id="Comment">Comment ?</h5>
+
+	<p id="how">développer les principes de fonctionnement, la mise en relation
+		citoyens, et ressources techniques et politiques concernnés de la
+		ville. Aborder les 3 catégories en synthétisant l'objectif de chacune
+		d'entre elle.</p>
+</div>
+</div>
+</div>
+
+</section>
+
+	<div th:insert="~{footer::footer}"></div>
+</html>
