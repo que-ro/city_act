@@ -20,15 +20,13 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </head>
-<!-- Connected -->
 <!-- Not connected -->
-<div th:unless="${session.containsKey('user')}">
-	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
 </div>
-
 <!-- Connected -->
-<div th:if="${session.containsKey('user')}">
-	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
 </div>
 
  <div class="form-gap"></div>
@@ -94,8 +92,82 @@
 </div>
 <hr>
 
-<div id="proj" class="container-fluid"><h5 id="Mesprojets">Mes projets</h5>
+<h5 id="Mesprojets">Mes projets</h5>
+
+<div id="proj"class="container-fluid" style="border: 2px solid black"><h5 id="Mesprojets"></h5>
+<div class="row">
+	<div class="row  proj" style="margin-left:0%">
+	<div class="col-md-4" style="border: 2px solid red">
+	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
+	</div>
+	<div class="col-md-8" style="border: 2px solid green">
+	<h6>Titre : Projets d'aménagements dans le centre</h6>
+	<h6><b>Catégorie</b> :sous-catégorie</h6>
+	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
+						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
+	</div>
+	
+	</div>
+	
+		<div class="row  proj" style="margin-left:1%">
+	<div class="col-md-4">
+	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
+	</div>
+	<div class="col-md-8" >
+	<h6>Titre : Trou dans la chaussée</h6>
+	<h6><b>Signalement</b>: Voirie</h6>
+	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
+						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
+	</div>
+	
+	</div>
+	
+	<div class="row  proj" style="margin-left:1%">
+	<div class="col-md-4" >
+	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
+	</div>
+	<div class="col-md-8" >
+	<h6>Titre : Sentiment d'insécurité dû à un éclairage manquant</h6>
+	<h6><b>Ambient Power</b>: éclairage</h6>
+	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
+						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
+	</div>
+	
+	</div>
+	
+	<div class="row  proj" style="margin-left:1%">
+	<div class="col-md-4" >
+	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
+	</div>
+	<div class="col-md-8">
+	<h6>Titre : Projets d'aménagements dans le centre</h6>
+	<h6><b>Catégorie</b> :sous-catégorie</h6>
+	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
+						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
+	</div>
+	
+	</div>
+	
+<!-- 	<div class="row  proj" style="margin-left:1%"> -->
+<!-- 	<div class="col-md-4" > -->
+<!-- 	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail"> -->
+<!-- 	</div> -->
+<!-- 	<div class="col-md-8"> -->
+<!-- 	<h6>Titre : Projets d'aménagements dans le centre</h6> -->
+<!-- 	<h6><b>Catégorie</b> :sous-catégorie</h6> -->
+<!-- 	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non -->
+<!-- 						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p> -->
+<!-- 	</div> -->
+	
+<!-- 	</div> -->
+	
+	<!-- 	fin div row 1-->
+	</div>
+
 </div>
+
+
+
 <hr>
 <div  id="comms"class="container-fluid"><h5 id="Mescommentaires">Mes commentaires et mes votes</h5>
 </div>

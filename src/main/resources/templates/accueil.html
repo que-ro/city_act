@@ -22,27 +22,20 @@
 </head>
 
 <!-- <body> -->
-
-
-<!-- Connected -->
-<div th:if="${not session.containsKey('user')}">
-	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
-</div>
 <!-- Not connected -->
-<div th:if="${session.containsKey('user')}">
-	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
 </div>
-
-
-
-
-
+<!-- Connected -->
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
 
 <header class="masthead">
   <div class="container h-100 ">
     <div class="row h-100">
       <div class="col-12">
-        <a class="btn1" href="map.jsp"> Accéder au site </a>
+        <a class="btn1" href="map"> Accéder au site </a>
       </div>
     </div>
   </div>

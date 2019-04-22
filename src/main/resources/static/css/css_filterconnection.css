@@ -1,2 +1,32 @@
-.nav-gap{padding-top:300px;}
-.footer-gap{padding-top: 525px;}
+.nav-gap{padding-top:70px;}
+
+
+ul.breadcrumb {font-size:0.9em; background:none;font-family:verdana; letter-spacing: 1px; color: #400040;}
+ul.breadcrumb li+li:before {
+text-decoration: none !important;
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+  
+}
+
+.active:hover{color: #28b57c;}
+
+ #filterC{padding-top:100px; text-align:center;}
+ 
+ .pg-titl-bdr-btm {
+    width: 650px;
+    height: 2px;
+    background-color: #28b57c;}
+ 
+ #titrefilterC{
+ font-family: verdana,impact;
+color: #400040;margin-bottom: 70px;}
+
+
+#pasnotres{font-family: verdana,impact; color: #400040; font-size:1.2em;}
+#notres{font-family: verdana,impact; color: #400040;
+font-size:1.2em;}
+
+.footer-gap{padding-top: 470px;
+ }
