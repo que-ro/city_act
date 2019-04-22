@@ -80,10 +80,10 @@ public class ControllerTest {
 		return "formambientpower";
 	}
 
-	@RequestMapping("/formamsignalement")
-	public String formamsignalement(Model model)
+	@RequestMapping("/formsignalement")
+	public String formsignalement(Model model)
 	{	
-		return "formamsignalement";
+		return "formsignalement";
 	}
 	
 		
