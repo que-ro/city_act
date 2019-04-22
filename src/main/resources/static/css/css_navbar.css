@@ -2,7 +2,7 @@
 
 .navbar-expand-sm{background-color:#408080CC;}
 
-#aC{color:white;}
+#aC{color:white; letter-spacing: 2px!important;}
 #aC:hover{color:#400040; opacity:0.6;}
 .div,#center{
     border-color: white;

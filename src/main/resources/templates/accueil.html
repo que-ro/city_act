@@ -24,16 +24,19 @@
 <!-- <body> -->
 
 
-
+<!-- Connected -->
+<div th:if="${not session.containsKey('user')}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
 <!-- Not connected -->
-<div th:unless="${session.containsKey('user')}">
+<div th:if="${session.containsKey('user')}">
 	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
 </div>
 
-<!-- Connected -->
-<div th:if="${session.containsKey('user')}">
-	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
-</div>
+
+
+
+
 
 <header class="masthead">
   <div class="container h-100 ">

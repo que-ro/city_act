@@ -60,5 +60,31 @@ public class ControllerTest {
 	{	
 		return "signup";
 	}
+	
 
+	@RequestMapping("/filterconnection")
+	public String filterconnection(Model model)
+	{	
+		return "filterconnection";
+	}
+	
+	@RequestMapping("/formprojets")
+	public String formprojets(Model model)
+	{	
+		return "formprojets";
+	}
+	
+	@RequestMapping("/formambientpower")
+	public String formambientpower(Model model)
+	{	
+		return "formambientpower";
+	}
+
+	@RequestMapping("/formamsignalement")
+	public String formamsignalement(Model model)
+	{	
+		return "formamsignalement";
+	}
+	
+		
 }
