@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ControllerTest {
 	
-	@RequestMapping("/accueil")
+	@RequestMapping({"/","/accueil"})
 	public String accueil(Model model)
 	{	
 		return "accueil";
@@ -52,6 +52,7 @@ public class ControllerTest {
 	@RequestMapping("/quisommesnous")
 	public String quisommesnous(Model model)
 	{	
+		model.addAttribute("titre", "example Spring Boot");
 		return "Qui_sommes_nous";
 	}
 	
