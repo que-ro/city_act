@@ -13,6 +13,17 @@ import fr.formation.inti.utils.Login_Utils;
 
 @Controller
 public class ControllerTest {
+	@RequestMapping("/CityAct")
+	public String CityAct(Model model)
+	{	
+		return "CityAct";
+	}
+	
+	@RequestMapping("/CityActConnectNavbar")
+	public String CityActConnectNavbar(Model model)
+	{	
+		return "CityActConnectNavbar";
+	}
 	
 	@Autowired
 	IUsersDao dao_usr;
@@ -71,7 +82,7 @@ public class ControllerTest {
 		return "monprofil";
 	}
 	
-	@RequestMapping("/quisommesnous")
+	@RequestMapping("/Qui_sommes_nous")
 	public String quisommesnous(Model model)
 	{	
 		return "Qui_sommes_nous";
@@ -83,10 +94,43 @@ public class ControllerTest {
 		return "signup";
 	}
 	
+
 	@RequestMapping("/signup_nv")
 	public String signup_nv(Model model)
 	{	
 		return "signup_nv";
 	}
 
+
+	@RequestMapping("/filterconnection")
+	public String filterconnection(Model model)
+	{	
+		return "filterconnection";
+	}
+	
+	@RequestMapping("/formprojets")
+	public String formprojets(Model model)
+	{	
+		return "formprojets";
+	}
+	
+	@RequestMapping("/formambientpower")
+	public String formambientpower(Model model)
+	{	
+		return "formambientpower";
+	}
+
+	@RequestMapping("/formsignalement")
+	public String formsignalement(Model model)
+	{	
+		return "formsignalement";
+	}
+	
+	@RequestMapping("/falselogin")
+	public String falselogin(Model model)
+	{	
+		return "falselogin";
+	}
+	
+		
 }

@@ -21,9 +21,21 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </head>
 
+<<<<<<< HEAD
+=======
+<!-- Not connected -->
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+>>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
 <!-- Connected -->
+<<<<<<< HEAD
 <div th:if="${#session != null}">
 	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+=======
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+>>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
 </div>
 <!-- Not connected -->
 <div th:unless="${session != null}">

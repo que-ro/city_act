@@ -22,6 +22,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <!-- Connected -->
 <div th:if="${#session != null}">
 	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
@@ -30,6 +31,17 @@
 <div th:unless="${session != null}">
 	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
 </div>
+=======
+<!-- Not connected -->
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+<!-- Connected -->
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+>>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
 
 	<div class="container-fluid mt-5">
 		<div class="row">
@@ -220,14 +232,15 @@
 											aria-haspopup="true" aria-expanded="false">Ajoutez
 											un marqueur !</button>
 										<div class="dropdown-menu" aria-labelledby="btn_ajout">
-											<button
-												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout">Signalements</button>
-											<button
-												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout">Ambient
-												Power</button>
-											<button
-												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout">Propositions
-												d'aménagements</button>
+										
+											<a
+												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout" href="formsignalement">Signalements</a>
+											<a
+												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout" href="formambientpower">Ambient
+												Power</a>
+											<a
+												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout" href="formprojets">Propositions
+												d'aménagements</a>
 										</div>
 									</form>
 								</div>

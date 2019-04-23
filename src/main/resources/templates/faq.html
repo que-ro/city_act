@@ -23,9 +23,21 @@
 </head>
 
 
+<<<<<<< HEAD
+=======
+<!-- Not connected -->
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+>>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
 <!-- Connected -->
+<<<<<<< HEAD
 <div th:if="${#session != null}">
 	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+=======
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+>>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
 </div>
 <!-- Not connected -->
 <div th:unless="${session != null}">

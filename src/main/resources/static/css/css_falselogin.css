@@ -1,0 +1,15 @@
+.nav-gap{padding-top:200px;}
+#erreur{font-family: verdana; color:red; text-align: center;}
+#lockuser{padding-top:70px;
+padding-left: 45%;
+padding-bottom:70px;}
+#btnsubmit{background-color: darkcyan;
+opacity:.6;
+color:white;border:none!important;}
+
+ #btnsubmit:hover
+{border:none!important;
+	opacity:1;
+}
+#b1{text-align:right;}
+.footer-gap{padding-top: 200px;}
