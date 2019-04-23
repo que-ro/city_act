@@ -1,0 +1,24 @@
+.dropdown-menu dropdown-menu-right, .form-group, #form{ font-family: Verdana;
+text-align: left;
+
+}
+
+#btnsubmit{background-color: darkcyan;
+opacity:.6;
+color:white;border:none!important;}
+
+ #btnsubmit:hover
+{border:none!important;
+	opacity:1;
+}
+
+ div #b1{text-align:center !important;
+font-family: arial;
+}
+
+.rememberme{text-align: center!important;
+margin-right:2;}
+
+#mpf{font-style: italic;
+text-align:center!important;
+font-size: 0.8em!important;} 

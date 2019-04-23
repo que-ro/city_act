@@ -4,21 +4,19 @@ background-color: #408080 !important;}
 .form-group1 { position: absolute; left: 3%}
 .text-right{ position: relative; right: 0.1%; top:5%}
 .text-right1{ position: absolute; left: 70%}
-#img{ position: absolute; left:60%; 
-}
 
 
 
 .col-md-6 col-md-offset-3{text-align:center}
 
 .form{background: transparent !important}
-.section,#singup{ border: inset 2px darkcyan;
-width: 931px; 
-/* max-width: 500px;  */
-height: 640px;
-  position: absolute;
-  top: 10%;
-  left: 26%;}
+
+  
+#container_singup
+{
+	border: inset 2px darkcyan;
+	margin-top:5em;
+}
 
   
 label, .form-check{ font-family: Verdana, arial, "Comic Sans Ms";

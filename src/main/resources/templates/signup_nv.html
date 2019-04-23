@@ -1,0 +1,158 @@
+
+<!DOCTYPE html >
+<html class="ink">
+<head>
+<title>Sign Up | Inscription </title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+<link href="/css/css_signup.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+</head>
+
+<!-- <body> -->
+
+<!-- Not connected -->
+<div th:if="${session.user == null}">
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+<!-- Connected -->
+<div th:if="${session.user != null}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+<br>
+<br>
+<br>
+
+<div id="container_singup" class="container pb-3" style="border: inset 2px darkcyan; margin-top:5em; margin-bottom:14em;">
+	<div class="row">
+		<div class="col-md-12  mt-3">
+			<div class="row">
+			<div class="col-md-7">
+			<form id="form_register" action="/register_method" method="POST">
+			<div th:if="${errors != null}">
+				<div class="col-md-12 text-center my-3" th:each="error : ${errors}" style="border: 1px solid red; color:red"><div th:utext="${error}"></div></div>
+			</div>
+			<div class="row ml-2">	
+   				<div class="col-md-4 mb-3 ">
+      				<label for="validationCustom01"><b>Prénom</b></label>
+      				<input type="text" class="form-control" name="firstname" id="validationCustom01" placeholder="Prénom" required>
+    			</div>
+    			<div class="col-md-4 mb-3  ">
+      				<label for="validationCustom02"><b>Nom</b></label>
+      				<input type="text" class="form-control" name="lastname" id="validationCustom02" placeholder="Nom de famille" required>
+
+       			</div>
+       			<div class="col-md-4 mb-3">
+      				<label for="validationCustom03"><b>Pseudo</b></label>
+      				<input type="text" class="form-control" name="pseudo" id="validationCustom03" placeholder="Pseudo" required>
+    			</div>
+       		</div>
+       		<div class="row ml-2">	
+       		    <div class="col-md-6  mb-3 ">
+      				<label for="validationCustomEmail"><b>Email</b></label>
+      				<div class="input-group">
+        				<div class="input-group-prepend">
+          					<span class="input-group-text" id="inputGroupPrepend">@</span>
+       					</div>
+        				<input type="email" class="form-control" name="mail" id="validationCustomEmail" placeholder="Email" aria-describedby="inputGroupPrepend" required>        
+      				</div>
+    			</div>
+    			<div class="col-md-6 mb-3">
+					<label for="validationCustom04"><b>Date de naissance</b></label>
+					<input type="date" class="form-control" name="birthdate" id="validationCustom04" placeholder="Date de naissance" required>
+
+    			</div>
+    		</div>
+    		<div class="row ml-2">
+       			<div class="col-md-6  mb-3">
+ 					<label for="validationCustom05"><b>Mot de passe</b></label>
+    				<input type="password" class="form-control" name="pwd" id="validationCustom05"placeholder="Mot de passe" required>
+      			</div>
+      			<div class="col-md-6  mb-3">
+ 					<label for="validationCustom06"><b>Répéter le mot de passe</b></label>
+    				<input type="password" class="form-control" name="repeated_pwd" id="validationCustom06" placeholder="Répéter le mot de passe" required>
+    			</div>
+       		</div>
+       		<div class="row ml-2">
+       			<div class="col-md-6 mb-3  ">
+      				<label for="validationCustom07"><b>Adresse</b></label>
+      				<input type="text" class="form-control" name="adress" id="validationCustom07" placeholder="Adresse" required>
+   				</div>
+   				<div class="col-md-6 mb-3">
+      				<label for="validationCustom08"><b>Ville</b></label>
+      				<input type="text" class="form-control" name="city" id="validationCustom08" placeholder="Ville" required>
+   				</div>
+       		</div>
+       		<div class="row ml-2">
+       			<div class="col-md-6 mb-3">
+      				<label for="validationCustom10"><b>Code postal</b></label>
+      				<input type="text" class="form-control" name="postal_code" id="validationCustom10" placeholder="CP" required>
+    			</div>
+    			<div class="col-md-6 mb-4">
+      				<label for="validationCustom09"><b>Pays</b></label>
+      				<input type="text" class="form-control" name="country" id="validationCustom09" placeholder="Pays" required>
+    			</div>
+       		</div>
+       		<div class="row ml-2">
+       			<div class="col-md-12 mb-2">
+    				<div class="form-check">
+      					<input class="form-check-input" name="terms_and_conditions" type="checkbox" value="" id="invalidCheck" required>
+      					<label class="form-check-label" for="invalidCheck">
+        					Accepter les termes et conditions
+      					</label>
+    				</div>
+  				</div>
+  			</div>
+  			<div class="row ml-2">
+  				<div class="col-md-12">
+  					<button class="btn btn-primary offset-md-3 col-md-6" type="submit">Soumettre le formulaire </button>
+  					<br>
+       		</div>
+       		</div>
+       		</form>
+       		</div>
+       		
+       			
+       		
+       		<div class="col-md-5"> <br> 
+   				<img class="img-fluid" src="/pictures/clipboard.jpg"/>
+			</div>
+			</div>
+		</div>
+    </div>
+
+</div>
+
+
+<div th:insert="~{footer::footer}"></div>
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Page de test</title>
+</head>
+<body>
+
+<!-- Not connected -->
+<div th:if="${session.user == null}">
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+<!-- Connected -->
+<div th:if="${session.user != null}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+<span th:if="${session.user != null}" th:text="${session.user}">Working?</span>
+<span th:if="${session.user == null}">Working?</span>
+
+</body>
+</html>
