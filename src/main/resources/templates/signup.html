@@ -24,13 +24,12 @@
 <!-- <body> -->
 
 <!-- Not connected -->
-<div th:unless="${session.containsKey('user')}">
-	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
 </div>
-
 <!-- Connected -->
-<div th:if="${session.containsKey('user')}">
-	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
 </div>
 
 <br>

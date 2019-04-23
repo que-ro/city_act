@@ -60,7 +60,7 @@ public class ControllerTest {
 		return "monprofil";
 	}
 	
-	@RequestMapping("/quisommesnous")
+	@RequestMapping("/Qui_sommes_nous")
 	public String quisommesnous(Model model)
 	{	
 		return "Qui_sommes_nous";
@@ -95,6 +95,12 @@ public class ControllerTest {
 	public String formsignalement(Model model)
 	{	
 		return "formsignalement";
+	}
+	
+	@RequestMapping("/falselogin")
+	public String falselogin(Model model)
+	{	
+		return "falselogin";
 	}
 	
 		
