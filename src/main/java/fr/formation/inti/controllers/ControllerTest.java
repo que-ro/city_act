@@ -71,8 +71,11 @@ public class ControllerTest {
 	}
 	
 	@RequestMapping("/modifiermoncompte")
-	public String modifiermoncompte(Model model)
+	public String modifiermoncompte(Model model, HttpServletRequest request)
 	{	
+		Users usr = (Users) request.getSession().getAttribute("user");
+		System.out.println(usr.getFirstname());
+		model.addAttribute("user", usr);
 		return "modifiermoncompte";
 	}
 	

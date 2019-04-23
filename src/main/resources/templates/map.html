@@ -22,26 +22,14 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-<!-- Connected -->
-<div th:if="${#session != null}">
-	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
-</div>
-<!-- Not connected -->
-<div th:unless="${session != null}">
-	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
-</div>
-=======
 <!-- Not connected -->
 <div th:if="${session.user == null}">
-    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
 </div>
 <!-- Connected -->
 <div th:if="${session.user != null}">
-    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
 </div>
-
->>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
 
 	<div class="container-fluid mt-5">
 		<div class="row">

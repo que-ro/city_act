@@ -21,66 +21,57 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </head>
 
-<<<<<<< HEAD
-=======
+
 <!-- Not connected -->
 <div th:if="${session.user == null}">
     <div th:insert="~{CityAct::notConnectedNavbar}"></div>
 </div>
->>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
+
 <!-- Connected -->
-<<<<<<< HEAD
-<div th:if="${#session != null}">
-	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
-=======
 <div th:if="${session.user != null}">
     <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
->>>>>>> branch 'mgx' of https://github.com/que-ro/city_act.git
 </div>
-<!-- Not connected -->
-<div th:unless="${session != null}">
-	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
-</div>
+
 
 <div class="form-gap"></div>
  <h5 id="Modifier mon profil">Modifier mon profil</h5>
 <div id="prof" class="container-fluid" style="border: 1px solid red">
 <div class="row">
 <div class="col-sm-3"></div>
-<form>
+<form th:object="${user}">
 <div class="form-row">
     <div class="form-group col-sm-6">
       <label for="inputEmail4">Prénom</label>
-      <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom">
+      <input type="text" class="form-control" id="inputFirstname" th:value="*{firstname}" th:field="*{firstname}">
     </div>
    
     
     <div class="form-group col-sm-6">
       <label for="inputnom">Nom</label>
-      <input type="text"class="form-control" id="inputLastname" placeholder="Nom">
+      <input type="text"class="form-control" id="inputLastname" placeholder="Nom" th:value="*{lastname}" th:field="*{lastname}">
     </div>
  </div>
 
   <div class="form-row">
     <div class="form-group col-sm-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" th:value="*{mail}" th:field="*{mail}">
     </div>
     
     <div class="form-group col-sm-6">
       <label for="inputPassword4">Pseudo</label>
-      <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo">
+      <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo" th:value="*{pseudo}" th:field="*{pseudo}">
     </div>
   </div>
   
     <div class="form-group">
     <label for="inputBirthdate">Date de naissance</label>
-    <input type="date" class="form-control" id="inputBirthdate" placeholder="dd/mm/yyyy">
+    <input type="date" class="form-control" id="inputBirthdate" placeholder="dd/mm/yyyy" th:value="*{birthdate}" th:field="*{birthdate}">
   </div>
   
   <div class="form-group">
     <label for="inputAddress">Adresse</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:value="*{street}" th:field="*{street}">
   </div>
   
   <div class="form-row">
@@ -97,7 +88,7 @@
   <div class="form-row">
     <div class="form-group col-sm-4">
       <label for="inputCity">Ville</label>
-      <input type="text" class="form-control" id="inputCity">
+      <input type="text" class="form-control" id="inputCity" th:value="*{city}" th:field="*{city}">
     </div>
     <div class="form-group col-sm-4">
       <label for="inputState">Pays</label>
@@ -114,7 +105,7 @@
     </div>
     <div class="form-group col-sm-4">
       <label for="inputCP">Code Postal</label>
-      <input type="text" class="form-control" id="inputZip">
+      <input type="text" class="form-control" id="inputZip" th:value="*{zipcode}" th:field="*{zipcode}">
     </div>
   </div>
   
