@@ -74,7 +74,7 @@ public class ControllerTest {
 	public String modifiermoncompte(Model model, HttpServletRequest request)
 	{	
 		Users usr = (Users) request.getSession().getAttribute("user");
-		model.addAttribute("user", usr);
+		model.addAttribute("users", usr);
 		return "modifiermoncompte";
 	}
 	

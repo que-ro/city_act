@@ -38,11 +38,12 @@
 <div id="prof" class="container-fluid" style="border: 1px solid red">
 <div class="row">
 <div class="col-sm-3"></div>
-<form th:object="${user}" action="/modifiermesinfos_method" method="POST">
+<form th:object="${users}" action="/modifiermesinfos_method" method="POST">
 <div class="form-row">
     <div class="form-group col-sm-6">
       <label for="inputEmail4">Prénom</label>
       <input type="text" class="form-control" id="inputFirstname" th:value="*{firstname}" th:field="*{firstname}">
+      <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">NameError</span>
     </div>
    
     
@@ -77,7 +78,7 @@
   <div class="form-row">
     <div class="form-group col-sm-6">
       <label for="inputPassword4">Mot de passe</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Mot de passe">
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Mot de passe" th:value="*{password}" th:field="*{password}">
     </div>
      <div class="form-group col-sm-6">
       <label for="inputPassword4">Confirmer nouveau mot de passe</label>
