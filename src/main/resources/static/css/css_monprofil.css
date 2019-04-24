@@ -13,17 +13,37 @@ font-family:  Verdana,"arial black", "Poppins";
 }
 
 #Mesprojets{letter-spacing:1px;
-font-family:Verdana;}
-.row.proj{border: 2px dotted purple;
-Width:25%; height:300px;}
+font-family:Verdana;
+margin-bottom:70px;}
 
-#proj{width: 100%; height:100%
-; overflow-x:auto;}
 
-/* #proj::-webkit-scrollbar{ */
-/*   display: none; */
-/* } */
+.form-gap{padding-top:100px;}
+
+.card-block {
+    min-height: 220px;
+}
+
+.row.proj{margin-left:1%}
+
+#mesprojetscont{overflow-x:auto;}
+
 #Mescommentaires{letter-spacing:1px;
-font-family:Verdana;}
+font-family:Verdana;
+}
 
-.footer-gap{padding-top: 390px;}
+#comms{overflow-x:auto;}
+
+.pg-titl-bdr-btm.2{
+	float:left;
+	width: 300px;
+    height: 2px;
+    background-color: #28b57c; margin-bottom:70px; }
+    
+.pg-titl-bdr-btm{  
+	float:left;
+	width: 300px;
+    height: 2px;
+    background-color: #28b57c;}
+
+.footer-gap{padding-top: 70px;}
+.section{display:inline;}

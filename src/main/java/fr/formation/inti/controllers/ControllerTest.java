@@ -6,6 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ControllerTest {
+	@RequestMapping("/mesprojetstest")
+	public String mesprojetstest(Model model)
+	{	
+		return "mesprojetstest";
+	}
+	
 	@RequestMapping("/CityAct")
 	public String CityAct(Model model)
 	{	
