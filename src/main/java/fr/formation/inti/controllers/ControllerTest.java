@@ -37,12 +37,6 @@ public class ControllerTest {
 	@RequestMapping("/test")
 	public String test(Model model, HttpServletRequest request)
 	{	
-		Users user = dao_usr.findByMail("qszd");
-		Users usr = new Users();
-		usr.setMail("lala@mail.com");
-		usr.setPassword(Login_Utils.hashPassword("test"));
-		dao_usr.save(usr);
-		System.out.println(user.getCity());
 		return "test";
 	}
 	
