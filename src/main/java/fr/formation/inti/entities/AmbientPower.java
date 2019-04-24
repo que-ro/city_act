@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 18 avr. 2019 16:14:00 by Hibernate Tools 5.1.10.Final
+// Generated 24 avr. 2019 15:57:26 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -29,6 +29,9 @@ public class AmbientPower implements java.io.Serializable {
 	private String titre;
 	private String descriptif;
 	private String photoPath;
+	private String ref;
+	private String ideeAmelioration;
+	private Integer intensiteRessentie;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public AmbientPower() {
@@ -45,7 +48,8 @@ public class AmbientPower implements java.io.Serializable {
 	}
 
 	public AmbientPower(int idambientPower, String latitude, String longitude, Date dateCreation, Integer votePos,
-			Integer voteNeg, String titre, String descriptif, String photoPath, Set<Comment> comments) {
+			Integer voteNeg, String titre, String descriptif, String photoPath, String ref, String ideeAmelioration,
+			Integer intensiteRessentie, Set<Comment> comments) {
 		this.idambientPower = idambientPower;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -55,6 +59,9 @@ public class AmbientPower implements java.io.Serializable {
 		this.titre = titre;
 		this.descriptif = descriptif;
 		this.photoPath = photoPath;
+		this.ref = ref;
+		this.ideeAmelioration = ideeAmelioration;
+		this.intensiteRessentie = intensiteRessentie;
 		this.comments = comments;
 	}
 
@@ -140,6 +147,33 @@ public class AmbientPower implements java.io.Serializable {
 
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
+	}
+
+	@Column(name = "ref", length = 45)
+	public String getRef() {
+		return this.ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+	@Column(name = "idee_amelioration", length = 16777215)
+	public String getIdeeAmelioration() {
+		return this.ideeAmelioration;
+	}
+
+	public void setIdeeAmelioration(String ideeAmelioration) {
+		this.ideeAmelioration = ideeAmelioration;
+	}
+
+	@Column(name = "intensite_ressentie")
+	public Integer getIntensiteRessentie() {
+		return this.intensiteRessentie;
+	}
+
+	public void setIntensiteRessentie(Integer intensiteRessentie) {
+		this.intensiteRessentie = intensiteRessentie;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ambientPower")

@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 18 avr. 2019 16:14:00 by Hibernate Tools 5.1.10.Final
+// Generated 24 avr. 2019 15:57:26 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,7 +22,7 @@ import javax.persistence.TemporalType;
 @Table(name = "urban_planning", catalog = "urbanproject")
 public class UrbanPlanning implements java.io.Serializable {
 
-	private int idplanningProposal;
+	private Integer idplanningProposal;
 	private String latitude;
 	private String longitude;
 	private Date dateCreation;
@@ -30,14 +32,14 @@ public class UrbanPlanning implements java.io.Serializable {
 	private String titre;
 	private String descriptif;
 	private String photoPath;
+	private String ref;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public UrbanPlanning() {
 	}
 
-	public UrbanPlanning(int idplanningProposal, String latitude, String longitude, Date dateCreation, byte temporalite,
-			String titre, String descriptif) {
-		this.idplanningProposal = idplanningProposal;
+	public UrbanPlanning(String latitude, String longitude, Date dateCreation, byte temporalite, String titre,
+			String descriptif) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.dateCreation = dateCreation;
@@ -46,10 +48,8 @@ public class UrbanPlanning implements java.io.Serializable {
 		this.descriptif = descriptif;
 	}
 
-	public UrbanPlanning(int idplanningProposal, String latitude, String longitude, Date dateCreation, byte temporalite,
-			Integer votePos, Integer voteNeg, String titre, String descriptif, String photoPath,
-			Set<Comment> comments) {
-		this.idplanningProposal = idplanningProposal;
+	public UrbanPlanning(String latitude, String longitude, Date dateCreation, byte temporalite, Integer votePos,
+			Integer voteNeg, String titre, String descriptif, String photoPath, String ref, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.dateCreation = dateCreation;
@@ -59,17 +59,19 @@ public class UrbanPlanning implements java.io.Serializable {
 		this.titre = titre;
 		this.descriptif = descriptif;
 		this.photoPath = photoPath;
+		this.ref = ref;
 		this.comments = comments;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idplanning_proposal", unique = true, nullable = false)
-	public int getIdplanningProposal() {
+	public Integer getIdplanningProposal() {
 		return this.idplanningProposal;
 	}
 
-	public void setIdplanningProposal(int idplanningProposal) {
+	public void setIdplanningProposal(Integer idplanningProposal) {
 		this.idplanningProposal = idplanningProposal;
 	}
 
@@ -153,6 +155,15 @@ public class UrbanPlanning implements java.io.Serializable {
 
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
+	}
+
+	@Column(name = "ref", length = 45)
+	public String getRef() {
+		return this.ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "urbanPlanning")

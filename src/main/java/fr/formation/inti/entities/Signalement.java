@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 18 avr. 2019 16:14:00 by Hibernate Tools 5.1.10.Final
+// Generated 24 avr. 2019 15:57:26 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -34,6 +34,7 @@ public class Signalement implements java.io.Serializable {
 	private String category;
 	private Integer compteurPopularite;
 	private Integer compteurConstat;
+	private String ref;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public Signalement() {
@@ -52,7 +53,7 @@ public class Signalement implements java.io.Serializable {
 
 	public Signalement(String latitude, String longitude, Date dateCreation, String titre, String descriptif,
 			String photoPath, String state, String priority, String category, Integer compteurPopularite,
-			Integer compteurConstat, Set<Comment> comments) {
+			Integer compteurConstat, String ref, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.dateCreation = dateCreation;
@@ -64,6 +65,7 @@ public class Signalement implements java.io.Serializable {
 		this.category = category;
 		this.compteurPopularite = compteurPopularite;
 		this.compteurConstat = compteurConstat;
+		this.ref = ref;
 		this.comments = comments;
 	}
 
@@ -177,6 +179,15 @@ public class Signalement implements java.io.Serializable {
 
 	public void setCompteurConstat(Integer compteurConstat) {
 		this.compteurConstat = compteurConstat;
+	}
+
+	@Column(name = "ref", length = 45)
+	public String getRef() {
+		return this.ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "signalement")
