@@ -21,8 +21,227 @@
 </head>
 
 <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+ <div class="nav-gap"></div>
+<div id="bread" class="container-fluid">
+ <ul class="breadcrumb">
+  <li><a  id="bc" href="map">Carte</a></li>
+  <li><a >Ajouter un marqueur</a></li>
+   <li class="active">Formulaire Projet d'aménagements</li>
+</ul>
+</div>
+
+<div id="DescriptifAB" class="container-fluid">
+<h5 id="dab"><b>Descriptif du formulaire Projet d'aménagements</b></h5>
+<br>
+<a> 
+ quelles sont les composantes qui participe a créer cette atmosphère spécifique et donc ainsi agir sur notre environnement pour proposer des services et générer un espace publique, une ville plus agréable. 
+ Et c'est ici que vous citoyens, résidents, consommateurs fréquents  vous jouez un rôle! Votre expertise, votre connaissance quotidienne du lieu  sont essentielles pour nous architectes, urbanistes, géographes, sociologues, politiciens. Nous qui travaillons pour vous offrir une ville où il fait bon vivre mais que nous ne pratiquns pas toujours de manière quotidienne, que nous percevons différemment. Anisi dans cet espace Ambient Power nous vous invitons à vous exprimer, à recenser les espaces qui peuvent être améliorés, qui présente une atmosphère specifique qui vous fait 
+ ressentir quelque chose de négatif et qui pourrait être améliorer. juste un point pour nous informer nous professionnel de l'aménagment du territoire et nous permettrait à l'avenir de peut etre concentrer nos etudes sur ces espaces-ci. Nous vous offrons également la possibilité d'exprimer des idées d'améliorations le cas échéant. 
+ dvper la diff avec le formulaire projets d'aménagements [...]  </a> </div>
+
+
+<div id="mapform" class="container-fluid">
+<div class="row">
+
+<div class="col-md-6">
+
+<form id="formAB">
+
+<h5 id="ABtitre">-Projet d'aménagement-</h5>
+
+<div class="form-row" >
+        <div class="form-group col-md-3">
+    <label for="inputAddress"><b>Adresse</b></label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="rue, n° à proximité" required>
+  </div>
+  <div class="form-group col-md-3" >
+      <label for="inputCP"><b>Code Postal</b></label>
+      <input type="text" class="form-control" id="inputZip" required>
+    </div>
+<!--     </div> -->
+    
+<!--   <div class="form-row"> -->
+    <div class="form-group col-md-3">
+      <label for="inputCity"><b>Ville</b></label>
+      <input type="text" class="form-control" id="inputCity" required>
+    </div>
+    
+    <div class="form-group col-md-3" style="padding-right:2%">
+      <label for="inputState"><b>Pays</b></label>
+      <input type="text" id="inputState" class="form-control" required>
+           </div>
+           
+    
+  </div>
+  
+   <div class="form-group col-md-auto" >
+      <label for="inputTSAB"><b>Titre projet d'aménagement</b></label>
+      <input type="text" class="form-control" id="Titre signalement" required>
+    </div>
+    
+    <div class="form-group col-md-auto" >
+      <label for="inputTSAB"><b>Temporalité</b></label>
+      <select class="custom-select my-1 mr-sm-2" id="Temporalité" required>
+    <option selected>Choisir...</option>
+    <option value="1">Permanent</option>
+    <option value="2">Ephémère</option>
+      </select>
+    </div>
+  
+      <div class="form-group col-md-auto">
+      <label for="inputTSAB"><b>Descriptif du projet</b></label>
+      <textarea class="form-control" id="Descriptif"  rows="3" required></textarea>
+    </div>
+ 
+
+  <div class="form-group col-md-auto">
+      <label for="inputTSAB"><b>Inspirations | Benchmarking - Parangonnage</b></label>
+       <textarea class="form-control" id="Idées d'améliorations"  rows="3"></textarea>
+      
+    </div>
+ 
+  
+<div class="form-group col-md-auto">
+<label for="fileupload"><b>Choisissez une photo à ajouter</b></label>
+<input type="file" name="fileupload" value="fileupload" id="fileupload2" required>
+</div>
+
+<div class="form-group col-md-auto">
+<label for="fileupload"><b>Choisissez une photo à ajouter</b></label>
+<input type="file" name="fileupload" value="fileupload" id="fileupload2" required>
+</div>
+<div class="form-group offset-md-9 col-md-3">
+<button id="ABbtn" class="btn btn-primary " type="submit">Soumettre le formulaire </button>
+	</div>
+
+</form>
+
+</div> 
+<!-- end of col-md-6 -->
+
+
+
+<div class="col-md-6" id="map"></div>
+
+</div>
+<!-- end row-md-6 -->
+<script>
+						var map, infoWindow, pos;
+
+						function CenterControl(controlDiv, map) {
+
+							// Set CSS for the control border.
+							var controlUI = document.createElement('div');
+							controlUI.style.backgroundColor = '#fff';
+							controlUI.style.border = '2px solid #fff';
+							controlUI.style.borderRadius = '3px';
+							controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+							controlUI.style.cursor = 'pointer';
+							controlUI.style.marginBottom = '22px';
+							controlUI.style.textAlign = 'center';
+							controlUI.title = 'Click to recenter the map';
+							controlDiv.appendChild(controlUI);
+
+							// Set CSS for the control interior.
+							var controlText = document.createElement('div');
+							controlText.style.color = 'rgb(25,25,25)';
+							controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+							controlText.style.fontSize = '16px';
+							controlText.style.lineHeight = '38px';
+							controlText.style.paddingLeft = '5px';
+							controlText.style.paddingRight = '5px';
+							controlText.innerHTML = 'Center Map';
+							controlUI.appendChild(controlText);
+
+							// Setup the click event listeners: simply set the map to Chicago.
+							controlUI.addEventListener('click', function() {
+								map.setCenter(pos);
+							});
+
+						}
+
+						/* 					 // Create the search box and link it to the UI element.
+						 var input = document.getElementById('pac-input');
+						 var searchBox = new google.maps.places.SearchBox(input);
+						
+						 // Bias the SearchBox results towards current map's viewport.
+						 map.addListener('bounds_changed', function() {
+						 searchBox.setBounds(map.getBounds());
+						 }); */
+
+						function initMap() {
+							map = new google.maps.Map(document
+									.getElementById('map'), {
+								center : {
+									lat : -34.397,
+									lng : 150.644
+								},
+								zoom : 14
+							});
+							infoWindow = new google.maps.InfoWindow;
+
+							// Try HTML5 geolocation.
+							if (navigator.geolocation) {
+								navigator.geolocation
+										.getCurrentPosition(
+												function(position) {
+													pos = {
+														lat : position.coords.latitude,
+														lng : position.coords.longitude
+													};
+
+													infoWindow.setPosition(pos);
+													infoWindow
+															.setContent('Location found.');
+													infoWindow.open(map);
+													map.setCenter(pos);
+												}, function() {
+													handleLocationError(true,
+															infoWindow,
+															map.getCenter());
+												});
+							} else {
+								// Browser doesn't support Geolocation
+								handleLocationError(false, infoWindow, map
+										.getCenter());
+							}
+
+							// Create the DIV to hold the control and call the CenterControl()
+							// constructor passing in this DIV.
+							var centerControlDiv = document
+									.createElement('div');
+							var centerControl = new CenterControl(
+									centerControlDiv, map);
+
+							centerControlDiv.index = 1;
+							map.controls[google.maps.ControlPosition.TOP_CENTER]
+									.push(centerControlDiv);
+						}
+
+						function handleLocationError(browserHasGeolocation,
+								infoWindow, pos) {
+							infoWindow.setPosition(pos);
+							infoWindow
+									.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.'
+											: 'Error: Your browser doesn\'t support geolocation.');
+							infoWindow.open(map);
+						}
+					</script>
+
+					<script>
+						/*  Script qui va permettre d'éviter que les dropdown se ferment à chaque clics à côtés */
+						$(document).on('click', '.dropup', function(e) {
+							e.stopPropagation();
+						});
+					</script>
+
+</div>
 
 
 
  <div class="footer-gap"></div>
 <div th:insert="~{footer::footer}"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDXFTORjfXpPSkt7ZEuotSXE4UtvZk0T8&callback=initMap"
+async defer></script>
+ </html>
