@@ -13,6 +13,12 @@ import fr.formation.inti.utils.Login_Utils;
 
 @Controller
 public class ControllerTest {
+	@RequestMapping("/mesprojetstest")
+	public String mesprojetstest(Model model)
+	{	
+		return "mesprojetstest";
+	}
+	
 	@RequestMapping("/CityAct")
 	public String CityAct(Model model)
 	{	
