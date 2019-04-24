@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -29,32 +30,33 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Users implements java.io.Serializable {
 
 	private Integer idusers;
+	@Email
 	private String mail;
 	@NotNull
-    @Size(min=2, max=40)
+    @Size(min=1, message="Veuillez indiquer un pseudo")
 	private String pseudo;
 	@NotNull
-    @Size(min=8)
+    @Size(min=8, message="Votre mot de passe doit contenir au moins 8 caractères")
 	private String password;
 	@NotNull
-	@Size(min=2)
+	@Size(min=1, message="Veuillez indiquer une adresse")
 	private String street;
 	@NotNull
-	@Size(min=2)
+	@Size(min=1, message="Veuillez indiquer une ville")
 	private String city;
-	@NotNull
+	@NotNull(message="Veuillez indiquer un code postal")
 	private Integer zipcode;
 	@NotNull
-	@Size(min=2)
+	@Size(min=1, message="Veuillez indiquer un pays")
 	private String country;
-	@NotNull
+	@NotNull(message = "Veuillez indiquer une date de naissance")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthdate;
-	@Size(min=2)
+	@Size(min=1, message="Veuillez indiquer un prénom")
 	@NotNull
 	private String firstname;
 	@NotNull
-	@Size(min=2)
+	@Size(min=1, message="Veuillez indiquer un nom de famille")
 	private String lastname;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
