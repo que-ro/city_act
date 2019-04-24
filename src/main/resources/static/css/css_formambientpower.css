@@ -1,2 +1,21 @@
-.nav-gap{padding-top:300px;}
-.footer-gap{padding-top: 525px;}
+.nav-gap{padding-top:100px;}
+
+#ABtitre{font-weight:bold; text-align: center; margin-bottom: 40px; 
+padding-top: 5px; border: 2px inset darkcyan; height: 40px; }
+
+
+#DescriptifAB{ width:100%; height:300px; font-family:verdana; text-align:justify;}
+
+
+
+#ABbtn{ 
+ background-color: #408080!important;
+ border:none; 
+}
+ 
+#ABbtn:hover{background-color: #404080!important;}
+
+.form-row{padding-left: 1.5%;}
+
+#map{height:50em; width: 50em;}
+.footer-gap{padding-top: 200px;}
