@@ -85,8 +85,10 @@ public class ControllerTest {
 	}
 	
 	@RequestMapping("/monprofil")
-	public String monprofil(Model model)
+	public String monprofil(Model model, HttpServletRequest request)
 	{	
+		Users usr = (Users) request.getSession().getAttribute("user");
+		model.addAttribute("users", usr);
 		return "monprofil";
 	}
 	
