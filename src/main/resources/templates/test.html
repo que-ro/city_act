@@ -1,22 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Page de test</title>
-</head>
-<body>
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var accuracy = position.coords.accuracy;
+        var coords = new google.maps.LatLng(latitude, longitude);
+        var mapOptions = {
+            zoom: 15,
+            center: coords,
+            mapTypeControl: true,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-<!-- Not connected -->
-<div th:if="${session.user == null}">
-	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
-</div>
-<!-- Connected -->
-<div th:if="${session.user != null}">
-	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
-</div>
+        var capa = document.getElementById("capa");
+        capa.innerHTML = "latitude: " + latitude + ", longitude: " + ", accuracy: " + accuracy;
 
-<span th:if="${session.user != null}" th:text="${session.user}">Working?</span>
-<span th:if="${session.user == null}">Working?</span>
+        map = new google.maps.Map(document.getElementById("mapContainer"), mapOptions);
+        var marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+            title: "ok"
+        });
 
-</body>
-</html>
+    },
+    function error(msg) {alert('Please enable your GPS position feature.');},
+    {maximumAge:10000, timeout:5000, enableHighAccuracy: true});
+} else {
+    alert("Geolocation API is not supported in your browser.");
+}
