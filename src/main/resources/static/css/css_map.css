@@ -145,7 +145,7 @@
 }
 
 .h_titre_marqueur
-{
+{ text-decoration:none!important;
 	color: darkcyan;
 	font-size:1.2em;
 }
