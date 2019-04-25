@@ -1,11 +1,8 @@
 package fr.formation.inti.entities;
-<<<<<<< HEAD
-// Generated 25 avr. 2019 14:51:10 by Hibernate Tools 5.1.10.Final
-=======
-// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
->>>>>>> refs/heads/qtn
+
 
 import java.util.Date;
 import java.util.HashSet;
@@ -21,14 +18,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-<<<<<<< HEAD
-=======
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
->>>>>>> refs/heads/qtn
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,58 +38,49 @@ public class Users implements java.io.Serializable {
 	private Integer idusers;
 	@Email
 	private String mail;
-<<<<<<< HEAD
-=======
+
 	@NotNull
     @Size(min=1, message="Veuillez indiquer un pseudo")
->>>>>>> refs/heads/qtn
+
 	private String pseudo;
-<<<<<<< HEAD
-=======
+
 	@NotNull
     @Size(min=8, message="Votre mot de passe doit contenir au moins 8 caractères")
->>>>>>> refs/heads/qtn
+
 	private String password;
-<<<<<<< HEAD
-=======
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer une adresse")
->>>>>>> refs/heads/qtn
+
 	private String street;
-<<<<<<< HEAD
-=======
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer une ville")
->>>>>>> refs/heads/qtn
+
 	private String city;
-<<<<<<< HEAD
-=======
+
 	@NotNull(message="Veuillez indiquer un code postal")
->>>>>>> refs/heads/qtn
+
 	private Integer zipcode;
-<<<<<<< HEAD
-=======
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer un pays")
->>>>>>> refs/heads/qtn
+
 	private String country;
-<<<<<<< HEAD
-=======
+
 	@NotNull(message = "Veuillez indiquer une date de naissance")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
->>>>>>> refs/heads/qtn
+
 	private Date birthdate;
-<<<<<<< HEAD
-=======
+
 	@Size(min=1, message="Veuillez indiquer un prénom")
 	@NotNull
->>>>>>> refs/heads/qtn
+
 	private String firstname;
-<<<<<<< HEAD
-=======
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer un nom de famille")
->>>>>>> refs/heads/qtn
+
 	private String lastname;
 	@JsonIgnore
 	private Set<Comment> comments = new HashSet<Comment>(0);
