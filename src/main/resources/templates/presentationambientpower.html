@@ -36,7 +36,7 @@
 
 <div class="col-md-6">
 
-<form th:object="${ambientpower}"id="formAB" action="/presentationambientpower_method" method="get">>
+<form th:object="${idambientpower}"id="formAB" method="GET">
 
 <h5 id="ABtitre">-Ambient Power-</h5>
 
@@ -93,26 +93,24 @@
   </div>
   <div class="form-group col-md-auto">
       <label for="inputTSAB"><b>Descriptif</b></label>
-      <textarea class="form-control" id="Descriptif"  rows="3" disabled th:value="*{descriptif}"></textarea>
+      <input class="form-control" id="Descriptif"  rows="3" disabled th:value="*{descriptif}"></input>
     </div>
     
     <div class="form-row photos" > 
-    <div class="form-group col-md-auto">
-
- </div>
+    <div class="form-group col-md-auto"></div>
  </div> 
  
   <div class="form-group col-md-auto">
       <label for="inputTSAB"><b>Idées d'améliorations?</b></label>
-       <textarea class="form-control" id="Idées d'améliorations"  rows="3" disabled th:value="*{ideeamelioration}"></textarea>
+       <input class="form-control" id="Idées d'améliorations"  rows="3" disabled th:value="*{ideeamelioration}"></input>
       
     </div>
  
   
 
-<div class="form-group offset-md-9 col-md-3">
-<button id="ABbtn" class="btn btn-primary " type="submit">Soumettre le formulaire </button>
-	</div>
+<!-- <div class="form-group offset-md-9 col-md-3"> -->
+<!-- <button id="ABbtn" class="btn btn-primary " type="submit">Projet suivant </button> -->
+<!-- 	</div> -->
 
 </form>
 

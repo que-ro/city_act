@@ -36,74 +36,93 @@
 
 <div class="col-md-6">
 
-<form id="formAB">
+<form th:object="${idprojet}"id="formAB" method="GET" >
+
 
 <h5 id="ABtitre">-Projet d'aménagement-</h5>
 
-<div class="form-row" >
-        <div class="form-group col-md-3">
-    <label for="inputAddress"><b>Adresse</b></label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="rue, n° à proximité" required>
-  </div>
-  <div class="form-group col-md-3" >
-      <label for="inputCP"><b>Code Postal</b></label>
-      <input type="text" class="form-control" id="inputZip" required>
-    </div>
+<!-- <div class="form-row" > -->
+<!--         <div class="form-group col-md-3"> -->
+<!--     <label for="inputAddress"><b>Adresse</b></label> -->
+<!--     <input type="text" class="form-control" id="inputAddress" placeholder="rue, n° à proximité" required> -->
+<!--   </div> -->
+<!--   <div class="form-group col-md-3" > -->
+<!--       <label for="inputCP"><b>Code Postal</b></label> -->
+<!--       <input type="text" class="form-control" id="inputZip" required> -->
+<!--     </div> -->
+<!-- <!--     </div> -->
+    
+<!-- <!--   <div class="form-row"> --> 
+<!--     <div class="form-group col-md-3"> -->
+<!--       <label for="inputCity"><b>Ville</b></label> -->
+<!--       <input type="text" class="form-control" id="inputCity" required> -->
 <!--     </div> -->
     
-<!--   <div class="form-row"> -->
-    <div class="form-group col-md-3">
-      <label for="inputCity"><b>Ville</b></label>
-      <input type="text" class="form-control" id="inputCity" required>
-    </div>
-    
-    <div class="form-group col-md-3" style="padding-right:2%">
-      <label for="inputState"><b>Pays</b></label>
-      <input type="text" id="inputState" class="form-control" required>
-           </div>
+<!--     <div class="form-group col-md-3" style="padding-right:2%"> -->
+<!--       <label for="inputState"><b>Pays</b></label> -->
+<!--       <input type="text" id="inputState" class="form-control" required> -->
+<!--            </div> -->
            
     
-  </div>
+<!--   </div> -->
   
+  <div class="form-row" > 
+   <div class="form-group col-md-8" >
+      <label for="inputTSAB"><b>Référence ambient power</b></label>
+      <input type="text" class="form-control" id="Idplanningproposal" disabled th:value="*{idplanningproposal}">
+    </div>
+    <div class="form-group col-md-8" >
+      <label for="inputTSAB"><b>Date du dépôt du constat</b></label>
+      <input type="text" class="form-control" id="Datedudépôt" disabled th:value="*{datecreation}">
+    </div>
+    </div>
+    
    <div class="form-group col-md-auto" >
       <label for="inputTSAB"><b>Titre projet d'aménagement</b></label>
-      <input type="text" class="form-control" id="Titre signalement" required>
+      <input type="text" class="form-control" id="Titre signalement" disabled th:value="*{titre}">
     </div>
     
     <div class="form-group col-md-auto" >
       <label for="inputTSAB"><b>Temporalité</b></label>
-      <select class="custom-select my-1 mr-sm-2" id="Temporalité" required>
-    <option selected>Choisir...</option>
-    <option value="1">Permanent</option>
-    <option value="2">Ephémère</option>
-      </select>
+      <input class="custom-select my-1 mr-sm-2" id="Temporalité" disabled th:value="*{temporalite}">
+    
     </div>
   
       <div class="form-group col-md-auto">
       <label for="inputTSAB"><b>Descriptif du projet</b></label>
-      <textarea class="form-control" id="Descriptif"  rows="3" required></textarea>
+      <input class="form-control" id="Descriptif"  rows="3" disabled th:value="*{descriptif}"></input>
     </div>
- 
+    
+ <div class="form-row photos" > 
+    <div class="form-group col-md-auto"></div>
+ </div>
 
-  <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Inspirations | Benchmarking - Parangonnage</b></label>
-       <textarea class="form-control" id="Idées d'améliorations"  rows="3"></textarea>
+<!--   <div class="form-group col-md-auto"> -->
+<!--       <label for="inputTSAB"><b>Inspirations | Benchmarking - Parangonnage</b></label> -->
+<!--        <input class="form-control" id="benchmark"   disabled th:value="*{benchmark}"></input> -->
       
-    </div>
+<!--     </div> -->
+    
+    <div class="form-group col-md-auto">
+      <label for="inputTSAB"><b>Nombre de vote pour le projet</b></label>
+       <input class="form-control" id="votepos"  disabled th:value="*{votepos}"></input>
+          </div>
  
+    <div class="form-group col-md-auto">
+      <label for="inputTSAB"><b>Nombre de vote contre le projet</b></label>
+       <input class="form-control" id="voteneg"  disabled th:value="*{voteneg}"></input>
+          </div>
   
-<div class="form-group col-md-auto">
-<label for="fileupload"><b>Choisissez une photo à ajouter</b></label>
-<input type="file" name="fileupload" value="fileupload" id="fileupload2" required>
-</div>
+<!-- <div class="form-group col-md-auto"> -->
+<!-- <label for="fileupload"><b>Choisissez une photo à ajouter</b></label> -->
+<!-- <input type="file" name="fileupload" value="fileupload" id="fileupload2" required> -->
+<!-- </div> -->
 
-<div class="form-group col-md-auto">
-<label for="fileupload"><b>Choisissez une photo à ajouter</b></label>
-<input type="file" name="fileupload" value="fileupload" id="fileupload2" required>
-</div>
-<div class="form-group offset-md-9 col-md-3">
-<button id="ABbtn" class="btn btn-primary " type="submit">Soumettre le formulaire </button>
-	</div>
+<!-- <div class="form-group col-md-auto"> -->
+<!-- <label for="fileupload"><b>Choisissez une photo à ajouter</b></label> -->
+<!-- <input type="file" name="fileupload" value="fileupload" id="fileupload2" required> -->
+<!-- </div> -->
+
 
 </form>
 
