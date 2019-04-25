@@ -1,7 +1,7 @@
 <!DOCTYPE html >
 <html class="ink">
 <head>
-<title>CityAct | Présentation proposition d'aménagement </title>
+<title>CityAct | Formulaire Ambient Power</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,7 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" type="text/css" href="css/css_presentationprojet.css">
+<link rel="stylesheet" type="text/css" href="css/css_presentationsignalement.css">
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
@@ -30,15 +30,14 @@
 
  <div class="nav-gap"></div>
  
-
-<div id="mapform" class="container-fluid">
+ <div id="mapform" class="container-fluid">
 <div class="row">
 
 <div class="col-md-6">
 
 <form id="formAB">
 
-<h5 id="ABtitre">-Projet d'aménagement-</h5>
+<h5 id="ABtitre">-Signalement d'évènement-</h5>
 
 <div class="form-row" >
         <div class="form-group col-md-3">
@@ -66,31 +65,33 @@
   </div>
   
    <div class="form-group col-md-auto" >
-      <label for="inputTSAB"><b>Titre projet d'aménagement</b></label>
+      <label for="inputTSAB"><b>Titre signalement</b></label>
       <input type="text" class="form-control" id="Titre signalement" required>
     </div>
     
-    <div class="form-group col-md-auto" >
-      <label for="inputTSAB"><b>Temporalité</b></label>
-      <select class="custom-select my-1 mr-sm-2" id="Temporalité" required>
+   <div class="form-group col-md-auto" >
+      <label for="inputTSAB"><b>Sous-catégorie</b></label>
+       <select class="custom-select my-1 mr-sm-2" id="Sous-catégorie" required>
     <option selected>Choisir...</option>
-    <option value="1">Permanent</option>
-    <option value="2">Ephémère</option>
+    <option value="1">Mobilier urbain (disfonctionnement éclairage, dégradation mobilier...)</option>
+    <option value="2">Objets abandonnés (encombrants)</option>
+    <option value="3">Voirie</option>
+    <option value="4">Dégradations (graffiti, déjections animales)</option>
+    <option value="5">Signalements autres</option>
       </select>
     </div>
   
-      <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Descriptif du projet</b></label>
+  <div class="form-group col-md-auto">
+      <label for="inputTSAB"><b>Descriptif</b></label>
       <textarea class="form-control" id="Descriptif"  rows="3" required></textarea>
     </div>
  
-
-  <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Inspirations | Benchmarking - Parangonnage</b></label>
-       <textarea class="form-control" id="Idées d'améliorations"  rows="3"></textarea>
-      
+ <div class="form-group col-md-auto">
+      <label for="inputTSAB"><b>Priorité </b></label>
+      <input type="text" class="form-control" id="Intensité ressenti" required>
     </div>
- 
+  
+  
   
 <div class="form-group col-md-auto">
 <label for="fileupload"><b>Choisissez une photo à ajouter</b></label>
@@ -227,20 +228,10 @@
 					</script>
 
 </div>
-
-<div id="vote" class="container-fluid" style="border: 2px solid blue"></div>
-
-
-<div id="pics" class="container-fluid"></div>
-
-<div id="avis" class="container-fluid"></div>
-
-
-
+ <div id="vote" class="container-fluid" style="border: 2px solid blue"></div>
 
 <div class="footer-gap"></div>
 <div th:insert="~{footer::footer}"></div>
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDXFTORjfXpPSkt7ZEuotSXE4UtvZk0T8&callback=initMap"
 async defer></script>

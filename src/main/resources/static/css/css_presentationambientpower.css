@@ -1,13 +1,19 @@
-.nav-gap{padding-top:70px;}
+#vote{height: 300px; margin-top:70px;}
+.nav-gap{padding-top:100px;}
 
 #ABtitre{font-weight:bold; text-align: center; margin-bottom: 40px; 
 padding-top: 5px; border: 2px inset darkcyan; height: 40px;}
 
 
-#DescriptifAB{margin-top:30px;  width:100%; height:250px; font-family:verdana;
- text-align:justify; border:  2px inset darkcyan; margin-bottom:50px;}
+#DescriptifAB{ width:100%; height:250px; font-family:verdana; text-align:justify; 
+border: 2px inset darkcyan;}
 
 #dab{margin-top:30px;}
+
+#op{color:green;}
+#opo{color:orange;}
+#opr{color:red;}
+
 
 #ABbtn{ 
  background-color: #408080!important;
@@ -21,17 +27,15 @@ padding-top: 5px; border: 2px inset darkcyan; height: 40px;}
 #map{height:50em; width: 50em;}
 .footer-gap{padding-top: 200px;}
 
-ul.breadcrumb {font-size:0.9em; background:none;
-font-family:verdana; letter-spacing: 1px; color: #400040;
- }
+ul.breadcrumb {font-size:0.9em; background:none;font-family:verdana;
+ letter-spacing: 1px; color: #400040;}
  
 ul.breadcrumb li+li:before {
 text-decoration: none !important;
   padding: 8px;
   color: black;
   content: "/\00a0";
- }
- 
-  #bc{text-decoration:none !important; color:#400040;}
+  }
   
+    #bc{text-decoration:none !important; color:#400040;}
 .active:hover{color: #28b57c;}
