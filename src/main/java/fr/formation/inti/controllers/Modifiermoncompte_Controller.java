@@ -1,5 +1,6 @@
 package fr.formation.inti.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class Modifiermoncompte_Controller {
 	IUsersDao dao_usr;
 	
 	@RequestMapping(value = "/modifiermesinfos_method", method = RequestMethod.POST)
-	public String modifiermesinfos_method(Model model, @ModelAttribute @Valid Users user, BindingResult bindingResult, @RequestParam(name="repeated_pwd") String repeated_pwd)
+	public String modifiermesinfos_method(HttpServletRequest request, Model model, @ModelAttribute @Valid Users user, BindingResult bindingResult, @RequestParam(name="repeated_pwd") String repeated_pwd)
 	{	
 		if(bindingResult.hasErrors())
 		{
@@ -32,13 +33,12 @@ public class Modifiermoncompte_Controller {
 		{
 			if(!user.getPassword().equals(repeated_pwd))
 			{
-				System.out.println("aaaaaaaaaaaaaaaaaaaa");
 				model.addAttribute("error_repeated_pwd_modifcompte", "Le mot de passe de confirmation ne correspond pas au mot de passe");
 				return "modifiermoncompte";
 			}
 			else
 			{
-				Users persistent_usr = dao_usr.findByMail(user.getMail());
+				Users persistent_usr = dao_usr.findByIdusers(((Users)request.getSession().getAttribute("user")).getIdusers());
 				persistent_usr.setBirthdate(user.getBirthdate());
 				persistent_usr.setCity(user.getCity());
 				persistent_usr.setCountry(user.getCountry());
