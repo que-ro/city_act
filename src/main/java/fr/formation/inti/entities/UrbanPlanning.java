@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 24 avr. 2019 15:57:26 by Hibernate Tools 5.1.10.Final
+// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,43 +22,43 @@ import javax.persistence.TemporalType;
 @Table(name = "urban_planning", catalog = "urbanproject")
 public class UrbanPlanning implements java.io.Serializable {
 
-	private Integer idplanningProposal;
+	private Integer idplanningproposal;
 	private String latitude;
 	private String longitude;
-	private Date dateCreation;
+	private Date datecreation;
 	private byte temporalite;
-	private Integer votePos;
-	private Integer voteNeg;
+	private Integer votepos;
+	private Integer voteneg;
 	private String titre;
 	private String descriptif;
-	private String photoPath;
+	private String photopath;
 	private String ref;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public UrbanPlanning() {
 	}
 
-	public UrbanPlanning(String latitude, String longitude, Date dateCreation, byte temporalite, String titre,
+	public UrbanPlanning(String latitude, String longitude, Date datecreation, byte temporalite, String titre,
 			String descriptif) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
+		this.datecreation = datecreation;
 		this.temporalite = temporalite;
 		this.titre = titre;
 		this.descriptif = descriptif;
 	}
 
-	public UrbanPlanning(String latitude, String longitude, Date dateCreation, byte temporalite, Integer votePos,
-			Integer voteNeg, String titre, String descriptif, String photoPath, String ref, Set<Comment> comments) {
+	public UrbanPlanning(String latitude, String longitude, Date datecreation, byte temporalite, Integer votepos,
+			Integer voteneg, String titre, String descriptif, String photopath, String ref, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
+		this.datecreation = datecreation;
 		this.temporalite = temporalite;
-		this.votePos = votePos;
-		this.voteNeg = voteNeg;
+		this.votepos = votepos;
+		this.voteneg = voteneg;
 		this.titre = titre;
 		this.descriptif = descriptif;
-		this.photoPath = photoPath;
+		this.photopath = photopath;
 		this.ref = ref;
 		this.comments = comments;
 	}
@@ -66,13 +66,13 @@ public class UrbanPlanning implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name = "idplanning_proposal", unique = true, nullable = false)
-	public Integer getIdplanningProposal() {
-		return this.idplanningProposal;
+	@Column(name = "idplanningproposal", unique = true, nullable = false)
+	public Integer getIdplanningproposal() {
+		return this.idplanningproposal;
 	}
 
-	public void setIdplanningProposal(Integer idplanningProposal) {
-		this.idplanningProposal = idplanningProposal;
+	public void setIdplanningproposal(Integer idplanningproposal) {
+		this.idplanningproposal = idplanningproposal;
 	}
 
 	@Column(name = "latitude", nullable = false, length = 45)
@@ -94,13 +94,13 @@ public class UrbanPlanning implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "date_creation", nullable = false, length = 10)
-	public Date getDateCreation() {
-		return this.dateCreation;
+	@Column(name = "datecreation", nullable = false, length = 10)
+	public Date getDatecreation() {
+		return this.datecreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
+	public void setDatecreation(Date datecreation) {
+		this.datecreation = datecreation;
 	}
 
 	@Column(name = "temporalite", nullable = false)
@@ -112,22 +112,22 @@ public class UrbanPlanning implements java.io.Serializable {
 		this.temporalite = temporalite;
 	}
 
-	@Column(name = "vote_pos")
-	public Integer getVotePos() {
-		return this.votePos;
+	@Column(name = "votepos")
+	public Integer getVotepos() {
+		return this.votepos;
 	}
 
-	public void setVotePos(Integer votePos) {
-		this.votePos = votePos;
+	public void setVotepos(Integer votepos) {
+		this.votepos = votepos;
 	}
 
-	@Column(name = "vote_neg")
-	public Integer getVoteNeg() {
-		return this.voteNeg;
+	@Column(name = "voteneg")
+	public Integer getVoteneg() {
+		return this.voteneg;
 	}
 
-	public void setVoteNeg(Integer voteNeg) {
-		this.voteNeg = voteNeg;
+	public void setVoteneg(Integer voteneg) {
+		this.voteneg = voteneg;
 	}
 
 	@Column(name = "titre", nullable = false)
@@ -148,13 +148,13 @@ public class UrbanPlanning implements java.io.Serializable {
 		this.descriptif = descriptif;
 	}
 
-	@Column(name = "photo_path")
-	public String getPhotoPath() {
-		return this.photoPath;
+	@Column(name = "photopath")
+	public String getPhotopath() {
+		return this.photopath;
 	}
 
-	public void setPhotoPath(String photoPath) {
-		this.photoPath = photoPath;
+	public void setPhotopath(String photopath) {
+		this.photopath = photopath;
 	}
 
 	@Column(name = "ref", length = 45)

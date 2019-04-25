@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 24 avr. 2019 15:57:26 by Hibernate Tools 5.1.10.Final
+// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,46 +25,46 @@ public class Signalement implements java.io.Serializable {
 	private Integer idsignalement;
 	private String latitude;
 	private String longitude;
-	private Date dateCreation;
+	private Date datecreation;
 	private String titre;
 	private String descriptif;
-	private String photoPath;
+	private String photopath;
 	private String state;
 	private String priority;
 	private String category;
-	private Integer compteurPopularite;
-	private Integer compteurConstat;
+	private Integer compteurpopularite;
+	private Integer compteurconstat;
 	private String ref;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public Signalement() {
 	}
 
-	public Signalement(String latitude, String longitude, Date dateCreation, String titre, String descriptif,
-			String photoPath, String category) {
+	public Signalement(String latitude, String longitude, Date datecreation, String titre, String descriptif,
+			String photopath, String category) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
+		this.datecreation = datecreation;
 		this.titre = titre;
 		this.descriptif = descriptif;
-		this.photoPath = photoPath;
+		this.photopath = photopath;
 		this.category = category;
 	}
 
-	public Signalement(String latitude, String longitude, Date dateCreation, String titre, String descriptif,
-			String photoPath, String state, String priority, String category, Integer compteurPopularite,
-			Integer compteurConstat, String ref, Set<Comment> comments) {
+	public Signalement(String latitude, String longitude, Date datecreation, String titre, String descriptif,
+			String photopath, String state, String priority, String category, Integer compteurpopularite,
+			Integer compteurconstat, String ref, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
+		this.datecreation = datecreation;
 		this.titre = titre;
 		this.descriptif = descriptif;
-		this.photoPath = photoPath;
+		this.photopath = photopath;
 		this.state = state;
 		this.priority = priority;
 		this.category = category;
-		this.compteurPopularite = compteurPopularite;
-		this.compteurConstat = compteurConstat;
+		this.compteurpopularite = compteurpopularite;
+		this.compteurconstat = compteurconstat;
 		this.ref = ref;
 		this.comments = comments;
 	}
@@ -100,13 +100,13 @@ public class Signalement implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "date_creation", nullable = false, length = 10)
-	public Date getDateCreation() {
-		return this.dateCreation;
+	@Column(name = "datecreation", nullable = false, length = 10)
+	public Date getDatecreation() {
+		return this.datecreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
+	public void setDatecreation(Date datecreation) {
+		this.datecreation = datecreation;
 	}
 
 	@Column(name = "titre", nullable = false)
@@ -127,13 +127,13 @@ public class Signalement implements java.io.Serializable {
 		this.descriptif = descriptif;
 	}
 
-	@Column(name = "photo_path", nullable = false)
-	public String getPhotoPath() {
-		return this.photoPath;
+	@Column(name = "photopath", nullable = false)
+	public String getPhotopath() {
+		return this.photopath;
 	}
 
-	public void setPhotoPath(String photoPath) {
-		this.photoPath = photoPath;
+	public void setPhotopath(String photopath) {
+		this.photopath = photopath;
 	}
 
 	@Column(name = "state", length = 45)
@@ -163,22 +163,22 @@ public class Signalement implements java.io.Serializable {
 		this.category = category;
 	}
 
-	@Column(name = "compteur_popularite")
-	public Integer getCompteurPopularite() {
-		return this.compteurPopularite;
+	@Column(name = "compteurpopularite")
+	public Integer getCompteurpopularite() {
+		return this.compteurpopularite;
 	}
 
-	public void setCompteurPopularite(Integer compteurPopularite) {
-		this.compteurPopularite = compteurPopularite;
+	public void setCompteurpopularite(Integer compteurpopularite) {
+		this.compteurpopularite = compteurpopularite;
 	}
 
-	@Column(name = "compteur_constat")
-	public Integer getCompteurConstat() {
-		return this.compteurConstat;
+	@Column(name = "compteurconstat")
+	public Integer getCompteurconstat() {
+		return this.compteurconstat;
 	}
 
-	public void setCompteurConstat(Integer compteurConstat) {
-		this.compteurConstat = compteurConstat;
+	public void setCompteurconstat(Integer compteurconstat) {
+		this.compteurconstat = compteurconstat;
 	}
 
 	@Column(name = "ref", length = 45)
