@@ -1,12 +1,19 @@
 package fr.formation.inti.entities;
+<<<<<<< HEAD
 // Generated 25 avr. 2019 14:51:10 by Hibernate Tools 5.1.10.Final
+=======
+// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
+>>>>>>> refs/heads/qtn
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+<<<<<<< HEAD
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
+=======
+>>>>>>> refs/heads/qtn
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,7 +28,11 @@ import javax.persistence.TemporalType;
 @Table(name = "comment", catalog = "urbanproject")
 public class Comment implements java.io.Serializable {
 
+<<<<<<< HEAD
 	private Integer idComment;
+=======
+	private int idComment;
+>>>>>>> refs/heads/qtn
 	private AmbientPower ambientPower;
 	private Signalement signalement;
 	private UrbanPlanning urbanPlanning;
@@ -32,12 +43,23 @@ public class Comment implements java.io.Serializable {
 	public Comment() {
 	}
 
+<<<<<<< HEAD
 	public Comment(Users users) {
+=======
+	public Comment(int idComment, Users users) {
+		this.idComment = idComment;
+>>>>>>> refs/heads/qtn
 		this.users = users;
 	}
 
+<<<<<<< HEAD
 	public Comment(AmbientPower ambientPower, Signalement signalement, UrbanPlanning urbanPlanning, Users users,
 			Date date, String text) {
+=======
+	public Comment(int idComment, AmbientPower ambientPower, Signalement signalement, UrbanPlanning urbanPlanning,
+			Users users, Date date, String text) {
+		this.idComment = idComment;
+>>>>>>> refs/heads/qtn
 		this.ambientPower = ambientPower;
 		this.signalement = signalement;
 		this.urbanPlanning = urbanPlanning;
@@ -47,14 +69,25 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@Id
+<<<<<<< HEAD
 	@GeneratedValue(strategy = IDENTITY)
+=======
+>>>>>>> refs/heads/qtn
 
 	@Column(name = "idComment", unique = true, nullable = false)
+<<<<<<< HEAD
 	public Integer getIdComment() {
+=======
+	public int getIdComment() {
+>>>>>>> refs/heads/qtn
 		return this.idComment;
 	}
 
+<<<<<<< HEAD
 	public void setIdComment(Integer idComment) {
+=======
+	public void setIdComment(int idComment) {
+>>>>>>> refs/heads/qtn
 		this.idComment = idComment;
 	}
 

@@ -41,63 +41,73 @@
 <form th:object="${users}" action="/modifiermesinfos_method" method="POST">
 <div class="form-row">
     <div class="form-group col-sm-6">
-      <label for="inputEmail4">Prénom</label>
+      <label for="inputEmail4"><b>Prénom</b></label>
       <input type="text" class="form-control" id="inputFirstname" th:value="*{firstname}" th:field="*{firstname}">
-      <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">NameError</span>
+      <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="span_error_modifcompte">NameError</span>
     </div>
    
     
     <div class="form-group col-sm-6">
-      <label for="inputnom">Nom</label>
+      <label for="inputnom"><b>Nom</b></label>
       <input type="text"class="form-control" id="inputLastname" placeholder="Nom" th:value="*{lastname}" th:field="*{lastname}">
+      <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="span_error_modifcompte">NameError</span>
     </div>
  </div> 
 
   <div class="form-row">
     <div class="form-group col-sm-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" th:value="*{mail}" th:field="*{mail}">
+      <label for="inputEmail4"><b>Email</b></label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" th:value="*{mail}" th:field="*{mail}" required>
+      <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" class="span_error_modifcompte">NameError</span>
     </div>
     
     <div class="form-group col-sm-6">
-      <label for="inputPassword4">Pseudo</label>
+      <label for="inputPassword4"><b>Pseudo</b></label>
       <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo" th:value="*{pseudo}" th:field="*{pseudo}">
+      <span th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}" class="span_error_modifcompte">NameError</span>
     </div>
   </div>
   
     <div class="form-group">
-    <label for="inputBirthdate">Date de naissance</label>
+    <label for="inputBirthdate"><b>Date de naissance</b></label>
     <input type="date" class="form-control" id="inputBirthdate" placeholder="dd/mm/yyyy" th:value="*{birthdate}" th:field="*{birthdate}">
+    <span th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}" class="span_error_modifcompte">NameError</span>
   </div>
   
   <div class="form-group">
-    <label for="inputAddress">Adresse</label>
+    <label for="inputAddress"><b>Adresse</b></label>
     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" th:value="*{street}" th:field="*{street}">
+    <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}" class="span_error_modifcompte">NameError</span>
   </div>
   
   <div class="form-row">
     <div class="form-group col-sm-6">
-      <label for="inputPassword4">Mot de passe</label>
+      <label for="inputPassword4"><b>Mot de passe</b></label>
       <input type="password" class="form-control" id="inputPassword4" placeholder="Mot de passe" th:value="*{password}" th:field="*{password}">
+      <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="span_error_modifcompte">NameError</span>
     </div>
      <div class="form-group col-sm-6">
-      <label for="inputPassword4">Confirmer nouveau mot de passe</label>
-      <input type="password" class="form-control" id="inputPasswordl4" placeholder="Confirmer mot de passe">
+      <label for="inputPassword4"><b>Confirmer nouveau mot de passe</b></label>
+      <input type="password" class="form-control" id="inputPasswordl4" placeholder="Confirmer mot de passe" name="repeated_pwd">
+      <span th:utext="${error_repeated_pwd_modifcompte}" class="span_error_modifcompte">NameError</span>
     </div>
     </div>
   
   <div class="form-row">
     <div class="form-group col-sm-4">
-      <label for="inputCity">Ville</label>
+      <label for="inputCity"><b>Ville</b></label>
       <input type="text" class="form-control" id="inputCity" th:value="*{city}" th:field="*{city}">
+      <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="span_error_modifcompte">NameError</span>
     </div>
     <div class="form-group col-sm-4">
-      <label for="inputState">Pays</label>
+      <label for="inputState"><b>Pays</b></label>
       <input type="text" class="form-control" id="inputState" th:value="*{country}" th:field="*{country}">
+      <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}" class="span_error_modifcompte">NameError</span>
     </div>
     <div class="form-group col-sm-4">
-      <label for="inputCP">Code Postal</label>
+      <label for="inputCP"><b>Code Postal</b></label>
       <input type="text" class="form-control" id="inputZip" th:value="*{zipcode}" th:field="*{zipcode}">
+      <span th:if="${#fields.hasErrors('zipcode')}" th:errors="*{zipcode}" class="span_error_modifcompte">NameError</span>
     </div>
   </div>
   
@@ -109,4 +119,5 @@
 </div>
 <hr>
 
+<div class= "footer-gap"></div>
 <div th:insert="~{footer::footer}"></div>

@@ -9,7 +9,7 @@ form{
 color:#400040;
 left:27%;
 top:15%;
-font-family: "arial black", "Verdana";
+font-family: "Verdana";
 }
 
 
@@ -22,3 +22,11 @@ margin-top:50px;}
 
 #keepmodifications:hover{background:#400080;
 border:none;}
+
+.footer-gap{padding-top: 70px;}
+
+.span_error_modifcompte
+{
+	color:red;
+	font-size:0.9em;
+}

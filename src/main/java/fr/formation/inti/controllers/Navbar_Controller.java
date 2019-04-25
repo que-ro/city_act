@@ -33,6 +33,10 @@ public class Navbar_Controller {
 	public RedirectView login(Model model, HttpServletRequest request, @RequestParam(name="mail") String mail, @RequestParam(name="pwd") String pwd)
 	{
 		Users usr = dao_usr.findByMail(mail);
+		if(usr == null)
+		{
+			return new RedirectView("accueil");   ///Changer sur la page de failed login
+		}
 		if(Login_Utils.checkPassword(pwd, usr.getPassword()))
 		{
 			request.getSession().setAttribute("user", usr);

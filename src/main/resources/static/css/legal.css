@@ -1,6 +1,11 @@
-p,h3, #team{ text-align:center;}
-h3,#slogan{ color: teal;}
-  p{color: brown; }
+#titre{text-align:center;
+font-family: verdana,impact;
+color: #400040; }
+
+
+
+p,h3, #subtitle{ color: teal;text-align:left;}
+  p{color: black; }
   
    /* Three columns side by side */
 .column {
@@ -34,7 +39,7 @@ h3,#slogan{ color: teal;}
   clear: both;
   display: table;
 }
- 
+
 .title {
   color: grey;
 }

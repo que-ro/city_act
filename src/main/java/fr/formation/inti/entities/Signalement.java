@@ -1,5 +1,9 @@
 package fr.formation.inti.entities;
+<<<<<<< HEAD
 // Generated 25 avr. 2019 14:51:10 by Hibernate Tools 5.1.10.Final
+=======
+// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
+>>>>>>> refs/heads/qtn
 
 import java.util.Date;
 import java.util.HashSet;

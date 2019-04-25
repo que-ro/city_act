@@ -5,13 +5,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.formation.inti.entities.AmbientPower;
 import fr.formation.inti.entities.Users;
 import fr.formation.inti.repositories.IAmbientPowerDao;
 import fr.formation.inti.repositories.IUsersDao;
-import fr.formation.inti.utils.Login_Utils;
 
 @Controller
 public class ControllerTest {
@@ -63,12 +64,6 @@ public class ControllerTest {
 	@RequestMapping("/test")
 	public String test(Model model, HttpServletRequest request)
 	{	
-		Users user = dao_usr.findByMail("qszd");
-		Users usr = new Users();
-		usr.setMail("lala@mail.com");
-		usr.setPassword(Login_Utils.hashPassword("test"));
-		dao_usr.save(usr);
-		System.out.println(user.getCity());
 		return "test";
 	}
 	
@@ -111,10 +106,14 @@ public class ControllerTest {
 	}
 	
 	@RequestMapping("/monprofil")
-	public String monprofil(Model model, HttpServletRequest request )
+	public String monprofil(Model model, HttpServletRequest request)
+
 	{	
 		Users usr = (Users) request.getSession().getAttribute("user");
+
 	model.addAttribute("users", usr);
+
+
 		return "monprofil";
 	}
 	
@@ -153,7 +152,8 @@ public class ControllerTest {
 	@RequestMapping("/formambientpower")
 	public String formambientpower(Model model)
 	{	
-			
+		model.addAttribute("ambientPower", new AmbientPower());
+
 		return "formambientpower";
 	}
 
