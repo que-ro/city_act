@@ -1,13 +1,13 @@
 package fr.formation.inti.entities;
-// Generated 18 avr. 2019 16:14:00 by Hibernate Tools 5.1.10.Final
+// Generated 25 avr. 2019 14:51:10 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 @Table(name = "comment", catalog = "urbanproject")
 public class Comment implements java.io.Serializable {
 
-	private CommentId id;
+	private Integer idComment;
 	private AmbientPower ambientPower;
 	private Signalement signalement;
 	private UrbanPlanning urbanPlanning;
@@ -32,18 +32,12 @@ public class Comment implements java.io.Serializable {
 	public Comment() {
 	}
 
-	public Comment(CommentId id, AmbientPower ambientPower, Signalement signalement, UrbanPlanning urbanPlanning,
-			Users users) {
-		this.id = id;
-		this.ambientPower = ambientPower;
-		this.signalement = signalement;
-		this.urbanPlanning = urbanPlanning;
+	public Comment(Users users) {
 		this.users = users;
 	}
 
-	public Comment(CommentId id, AmbientPower ambientPower, Signalement signalement, UrbanPlanning urbanPlanning,
-			Users users, Date date, String text) {
-		this.id = id;
+	public Comment(AmbientPower ambientPower, Signalement signalement, UrbanPlanning urbanPlanning, Users users,
+			Date date, String text) {
 		this.ambientPower = ambientPower;
 		this.signalement = signalement;
 		this.urbanPlanning = urbanPlanning;
@@ -52,24 +46,20 @@ public class Comment implements java.io.Serializable {
 		this.text = text;
 	}
 
-	@EmbeddedId
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@AttributeOverrides({
-			@AttributeOverride(name = "idComment", column = @Column(name = "idComment", nullable = false)),
-			@AttributeOverride(name = "usersIdusers", column = @Column(name = "users_idusers", nullable = false)),
-			@AttributeOverride(name = "signalementIdsignalement", column = @Column(name = "signalement_idsignalement", nullable = false)),
-			@AttributeOverride(name = "ambientPowerIdambientPower", column = @Column(name = "ambient_power_idambient_power", nullable = false)),
-			@AttributeOverride(name = "urbanPlanningIdplanningProposal", column = @Column(name = "urban_planning_idplanning_proposal", nullable = false)) })
-	public CommentId getId() {
-		return this.id;
+	@Column(name = "idComment", unique = true, nullable = false)
+	public Integer getIdComment() {
+		return this.idComment;
 	}
 
-	public void setId(CommentId id) {
-		this.id = id;
+	public void setIdComment(Integer idComment) {
+		this.idComment = idComment;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ambient_power_idambient_power", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "ambientpowerIdambientpower")
 	public AmbientPower getAmbientPower() {
 		return this.ambientPower;
 	}
@@ -79,7 +69,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "signalement_idsignalement", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "signalementIdsignalement")
 	public Signalement getSignalement() {
 		return this.signalement;
 	}
@@ -89,7 +79,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "urban_planning_idplanning_proposal", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "urbanplanningIdplanningproposal")
 	public UrbanPlanning getUrbanPlanning() {
 		return this.urbanPlanning;
 	}
@@ -99,7 +89,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "users_idusers", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "usersIdusers", nullable = false)
 	public Users getUsers() {
 		return this.users;
 	}

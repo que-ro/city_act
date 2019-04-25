@@ -7,12 +7,38 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import fr.formation.inti.entities.AmbientPower;
 import fr.formation.inti.entities.Users;
+import fr.formation.inti.repositories.IAmbientPowerDao;
 import fr.formation.inti.repositories.IUsersDao;
 import fr.formation.inti.utils.Login_Utils;
 
 @Controller
 public class ControllerTest {
+	
+	@RequestMapping("/presentationprojet")
+	public String presentationprojet(Model model)
+	{	
+		return "presentationprojet";
+	}
+	
+	@Autowired
+	IAmbientPowerDao dao_ap;
+	@RequestMapping("/presentationambientpower")
+	public String presentationambientpower(Model model, HttpServletRequest request)
+	{	
+		AmbientPower ap = (AmbientPower) request.getSession().getAttribute("idambientpower");
+		model.addAttribute("idambientpower", ap);
+		
+		return "presentationambientpower";
+	}
+	
+	@RequestMapping("/presentationsignalement")
+	public String presentationsignalement(Model model)
+	{	
+		return "presentationsignalement";
+	}
+	
 	@RequestMapping("/mesprojetstest")
 	public String mesprojetstest(Model model)
 	{	
@@ -85,8 +111,10 @@ public class ControllerTest {
 	}
 	
 	@RequestMapping("/monprofil")
-	public String monprofil(Model model)
+	public String monprofil(Model model, HttpServletRequest request )
 	{	
+		Users usr = (Users) request.getSession().getAttribute("user");
+	model.addAttribute("users", usr);
 		return "monprofil";
 	}
 	
@@ -125,6 +153,7 @@ public class ControllerTest {
 	@RequestMapping("/formambientpower")
 	public String formambientpower(Model model)
 	{	
+			
 		return "formambientpower";
 	}
 

@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 18 avr. 2019 16:14:00 by Hibernate Tools 5.1.10.Final
+// Generated 25 avr. 2019 14:51:10 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,53 +22,58 @@ import javax.persistence.TemporalType;
 @Table(name = "ambient_power", catalog = "urbanproject")
 public class AmbientPower implements java.io.Serializable {
 
-	private int idambientPower;
+	private Integer idambientpower;
 	private String latitude;
 	private String longitude;
-	private Date dateCreation;
-	private Integer votePos;
-	private Integer voteNeg;
+	private Date datecreation;
+	private Integer votepos;
+	private Integer voteneg;
 	private String titre;
 	private String descriptif;
-	private String photoPath;
+	private String photopath;
+	private String ref;
+	private String ideeamelioration;
+	private Integer intensiteressentie;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public AmbientPower() {
 	}
 
-	public AmbientPower(int idambientPower, String latitude, String longitude, Date dateCreation, String titre,
-			String descriptif) {
-		this.idambientPower = idambientPower;
+	public AmbientPower(String latitude, String longitude, Date datecreation, String titre, String descriptif) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
+		this.datecreation = datecreation;
 		this.titre = titre;
 		this.descriptif = descriptif;
 	}
 
-	public AmbientPower(int idambientPower, String latitude, String longitude, Date dateCreation, Integer votePos,
-			Integer voteNeg, String titre, String descriptif, String photoPath, Set<Comment> comments) {
-		this.idambientPower = idambientPower;
+	public AmbientPower(String latitude, String longitude, Date datecreation, Integer votepos, Integer voteneg,
+			String titre, String descriptif, String photopath, String ref, String ideeamelioration,
+			Integer intensiteressentie, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
-		this.votePos = votePos;
-		this.voteNeg = voteNeg;
+		this.datecreation = datecreation;
+		this.votepos = votepos;
+		this.voteneg = voteneg;
 		this.titre = titre;
 		this.descriptif = descriptif;
-		this.photoPath = photoPath;
+		this.photopath = photopath;
+		this.ref = ref;
+		this.ideeamelioration = ideeamelioration;
+		this.intensiteressentie = intensiteressentie;
 		this.comments = comments;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name = "idambient_power", unique = true, nullable = false)
-	public int getIdambientPower() {
-		return this.idambientPower;
+	@Column(name = "idambientpower", unique = true, nullable = false)
+	public Integer getIdambientpower() {
+		return this.idambientpower;
 	}
 
-	public void setIdambientPower(int idambientPower) {
-		this.idambientPower = idambientPower;
+	public void setIdambientpower(Integer idambientpower) {
+		this.idambientpower = idambientpower;
 	}
 
 	@Column(name = "latitude", nullable = false, length = 45)
@@ -88,31 +95,31 @@ public class AmbientPower implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "date_creation", nullable = false, length = 10)
-	public Date getDateCreation() {
-		return this.dateCreation;
+	@Column(name = "datecreation", nullable = false, length = 10)
+	public Date getDatecreation() {
+		return this.datecreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
+	public void setDatecreation(Date datecreation) {
+		this.datecreation = datecreation;
 	}
 
-	@Column(name = "vote_pos")
-	public Integer getVotePos() {
-		return this.votePos;
+	@Column(name = "votepos")
+	public Integer getVotepos() {
+		return this.votepos;
 	}
 
-	public void setVotePos(Integer votePos) {
-		this.votePos = votePos;
+	public void setVotepos(Integer votepos) {
+		this.votepos = votepos;
 	}
 
-	@Column(name = "vote_neg")
-	public Integer getVoteNeg() {
-		return this.voteNeg;
+	@Column(name = "voteneg")
+	public Integer getVoteneg() {
+		return this.voteneg;
 	}
 
-	public void setVoteNeg(Integer voteNeg) {
-		this.voteNeg = voteNeg;
+	public void setVoteneg(Integer voteneg) {
+		this.voteneg = voteneg;
 	}
 
 	@Column(name = "titre", nullable = false)
@@ -133,13 +140,40 @@ public class AmbientPower implements java.io.Serializable {
 		this.descriptif = descriptif;
 	}
 
-	@Column(name = "photo_path")
-	public String getPhotoPath() {
-		return this.photoPath;
+	@Column(name = "photopath")
+	public String getPhotopath() {
+		return this.photopath;
 	}
 
-	public void setPhotoPath(String photoPath) {
-		this.photoPath = photoPath;
+	public void setPhotopath(String photopath) {
+		this.photopath = photopath;
+	}
+
+	@Column(name = "ref", length = 45)
+	public String getRef() {
+		return this.ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+	@Column(name = "ideeamelioration", length = 16777215)
+	public String getIdeeamelioration() {
+		return this.ideeamelioration;
+	}
+
+	public void setIdeeamelioration(String ideeamelioration) {
+		this.ideeamelioration = ideeamelioration;
+	}
+
+	@Column(name = "intensiteressentie")
+	public Integer getIntensiteressentie() {
+		return this.intensiteressentie;
+	}
+
+	public void setIntensiteressentie(Integer intensiteressentie) {
+		this.intensiteressentie = intensiteressentie;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ambientPower")
