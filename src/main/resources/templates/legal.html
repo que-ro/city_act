@@ -1,0 +1,85 @@
+<!DOCTYPE html >
+<html class="ink">
+<head>
+<title>CityAct | Mentions Légales</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+
+
+<link href="/css/legal.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" -->
+<!-- 	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
+<!-- 	crossorigin="anonymous"></script> -->
+<!-- <script -->
+<!-- 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" -->
+<!-- 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" -->
+<!-- 	crossorigin="anonymous"></script> -->
+<!-- <script -->
+<!-- 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" -->
+<!-- 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" -->
+<!-- 	crossorigin="anonymous"></script> -->
+
+</head>
+<!-- <body> -->
+
+<!-- Connected -->
+<div th:if="${#session != null}">
+	<div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+<!-- Not connected -->
+<div th:unless="${session != null}">
+	<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+
+<!-- Not connected -->
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+<!-- Connected -->
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+
+<br>
+<br>
+<section> 
+	<br>
+	<h1 id="titre">Mention Légales</h3>
+	<hr class="pg-titl-bdr-btm">
+	<h3 id="subtitle">Editeur</h3>
+	<p>Le site est édité par :</p>
+	<p>(Adresse de la mairie de la commune concernée)</p>
+	<p>Directeur de la publication : (nom de la personne)</p>
+	<p>Crédits photos : </p>
+	<h3 id="subtitle">Conception et réalisation</h3>
+	<p>Conception globale : ...</p>
+	<p>Conception éditoriale : ... </p>
+	<p>Plateforme et intégration : ... </p>
+	<p>Hébergement : ... </p>
+	<h3 id="subtitle">Traitement des données à caractère personnel</h3>
+	<p>La Ville de ... s’engage à respecter la Loi Informatique et Liberté du 06 Août 2004 ainsi que le Règlement Général sur la Protection des Données (RGPD : n° 2016-679).</p>
+	<p>Si l’utilisateur souhaite savoir comment cette plateforme utilise ses données personnelles, demande à les rectifier, ou s’oppose à leur traitement, l’utilisateur peut s’adresser à :.</p>
+	<p>...</p>
+	<h3 id="subtitle">Droits d'auteurs</h3>
+	<p>Tous les éléments éditoriaux, graphiques, photographiques, sonores et vidéos présents sur ce site sont la propriété de la ville de ... ou de tiers ayant autorisé la Ville de ... à les utiliser. En conséquence et en application de la loi du 11 mars 1957 (art. 41) et du code de la propriété intellectuelle toute reproduction partielle ou totale d'un de ces éléments sans l'autorisation explicite d'une personne autorisée représentant la Ville de ... est interdite et constitue un délit de contrefaçon passible de poursuites.</p>
+	<h3 id="subtitle">Cookies</h3>
+	<p>Un conseil : refusez les cookies</p>
+
+	
+</section>
+ 
+
+ 
+<br><br>
+<div th:insert="~{footer::footer}"></div>
+</html>

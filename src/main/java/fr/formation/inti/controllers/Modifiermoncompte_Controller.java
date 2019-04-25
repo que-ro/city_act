@@ -1,5 +1,6 @@
 package fr.formation.inti.controllers;
 
+<<<<<<< HEAD
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -15,6 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.formation.inti.entities.Users;
 import fr.formation.inti.repositories.IUsersDao;
 import fr.formation.inti.utils.Login_Utils;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import fr.formation.inti.repositories.IUsersDao;
+>>>>>>> refs/heads/daotest
 
 @Controller
 public class Modifiermoncompte_Controller {
@@ -55,4 +62,6 @@ public class Modifiermoncompte_Controller {
 		}
 	}
 
+	@Autowired
+	IUsersDao dao_usr;
 }
