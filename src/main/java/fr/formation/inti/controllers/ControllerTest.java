@@ -14,6 +14,7 @@ import fr.formation.inti.entities.Signalement;
 import fr.formation.inti.entities.UrbanPlanning;
 import fr.formation.inti.entities.Users;
 import fr.formation.inti.repositories.IAmbientPowerDao;
+//import fr.formation.inti.repositories.ICommentDao;
 import fr.formation.inti.repositories.ISignalementDao;
 import fr.formation.inti.repositories.IUrbanPlanningDao;
 import fr.formation.inti.repositories.IUsersDao;
@@ -30,15 +31,15 @@ public class ControllerTest {
 		return "presentationprojet";
 	}
 	
-	@Autowired
-	IAmbientPowerDao dao_ap;
+//	@Autowired
+//	IAmbientPowerDao dao_ap;
 	@RequestMapping("/presentationambientpower")
 	public String presentationambientpower(Model model, HttpServletRequest request)
 	{	
-		AmbientPower ap = dao_ap.findByIdambientpower(32);
-		System.out.println("65465qdq56zfqfqofuhqzçuifh qziojfqiozfqzf///////////////////////////////");
-		System.out.println(ap.getDatecreation());
-		model.addAttribute("idambientpower", ap);
+//		AmbientPower ap = dao_ap.findByIdambientpower(32);
+//		System.out.println(" ///////////////////////////////");
+//		System.out.println(ap.getDatecreation());
+//		model.addAttribute("idambientpower", ap);
 		
 		return "presentationambientpower";
 	}
@@ -183,5 +184,12 @@ public class ControllerTest {
 		return "falselogin";
 	}
 	
-		
+//	@Autowired
+//	ICommentDao dao_com;
+//	@RequestMapping("/formcomment")
+//	
+//	public String formcomment(Model model)
+//	{	Signalement com = dao_sig.findByIdsignalement(21);
+//	model.addAttribute("idcomment", com);
+//	return "formcomment";}
 }
