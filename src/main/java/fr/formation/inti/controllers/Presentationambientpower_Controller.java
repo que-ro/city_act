@@ -22,7 +22,7 @@ public class Presentationambientpower_Controller {
 @Autowired
 IAmbientPowerDao dao_ap;
 
-@RequestMapping(value="/presentationprojet_method", method = RequestMethod.POST)
+@RequestMapping(value="/presentationambientpower_method", method = RequestMethod.GET)
 
 public String presentationprojet(Model model,  @ModelAttribute @Valid AmbientPower ambientPower, BindingResult bindingResult)
 {	AmbientPower ap = dao_ap.findByIdambientpower(32);
