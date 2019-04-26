@@ -33,23 +33,25 @@ public class UrbanPlanning implements java.io.Serializable {
 	private String descriptif;
 	private String photopath;
 	private String ref;
+	public String benchmark;
 	private Set<Comment> comments = new HashSet<Comment>(0);
 
 	public UrbanPlanning() {
 	}
 
 	public UrbanPlanning(String latitude, String longitude, Date datecreation, String temporalite, String titre,
-			String descriptif) {
+			String descriptif, String benchmark) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.datecreation = datecreation;
 		this.temporalite = temporalite;
 		this.titre = titre;
 		this.descriptif = descriptif;
+		this.benchmark = benchmark;
 	}
 
 	public UrbanPlanning(String latitude, String longitude, Date datecreation, String temporalite, Integer votepos,
-			Integer voteneg, String titre, String descriptif, String photopath, String ref, Set<Comment> comments) {
+			Integer voteneg, String titre, String descriptif, String photopath, String ref, String benchmark, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.datecreation = datecreation;
@@ -64,7 +66,6 @@ public class UrbanPlanning implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idplanningproposal", unique = true, nullable = false)
 	public Integer getIdplanningproposal() {
@@ -174,5 +175,16 @@ public class UrbanPlanning implements java.io.Serializable {
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
+	
+	
+	@Column(name = "benchmark", nullable = false, length = 16777215)
+	public String getBenchmark() {
+		return benchmark;
+	}
+
+	public void setBenchmark(String benchmark) {
+		this.benchmark = benchmark;
+	}
+
 
 }

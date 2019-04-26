@@ -158,6 +158,7 @@ public class ControllerTest {
 	@RequestMapping("/formprojets")
 	public String formprojets(Model model)
 	{	
+		model.addAttribute("urbanPlanning", new UrbanPlanning());
 		return "formprojets";
 	}
 	
@@ -172,6 +173,7 @@ public class ControllerTest {
 	@RequestMapping("/formsignalement")
 	public String formsignalement(Model model)
 	{	
+		model.addAttribute("signalement", new Signalement());
 		return "formsignalement";
 	}
 	

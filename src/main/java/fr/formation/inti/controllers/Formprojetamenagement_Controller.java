@@ -18,58 +18,57 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import fr.formation.inti.entities.AmbientPower;
-import fr.formation.inti.repositories.IAmbientPowerDao;
+import fr.formation.inti.entities.UrbanPlanning;
+import fr.formation.inti.repositories.IUrbanPlanningDao;
 
 @Controller
-public class Formambientpower_Controller {
+public class Formprojetamenagement_Controller {
 	
 	private static String EXTERNAL_FOLDER = "C:/cityact_externalfolder/pictures/";
 	
 	@Autowired
-	IAmbientPowerDao dao_ap;
+	IUrbanPlanningDao dao_up;
 	
-	@RequestMapping(value = "/ambientpowerform_method", method = RequestMethod.POST)
-	public String ambientpowerform_method(@RequestParam("picture") MultipartFile picture, HttpServletRequest request, Model model, @ModelAttribute @Valid AmbientPower ambientPower, BindingResult bindingResult) throws IOException
+	@RequestMapping(value = "/projetamenagementform_method", method = RequestMethod.POST)
+	public String projetamenagementform_method(@RequestParam("picture") MultipartFile picture, HttpServletRequest request, Model model, @ModelAttribute @Valid UrbanPlanning urbanPlanning, BindingResult bindingResult) throws IOException
 	{	
-		
 		if(bindingResult.hasErrors())
 		{
-			return "formambientpower";
+			return "formurbanPlanning";
 		}
-		ambientPower.setDatecreation(new Date());
-		Integer maxId = dao_ap.getMaxId();
+		urbanPlanning.setDatecreation(new Date());
+		Integer maxId = dao_up.getMaxId();
 		if(maxId != null)
 		{
-			//En base de donnée un trigger mets un 3 devant les projets ambient power à des fins de reconnaissance
-			//Pour donc mettre le bon id la procédure suivante cherche le max id, enlève son 3, l'incrémente
+			//En base de donnée un trigger mets un 1 devant les projets ambient power à des fins de reconnaissance
+			//Pour donc mettre le bon id la procédure suivante cherche le max id, enlève son 1, l'incrémente
 			//et l'associe au nouvel objet Ambient Power.
 			Integer newId = Integer.parseInt(((maxId.toString()).substring(1))) + 1;
-			ambientPower.setIdambientpower(newId);
+			urbanPlanning.setIdplanningproposal(newId);
 		}
 		else
 		{
-			ambientPower.setIdambientpower(1);
+			urbanPlanning.setIdplanningproposal(1);
 		}
 		//Maintenant on enregistre l'image dans C/ext_folder/pictures en prenant le nom origin du fichier avec l'id du projet
-		//On enregistre ensuite le path de l'image dans l'objet ambientPower
+		//On enregistre ensuite le path de l'image dans l'objet urbanPlanning
 		if (picture.isEmpty()) {
             return "a_nonono";
         }
 		else
 		{
-			//Le 3 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
-			String path = EXTERNAL_FOLDER + "3" + ambientPower.getIdambientpower()+ "_" + picture.getOriginalFilename();
+			//Le 1 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
+			String path = EXTERNAL_FOLDER + "1" + urbanPlanning.getIdplanningproposal()+ "_" + picture.getOriginalFilename();
 			File upl = new File(path);
 		    upl.createNewFile();
 		    FileOutputStream fout = new FileOutputStream(upl);
 		    fout.write(picture.getBytes());
 		    fout.close();
-		    ambientPower.setPhotopath(path);
+		    urbanPlanning.setPhotopath(path);
 		}
-		dao_ap.save(ambientPower);
-		return "formambientpower";
+		dao_up.save(urbanPlanning);
+		
+		return "formprojets";
 	}
-
 
 }

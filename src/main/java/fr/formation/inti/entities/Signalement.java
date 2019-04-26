@@ -70,7 +70,6 @@ public class Signalement implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idsignalement", unique = true, nullable = false)
 	public Integer getIdsignalement() {
