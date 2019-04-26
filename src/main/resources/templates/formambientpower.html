@@ -23,14 +23,13 @@
 <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
  <div class="nav-gap"></div>
  
- <div id="bread" class="container-fluid">
+ <div id="bread" class="container-fluid" >
  <ul class="breadcrumb">
   <li><a id="bc" href="map" >Carte</a></li>
   <li><a >Ajouter un marqueur</a></li>
    <li class="active">Formulaire Ambient Power</li>
 </ul>
 </div>
-<br>
 
 <div id="DescriptifAB" class="container-fluid">
 <h5 id="dab"><b>Descriptif du formulaire Ambient Power</b></h5>
@@ -54,7 +53,7 @@
 
 <div class="col-md-auto form-group">
 			<input id="autocomplete"
-             placeholder="Entrez votre pour compléter automatiquement"
+             placeholder="Entrez votre adresse pour compléter automatiquement les champs"
              onFocus="geolocate()"
              type="text"
              class="form-control"/>
@@ -114,7 +113,19 @@
  
  <div class="form-group col-md-auto">
       <label for="inputTSAB"><b>Intensité du ressenti négatif (de 1 à 10)</b></label>
-      <input type="text" id="inputTSAB" class="form-control" placeholder="Une valeur de 1 à 10" th:field="*{intensiteressentie}" required>
+      <select type="text" id="inputTSAB" class="custom-select my-1 mr-sm-2" placeholder="Une valeur de 1 à 10" th:field="*{intensiteressentie}" required>
+      <option id="op" th:value="'1'" th:text="1"></option>
+    <option id="op" th:value="'2'" th:text="2"></option>
+    <option id="op" th:value="'3'" th:text="3"></option>
+    <option id="opo" th:value="'4'" th:text="4"></option>
+    <option id="opo" th:value="'5'" th:text="5"></option>
+    <option id="opo" th:value="'6'" th:text="6"></option>
+    <option id="opo" th:value="'7'" th:text="7"></option>
+     <option id="opr" th:value="'8'" th:text="8"></option>
+      <option id="opr" th:value="'9'" th:text="9"></option>
+       <option id="opr" th:value="'10'" th:text="10"></option>
+    
+    </select>
       <span th:if="${#fields.hasErrors('intensiteressentie')}" th:errors="*{intensiteressentie}" class="span_error_modifcompte">NameError</span>
     </div>
   

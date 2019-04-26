@@ -41,32 +41,7 @@
 
 <h5 id="ABtitre">-Projet d'aménagement-</h5>
 
-<!-- <div class="form-row" > -->
-<!--         <div class="form-group col-md-3"> -->
-<!--     <label for="inputAddress"><b>Adresse</b></label> -->
-<!--     <input type="text" class="form-control" id="inputAddress" placeholder="rue, n° à proximité" required> -->
-<!--   </div> -->
-<!--   <div class="form-group col-md-3" > -->
-<!--       <label for="inputCP"><b>Code Postal</b></label> -->
-<!--       <input type="text" class="form-control" id="inputZip" required> -->
-<!--     </div> -->
-<!-- <!--     </div> -->
-    
-<!-- <!--   <div class="form-row"> --> 
-<!--     <div class="form-group col-md-3"> -->
-<!--       <label for="inputCity"><b>Ville</b></label> -->
-<!--       <input type="text" class="form-control" id="inputCity" required> -->
-<!--     </div> -->
-    
-<!--     <div class="form-group col-md-3" style="padding-right:2%"> -->
-<!--       <label for="inputState"><b>Pays</b></label> -->
-<!--       <input type="text" id="inputState" class="form-control" required> -->
-<!--            </div> -->
-           
-    
-<!--   </div> -->
-  
-  <div class="form-row" > 
+   <div class="form-row" > 
    <div class="form-group col-md-8" >
       <label for="inputTSAB"><b>Référence ambient power</b></label>
       <input type="text" class="form-control" id="Idplanningproposal" disabled th:value="*{idplanningproposal}">
@@ -84,7 +59,7 @@
     
     <div class="form-group col-md-auto" >
       <label for="inputTSAB"><b>Temporalité</b></label>
-      <input class="custom-select my-1 mr-sm-2" id="Temporalité" disabled th:value="*{temporalite}">
+      <input class="form-control" id="Temporalité" disabled th:value="*{temporalite}">
     
     </div>
   
@@ -247,12 +222,49 @@
 
 </div>
 
-<div id="vote" class="container-fluid" style="border: 2px solid blue"></div>
+<div id="postcommentvote" class="container-fluid" >
+<div class="row">
+<div class="col-md-3">
 
+<i id="voteyes"class="far fa-check-circle fa-6x"></i>
+<a class="votepro"><b>Vote favorable au projet</b></a> 
+</div>
+<div class="col-md-3">
+<i id="voteno"class="far fa-times-circle fa-6x"></i> 
+<a class="votepro"><b>Vote défavorable au projet</b></a> 
 
-<div id="pics" class="container-fluid"></div>
+</div>
 
-<div id="avis" class="container-fluid"></div>
+<div class="col-md-6">
+ <div class="form-group">
+  <label for="comment"><b>Commenter le projet</b></label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+   <button id="publibtn"class="btn btn-success" type="submit">Publier mon commentaire</button>
+  </div>
+  </div>
+</div> </div>
+
+<div id="afficheavis" class="container-fluid" >
+<!-- <form th:object="${idComment}"> <a > et afficher le pseduo de l'auteur, et la date du commentaire</a> style="border: 2px solid black" -->
+<h5> Commentaires</h5>
+<hr class="pg-titl-bdr-btm">
+<div class="media border -3">
+  <img src="/pictures/quentin.jpg" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
+  <div class="media-body">
+    <h4>Quentin R <small><i>Posted on February 19, 2019</i></small></h4>
+    <p>Lorem ipsum...</p>
+  </div>
+</div>
+
+<div class="media">
+  <img src="/pictures/henry.jpg" class="align-self-start mr-3" style="width:60px">
+  <div class="media-body">
+    <h4>Henry B says</h4>
+    <p>Lorem ipsum...</p>
+  </div>
+</div>
+
+</div>
 
 
 
