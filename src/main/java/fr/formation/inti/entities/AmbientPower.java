@@ -10,7 +10,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,7 +31,7 @@ public class AmbientPower implements java.io.Serializable {
 	private String latitude;
 	@NotEmpty
 	private String longitude;
-	private Date dateCreation;
+	private Date datecreation;
 	private Integer votepos;
 	private Integer voteneg;
 	@NotEmpty
@@ -51,20 +50,20 @@ public class AmbientPower implements java.io.Serializable {
 	public AmbientPower() {
 	}
 
-	public AmbientPower(String latitude, String longitude, Date dateCreation, String titre, String descriptif) {
+	public AmbientPower(String latitude, String longitude, Date datecreation, String titre, String descriptif) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
+		this.datecreation = datecreation;
 		this.titre = titre;
 		this.descriptif = descriptif;
 	}
 
-	public AmbientPower(String latitude, String longitude, Date dateCreation, Integer votepos, Integer voteneg,
+	public AmbientPower(String latitude, String longitude, Date datecreation, Integer votepos, Integer voteneg,
 			String titre, String descriptif, String photopath, String ref, String ideeamelioration,
 			Integer intensiteressentie, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.dateCreation = dateCreation;
+		this.datecreation = datecreation;
 		this.votepos = votepos;
 		this.voteneg = voteneg;
 		this.titre = titre;
@@ -107,12 +106,12 @@ public class AmbientPower implements java.io.Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "datecreation", nullable = false, length = 10)
-	public Date getDateCreation() {
-		return this.dateCreation;
+	public Date getDatecreation() {
+		return this.datecreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
+	public void setDatecreation(Date datecreation) {
+		this.datecreation = datecreation;
 	}
 
 	@Column(name = "votepos")

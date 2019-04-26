@@ -10,11 +10,48 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.formation.inti.entities.AmbientPower;
+import fr.formation.inti.entities.Signalement;
+import fr.formation.inti.entities.UrbanPlanning;
 import fr.formation.inti.entities.Users;
+import fr.formation.inti.repositories.IAmbientPowerDao;
+import fr.formation.inti.repositories.ISignalementDao;
+import fr.formation.inti.repositories.IUrbanPlanningDao;
 import fr.formation.inti.repositories.IUsersDao;
 
 @Controller
 public class ControllerTest {
+	
+	@Autowired
+	IUrbanPlanningDao dao_up;
+	@RequestMapping("/presentationprojet")
+	public String presentationprojet(Model model)
+	{	UrbanPlanning up = dao_up.findByIdplanningproposal(11);
+	model.addAttribute("idprojet", up);
+		return "presentationprojet";
+	}
+	
+	@Autowired
+	IAmbientPowerDao dao_ap;
+	@RequestMapping("/presentationambientpower")
+	public String presentationambientpower(Model model, HttpServletRequest request)
+	{	
+		AmbientPower ap = dao_ap.findByIdambientpower(32);
+		System.out.println("65465qdq56zfqfqofuhqzçuifh qziojfqiozfqzf///////////////////////////////");
+		System.out.println(ap.getDatecreation());
+		model.addAttribute("idambientpower", ap);
+		
+		return "presentationambientpower";
+	}
+	
+	@Autowired
+	ISignalementDao dao_sig;
+	@RequestMapping("/presentationsignalement")
+	public String presentationsignalement(Model model)
+	{	Signalement sig = dao_sig.findByIdsignalement(21);
+	model.addAttribute("idsignalement", sig);
+			return "presentationsignalement";
+	}
+	
 	@RequestMapping("/mesprojetstest")
 	public String mesprojetstest(Model model)
 	{	
@@ -82,9 +119,13 @@ public class ControllerTest {
 	
 	@RequestMapping("/monprofil")
 	public String monprofil(Model model, HttpServletRequest request)
+
 	{	
 		Users usr = (Users) request.getSession().getAttribute("user");
-		model.addAttribute("users", usr);
+
+	model.addAttribute("users", usr);
+
+
 		return "monprofil";
 	}
 	
@@ -124,6 +165,7 @@ public class ControllerTest {
 	public String formambientpower(Model model)
 	{	
 		model.addAttribute("ambientPower", new AmbientPower());
+
 		return "formambientpower";
 	}
 

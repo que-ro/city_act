@@ -1,27 +1,30 @@
 package fr.formation.inti.entities;
-// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
+
 
 import static javax.persistence.GenerationType.IDENTITY;
+
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -35,31 +38,49 @@ public class Users implements java.io.Serializable {
 	private Integer idusers;
 	@Email
 	private String mail;
+
 	@NotNull
     @Size(min=1, message="Veuillez indiquer un pseudo")
+
 	private String pseudo;
+
 	@NotNull
     @Size(min=8, message="Votre mot de passe doit contenir au moins 8 caractères")
+
 	private String password;
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer une adresse")
+
 	private String street;
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer une ville")
+
 	private String city;
+
 	@NotNull(message="Veuillez indiquer un code postal")
+
 	private Integer zipcode;
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer un pays")
+
 	private String country;
+
 	@NotNull(message = "Veuillez indiquer une date de naissance")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	private Date birthdate;
+
 	@Size(min=1, message="Veuillez indiquer un prénom")
 	@NotNull
+
 	private String firstname;
+
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer un nom de famille")
+
 	private String lastname;
 	@JsonIgnore
 	private Set<Comment> comments = new HashSet<Comment>(0);

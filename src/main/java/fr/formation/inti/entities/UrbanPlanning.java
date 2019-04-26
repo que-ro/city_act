@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
+
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,7 +26,7 @@ public class UrbanPlanning implements java.io.Serializable {
 	private String latitude;
 	private String longitude;
 	private Date datecreation;
-	private byte temporalite;
+	private String temporalite;
 	private Integer votepos;
 	private Integer voteneg;
 	private String titre;
@@ -38,7 +38,7 @@ public class UrbanPlanning implements java.io.Serializable {
 	public UrbanPlanning() {
 	}
 
-	public UrbanPlanning(String latitude, String longitude, Date datecreation, byte temporalite, String titre,
+	public UrbanPlanning(String latitude, String longitude, Date datecreation, String temporalite, String titre,
 			String descriptif) {
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -48,7 +48,7 @@ public class UrbanPlanning implements java.io.Serializable {
 		this.descriptif = descriptif;
 	}
 
-	public UrbanPlanning(String latitude, String longitude, Date datecreation, byte temporalite, Integer votepos,
+	public UrbanPlanning(String latitude, String longitude, Date datecreation, String temporalite, Integer votepos,
 			Integer voteneg, String titre, String descriptif, String photopath, String ref, Set<Comment> comments) {
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -104,11 +104,11 @@ public class UrbanPlanning implements java.io.Serializable {
 	}
 
 	@Column(name = "temporalite", nullable = false)
-	public byte getTemporalite() {
+	public String getTemporalite() {
 		return this.temporalite;
 	}
 
-	public void setTemporalite(byte temporalite) {
+	public void setTemporalite(String temporalite) {
 		this.temporalite = temporalite;
 	}
 

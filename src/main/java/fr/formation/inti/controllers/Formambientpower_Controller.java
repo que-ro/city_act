@@ -29,7 +29,7 @@ public class Formambientpower_Controller {
 		{
 			return "formambientpower";
 		}
-		ambientPower.setDateCreation(new Date());
+		ambientPower.setDatecreation(new Date());
 		Integer maxId = dao_ap.getMaxId();
 		if(maxId != null)
 		{
@@ -44,7 +44,8 @@ public class Formambientpower_Controller {
 			ambientPower.setIdambientpower(1);
 		}
 		dao_ap.save(ambientPower);
-		return "accueil";
+		return "map";
 	}
+
 
 }
