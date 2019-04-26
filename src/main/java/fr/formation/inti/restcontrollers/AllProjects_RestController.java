@@ -39,7 +39,7 @@ public class AllProjects_RestController {
 			listAll.add((IAllTypeEntities) up) ;
 		}
 		List<Signalement> list_sig = dao_sig.findAll();
-		for(Signalement sig : list_sig)
+		for(Signalement sig : list_sig) 
 		{
 			listAll.add((IAllTypeEntities) sig) ;
 		}
