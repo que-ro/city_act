@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fr.formation.inti.entities.AmbientPower;
+import fr.formation.inti.entities.Comment;
 import fr.formation.inti.entities.IAllTypeEntities;
 import fr.formation.inti.entities.Signalement;
 import fr.formation.inti.entities.UrbanPlanning;
 import fr.formation.inti.repositories.IAmbientPowerDao;
+import fr.formation.inti.repositories.ICommentDao;
 import fr.formation.inti.repositories.ISignalementDao;
 import fr.formation.inti.repositories.IUrbanPlanningDao;
 
@@ -27,6 +29,8 @@ public class Map_Controller {
 	ISignalementDao dao_sig;
 	@Autowired
 	IAmbientPowerDao dao_ap;
+	@Autowired
+	ICommentDao dao_com;
 	
 	@RequestMapping("/map")
 	public String map_nv(Model model)
@@ -57,6 +61,8 @@ public class Map_Controller {
 	{	
 		AmbientPower ap = dao_ap.findById(id);
 		model.addAttribute("ambientpower", ap);
+		List<Comment> comments = dao_com.findByAmbientPower(ap);
+		model.addAttribute("comments", comments);
 		return "presentationambientpower";
 		
 	}
@@ -77,6 +83,7 @@ public class Map_Controller {
 	{	
 		UrbanPlanning up = dao_up.findById(id);
 		model.addAttribute("projet", up);
+		
 		return "presentationprojet";
 		
 	}

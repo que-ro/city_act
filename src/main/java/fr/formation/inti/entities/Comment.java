@@ -61,7 +61,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ambient_power_id")
+	@JoinColumn(name = "ambientpowerid")
 	public AmbientPower getAmbientPower() {
 		return this.ambientPower;
 	}
@@ -71,7 +71,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "signalement_id")
+	@JoinColumn(name = "signalementid")
 	public Signalement getSignalement() {
 		return this.signalement;
 	}
@@ -81,7 +81,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "urban_planning_id")
+	@JoinColumn(name = "urbanplanningid")
 	public UrbanPlanning getUrbanPlanning() {
 		return this.urbanPlanning;
 	}
@@ -91,7 +91,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "users_idusers", nullable = false)
+	@JoinColumn(name = "usersidusers", nullable = false)
 	public Users getUsers() {
 		return this.users;
 	}

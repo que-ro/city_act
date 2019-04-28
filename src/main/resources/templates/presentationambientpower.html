@@ -250,13 +250,18 @@
 <!-- <form th:object="${idComment}"> <a > et afficher le pseduo de l'auteur, et la date du commentaire</a> style="border: 2px solid black" -->
 <h4> Commentaires</h4>
 
+	<div class="media border -3" th:each="comment: ${comments}">
+	<h4>Quentin R <small><i>Posted on February 19, 2019</i></small></h4>
+    <p>Lorem ipsum...</p>
+	</div>
+
 <div class="media border -3">
   <img src="/pictures/quentin.jpg" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
   <div class="media-body">
     <h4>Quentin R <small><i>Posted on February 19, 2019</i></small></h4>
     <p>Lorem ipsum...</p>
   </div>
-</div>
+</div> 
 
 <div class="media">
   <img src="/pictures/henry.jpg" class="align-self-start mr-3" style="width:60px">
