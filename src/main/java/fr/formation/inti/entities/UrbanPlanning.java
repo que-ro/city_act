@@ -22,9 +22,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "urban_planning", catalog = "urbanproject")
-public class UrbanPlanning implements java.io.Serializable {
+public class UrbanPlanning implements java.io.Serializable, IAllTypeEntities {
 
 	private int id;
+	@JsonIgnore
 	private Users users;
 	private String latitude;
 	private String longitude;

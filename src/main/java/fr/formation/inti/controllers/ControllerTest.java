@@ -59,12 +59,6 @@ public class ControllerTest {
 		return "map_nv";
 	}
 	
-	@RequestMapping("/map_nvtodelete")
-	public String map_nvtodelete(Model model)
-	{	
-		return "map_nvtodelete";
-	}
-	
 	@RequestMapping("/mesprojetstest")
 	public String mesprojetstest(Model model)
 	{	
@@ -109,12 +103,7 @@ public class ControllerTest {
 	{	
 		return "forgottenpsd";
 	}
-	
-	@RequestMapping("/map")
-	public String map(Model model)
-	{	
-		return "map";
-	}
+
 	
 	@RequestMapping("/mesalertes")
 	public String mesalertes(Model model)

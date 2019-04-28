@@ -314,7 +314,7 @@
 										         position: new google.maps.LatLng(Number(list[i].latitude), Number(list[i].longitude)),
 										         map: map
 										});
-										  marker.set("id", list[i].ref);
+										  marker.set("id", list[i].id);
 										if(list[i].ref.substring(0,1) == 'A')
 											{
 												var icon = {
@@ -339,145 +339,131 @@
 												};
 												marker.setIcon(icon);
 											}
+
+										var last_div;
+										var actual_div;
 										
 										marker.addListener('click', function() {
-											var div = document.getElementById("test_link");
+											var div = document.getElementById('div_'+this.id);
+
+											last_div = actual_div;
+											actual_div = div;
+
+											
 											div.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 											div.style.backgroundColor ="#DCDCDC";
+											last_div.style.backgroundColor ="white";
 									        });
 										
 									}
 								  });
 							  
 							  
-							  var ul = document.getElementById("ul_list_projects");
-							  f_jsonprojects(function (projects) {
+// 							  var ul = document.getElementById("ul_list_projects");
+// 							  f_jsonprojects(function (projects) {
 									
 									
-									var markers = [];
-									list = projects;
-								    for (var i = 0; i < list.length; i++) {
-								    	marker = new google.maps.Marker({
-									         position: new google.maps.LatLng(Number(list[i].latitude), Number(list[i].longitude)),
-									});
-								    	marker.set("ref", list[i].ref);
-								    	marker.set("photopath", list[i].photopath);
-								    	marker.set("titre", list[i].titre);
-								    	markers.push(marker);
-								    }
-								    console.log(markers);
+// 									var markers = [];
+// 									list = projects;
+// 								    for (var i = 0; i < list.length; i++) {
+// 								    	marker = new google.maps.Marker({
+// 									         position: new google.maps.LatLng(Number(list[i].latitude), Number(list[i].longitude)),
+// 									});
+// 								    	marker.set("ref", list[i].ref);
+// 								    	marker.set("photopath", list[i].photopath);
+// 								    	marker.set("titre", list[i].titre);
+// 								    	markers.push(marker);
+// 								    }
+// 								    console.log(markers);
 								    
-								    for (var i = 0; i < markers.length; i++) 
-							        {
-							            if (map.getBounds().contains(markers[i].getPosition())) 
-							            {
-							                console.log("it got it!");
-							                var li=document.createElement('li');
-							                li.setAttribute('class', "list-group-item li_descri_marqueur");
-							                var li_row = document.createElement('div');
-							                li_row.setAttribute('class', "row");
-							                var li_row_div = document.createElement('div');
-							                li_row_div.setAttribute('class', "col-sm-12 div_descriyimage_marqueur");
-							                var li_row_div_row = document.createElement('div');
-							                li_row_div_row.setAttribute('class', "row");
-							                var li_row_div_row_divimg = document.createElement('div');
-							                li_row_div_row_divimg.setAttribute('class', "col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur");
-							                var li_row_div_row_divimg_img = document.createElement('img');
-							                li_row_div_row_divimg_img.setAttribute('class', "img-thumbnail");
-							                li_row_div_row_divimg_img.setAttribute('src', markers[i].photopath);
-							                var li_row_div_row_divdescri = document.createElement('div');
-							                li_row_div_row_divdescri.setAttribute('class', "col-sm-9 pt-1 div_descri_of_marqueur");
-							                var li_row_div_row_divdescri_row = document.createElement('div');
-							                li_row_div_row_divdescri_row.setAttribute('class', "row");
-							                var li_row_div_row_divdescri_row_divtitre = document.createElement('div');
-							                li_row_div_row_divdescri_row.setAttribute('class', "col-sm-12 div_titre_marqueur");
-							                var li_row_div_row_divdescri_row_divtitre_h6 = document.createElement('h6');
-							                var li_row_div_row_divdescri_row_divtitre_h6_a = document.createElement('a');
-							                li_row_div_row_divdescri_row_divtitre_h6_a.setAttribute('class', "h_titre_marqueur");
-							                li_row_div_row_divdescri_row_divtitre_h6_a.setAttribute('href', "@{/r_method}");
-							                li_row_div_row_divdescri_row_divtitre_h6_a.textContent= markers[i].titre;
+// 								    for (var i = 0; i < markers.length; i++) 
+// 							        {
+// 							            if (map.getBounds().contains(markers[i].getPosition())) 
+// 							            {
+// 							                console.log("it got it!");
+// 							                var li=document.createElement('li');
+// 							                li.setAttribute('class', "list-group-item li_descri_marqueur");
+// 							                var li_row = document.createElement('div');
+// 							                li_row.setAttribute('class', "row");
+// 							                var li_row_div = document.createElement('div');
+// 							                li_row_div.setAttribute('class', "col-sm-12 div_descriyimage_marqueur");
+// 							                var li_row_div_row = document.createElement('div');
+// 							                li_row_div_row.setAttribute('class', "row");
+// 							                var li_row_div_row_divimg = document.createElement('div');
+// 							                li_row_div_row_divimg.setAttribute('class', "col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur");
+// 							                var li_row_div_row_divimg_img = document.createElement('img');
+// 							                li_row_div_row_divimg_img.setAttribute('class', "img-thumbnail");
+// 							                li_row_div_row_divimg_img.setAttribute('src', markers[i].photopath);
+// 							                var li_row_div_row_divdescri = document.createElement('div');
+// 							                li_row_div_row_divdescri.setAttribute('class', "col-sm-9 pt-1 div_descri_of_marqueur");
+// 							                var li_row_div_row_divdescri_row = document.createElement('div');
+// 							                li_row_div_row_divdescri_row.setAttribute('class', "row");
+// 							                var li_row_div_row_divdescri_row_divtitre = document.createElement('div');
+// 							                li_row_div_row_divdescri_row.setAttribute('class', "col-sm-12 div_titre_marqueur");
+// 							                var li_row_div_row_divdescri_row_divtitre_h6 = document.createElement('h6');
+// 							                var li_row_div_row_divdescri_row_divtitre_h6_a = document.createElement('a');
+// 							                li_row_div_row_divdescri_row_divtitre_h6_a.setAttribute('class', "h_titre_marqueur");
+// 							                li_row_div_row_divdescri_row_divtitre_h6_a.setAttribute('href', "@{/r_method}");
+// 							                li_row_div_row_divdescri_row_divtitre_h6_a.textContent= markers[i].titre;
 
-							                li_row_div_row_divdescri_row_divtitre_h6.appendChild(li_row_div_row_divdescri_row_divtitre_h6_a);
-							                li_row_div_row_divdescri_row_divtitre.appendChild(li_row_div_row_divdescri_row_divtitre_h6);
-							                li_row_div_row_divdescri_row.appendChild(li_row_div_row_divdescri_row_divtitre);
-							                li_row_div_row_divdescri.appendChild(li_row_div_row_divdescri_row);
-							                li_row_div_row_divimg.appendChild(li_row_div_row_divimg_img);
-							                li_row_div_row.appendChild(li_row_div_row_divimg);
-							                li_row_div_row.appendChild(li_row_div_row_divdescri);
-							                li_row_div.appendChild(li_row_div_row);
-							                li_row.appendChild(li_row_div);
-							                li.appendChild(li_row);
-							                ul.appendChild(li);
-							            } 
-							            else 
-							            {
-							                // markers[i] is not in visible bounds
-							            }
-							        }
+// 							                li_row_div_row_divdescri_row_divtitre_h6.appendChild(li_row_div_row_divdescri_row_divtitre_h6_a);
+// 							                li_row_div_row_divdescri_row_divtitre.appendChild(li_row_div_row_divdescri_row_divtitre_h6);
+// 							                li_row_div_row_divdescri_row.appendChild(li_row_div_row_divdescri_row_divtitre);
+// 							                li_row_div_row_divdescri.appendChild(li_row_div_row_divdescri_row);
+// 							                li_row_div_row_divimg.appendChild(li_row_div_row_divimg_img);
+// 							                li_row_div_row.appendChild(li_row_div_row_divimg);
+// 							                li_row_div_row.appendChild(li_row_div_row_divdescri);
+// 							                li_row_div.appendChild(li_row_div_row);
+// 							                li_row.appendChild(li_row_div);
+// 							                li.appendChild(li_row);
+// 							                ul.appendChild(li);
+// 							            } 
+// 							            else 
+// 							            {
+// 							                // markers[i] is not in visible bounds
+// 							            }
+// 							        }
 									
-								  });
+// 								  });
 							  
+							var div_list = document.getElementById("ul_list_projects");
+							console.log(div_list);
 							  
 							  
 							
-							map.addListener('zoom_changed', function() {
-								f_jsonprojects(function (projects) {
+// 							map.addListener('zoom_changed', function() {
+// 								f_jsonprojects(function (projects) {
 							
 								
-								var markers = [];
-								list = projects;
-							    for (var i = 0; i < list.length; i++) {
-							    	marker = new google.maps.Marker({
-								         position: new google.maps.LatLng(Number(list[i].latitude), Number(list[i].longitude)),
-								});
-							    	markers.push(marker);
-							    }
-							    console.log(markers);
+// 								var markers = [];
+// 								list = projects;
+// 							    for (var i = 0; i < list.length; i++) {
+// 							    	marker = new google.maps.Marker({
+// 								         position: new google.maps.LatLng(Number(list[i].latitude), Number(list[i].longitude)),
+// 								});
+// 									marker.set("id", list[i].id)
+// 							    	markers.push(marker);
+// 							    }
+// 							    console.log(markers);
 							    
-							    for (var i = 0; i < markers.length; i++) 
-						        {
-						            if (map.getBounds().contains(markers[i].getPosition())) 
-						            {
-						                console.log("it got it!");
-						            } 
-						            else 
-						            {
-						                // markers[i] is not in visible bounds
-						            }
-						        }
+// 							    for (var i = 0; i < markers.length; i++) 
+// 						        {
+// 						            if (map.getBounds().contains(markers[i].getPosition())) 
+// 						            {
+// 							            var li = document.getElementById("li_"+ markers[i].id)
+// 							            li.style.visibility = "visible";
+// 						                console.log("it got it!");
+// 						            } 
+// 						            else 
+// 						            {
+// 						            	var li = document.getElementById("li_"+ markers[i].id)
+// 						            	li.style.visibility = "hidden";
+// 						            }
+// 						        }
 								
-							  });
-							});
+// 							  });
+// 							});
 							
-							map.addListener('center_changed', function() {
-								f_jsonprojects(function (projects) {
-							
-								
-								var markers = [];
-								list = projects;
-							    for (var i = 0; i < list.length; i++) {
-							    	marker = new google.maps.Marker({
-								         position: new google.maps.LatLng(Number(list[i].latitude), Number(list[i].longitude)),
-								});
-							    	markers.push(marker);
-							    }
-							    console.log(markers);
-							    
-							    for (var i = 0; i < markers.length; i++) 
-						        {
-						            if (map.getBounds().contains(markers[i].getPosition())) 
-						            {
-						                console.log("it got it!");
-						            } 
-						            else 
-						            {
-						                // markers[i] is not in visible bounds
-						            }
-						        }
-								
-							  });
-							});
-
 							  
 							  
 							  
@@ -642,6 +628,49 @@
 											</div>
 										</div>
 									</li>
+									
+									
+									
+									
+
+										<li th:each="project: ${allProjects}" class="list-group-item li_descri_marqueur" th:id="'li_' + ${project.id}">
+										<div class="row">
+											<div class="col-sm-12 div_descriyimage_marqueur" th:id="${'div_'+ project.id}">
+												<div class="row">
+													<div
+														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
+														<img th:src="${project.photopath}" alt=""
+															class="img-thumbnail">
+													</div>
+													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
+														<div class="row">
+															<div class="col-sm-12 div_titre_marqueur">
+																<h6>
+																	<a class="h_titre_marqueur"  th:if="${project.ref}==A" th:href="'/goto_ambienpower_presentation/' + ${project.id}" th:utext="${project.titre}"></a>
+																	<a class="h_titre_marqueur"  th:if="${project.ref}==S" th:href="'/goto_signalement_presentation/' + ${project.id}" th:utext="${project.titre}"></a>
+																	<a class="h_titre_marqueur"  th:if="${project.ref}==P" th:href="'/goto_projet_presentation/' + ${project.id}" th:utext="${project.titre}"></a>
+																</h6>
+<!-- 																<input type="text" name="${id_of_project}" th:value="${project.id}" hidden/> -->
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 pt-2">
+																<h5 th:if="${project.ref}==A" class="h_category_y_souscategory">Ambient Power </h5>
+																<h5 th:if="${project.ref}==S" class="h_category_y_souscategory">Signalement </h5>
+																<h5 th:if="${project.ref}==P" class="h_category_y_souscategory">Projet d'amménagement </h5>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12 text-justify px-3">
+																<p class="p_marqueur_description" th:utext="${project.descriptif}"></p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										</li>
+
 									
 
 

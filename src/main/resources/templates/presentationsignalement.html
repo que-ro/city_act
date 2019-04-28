@@ -35,7 +35,7 @@
 
 <div class="col-md-6">
 
-<form th:object="${idsignalement}"id="formAB" method="GET">
+<form th:object="${signalement}"id="formAB" method="GET">
 
 <h5 id="ABtitre">-Signalement d'évènement-</h5>
 
@@ -43,7 +43,7 @@
   <div class="form-row" > 
    <div class="form-group col-md-8" >
       <label for="inputTSAB"><b>Référence du signalement</b></label>
-      <input type="text" class="form-control" id="idsignalement" disabled th:value="*{idsignalement}">
+      <input type="text" class="form-control" id="idsignalement" disabled th:value="*{id}">
     </div>
     <div class="form-group col-md-8" >
       <label for="inputTSAB"><b>Date du dépôt du constat</b></label>
