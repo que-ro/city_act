@@ -1,14 +1,10 @@
 package fr.formation.inti.entities;
-
+// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,10 +19,7 @@ import javax.persistence.TemporalType;
 @Table(name = "comment", catalog = "urbanproject")
 public class Comment implements java.io.Serializable {
 
-
-	private Integer idComment;
-
-
+	private int idComment;
 	private AmbientPower ambientPower;
 	private Signalement signalement;
 	private UrbanPlanning urbanPlanning;
@@ -37,24 +30,14 @@ public class Comment implements java.io.Serializable {
 	public Comment() {
 	}
 
-
-
-
 	public Comment(int idComment, Users users) {
 		this.idComment = idComment;
-
 		this.users = users;
 	}
 
-
-	public Comment(AmbientPower ambientPower, Signalement signalement, UrbanPlanning urbanPlanning, Users users,
-			Date date, String text) {
-		
-	}
 	public Comment(int idComment, AmbientPower ambientPower, Signalement signalement, UrbanPlanning urbanPlanning,
 			Users users, Date date, String text) {
 		this.idComment = idComment;
-
 		this.ambientPower = ambientPower;
 		this.signalement = signalement;
 		this.urbanPlanning = urbanPlanning;
@@ -65,26 +48,17 @@ public class Comment implements java.io.Serializable {
 
 	@Id
 
-	@GeneratedValue(strategy = IDENTITY)
-
-
 	@Column(name = "idComment", unique = true, nullable = false)
-
-	public Integer getIdComment() {
-
-			return this.idComment;
+	public int getIdComment() {
+		return this.idComment;
 	}
 
-
-	public void setIdComment(Integer idComment) {
-
-	
-
+	public void setIdComment(int idComment) {
 		this.idComment = idComment;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ambientpowerIdambientpower")
+	@JoinColumn(name = "ambient_power_id")
 	public AmbientPower getAmbientPower() {
 		return this.ambientPower;
 	}
@@ -94,7 +68,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "signalementIdsignalement")
+	@JoinColumn(name = "signalement_id")
 	public Signalement getSignalement() {
 		return this.signalement;
 	}
@@ -104,7 +78,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "urbanplanningIdplanningproposal")
+	@JoinColumn(name = "urban_planning_id")
 	public UrbanPlanning getUrbanPlanning() {
 		return this.urbanPlanning;
 	}
@@ -114,7 +88,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usersIdusers", nullable = false)
+	@JoinColumn(name = "users_idusers", nullable = false)
 	public Users getUsers() {
 		return this.users;
 	}

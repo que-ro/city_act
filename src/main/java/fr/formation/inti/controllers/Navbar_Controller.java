@@ -35,7 +35,7 @@ public class Navbar_Controller {
 		Users usr = dao_usr.findByMail(mail);
 		if(usr == null)
 		{
-			return new RedirectView("accueil");   ///Changer sur la page de failed login
+			return new RedirectView("falselogin");   ///Changer sur la page de failed login
 		}
 		if(Login_Utils.checkPassword(pwd, usr.getPassword()))
 		{
@@ -45,8 +45,8 @@ public class Navbar_Controller {
 		else
 		{
 			//REDIRECT VERS PAGE WRONG PASSWORD
-			System.out.println("NEIN NCH DIE GUT PASSWORD");
-			return new RedirectView("accueil");
+			System.out.println("NEIN NICHT DIE GUT PASSWORD");
+			return new RedirectView("falselogin");
 		}
 		
 	}

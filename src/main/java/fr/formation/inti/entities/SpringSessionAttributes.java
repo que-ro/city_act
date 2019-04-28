@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-
+// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
