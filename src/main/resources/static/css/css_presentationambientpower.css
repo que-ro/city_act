@@ -39,9 +39,11 @@ border: 2px inset darkcyan;}
 
 #map{height:50em; width: 50em;}
 
+#hcom{margin-top:70px;}
+
 .pg-titl-bdr-btm {
 	float:left;
-    width: 300px;
+    width: 950px;
     height: 2px;
     background-color: #28b57c;
     margin-bottom:70px;}
@@ -51,7 +53,22 @@ border: 2px inset darkcyan;}
 #vote{height: 300px; margin-top:70px;}
 #voteyes{color:green !important;margin-top:50px; margin-left: 25%}
 
+.btn-yes{  margin-left: 25%;
+	background-color: white!important; 
+  border: none; 
+  color: #400040; 
+  padding: 12px 16px;
+  font-size: 16px; 
+  cursor: pointer;
+    border-radius: 50%;}
+    
+   #voteyes:hover{color: #400040 !important; }
+   
+  
+   .idstyle{font-family: verdana; color:#DC143C; 
+   font-style:italic; text-align:center;}
 
+  
 .votepro{color:#400040;
 font-family: verdana; text-transform:bold;}
 

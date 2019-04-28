@@ -3,7 +3,16 @@
 }
 
 #Modifier mon profil{letter-spacing:1px;
-font-family:Verdana!important;}
+font-family:Verdana!important;
+color:#400040;}
+
+.pg-titl-bdr-btm{  
+	float:left;
+	width: 490px;
+    height: 2px;
+    background-color: #28b57c; 
+    margin-bottom:70px;}
+    
 
 form{ 
 color:#400040;
@@ -23,7 +32,7 @@ margin-top:50px;}
 #keepmodifications:hover{background:#400080;
 border:none;}
 
-.footer-gap{padding-top: 70px;}
+.footer-gap{padding-top: 150px;}
 
 .span_error_modifcompte
 {

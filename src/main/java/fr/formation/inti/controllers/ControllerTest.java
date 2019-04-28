@@ -22,6 +22,12 @@ import fr.formation.inti.repositories.IUsersDao;
 @Controller
 public class ControllerTest {
 	
+	@RequestMapping("/testflip")
+	public String testflip(Model model)
+	{	
+		return "testflip";
+	}
+	
 	@Autowired
 	IUrbanPlanningDao dao_up;
 	@RequestMapping("/presentationprojet")
@@ -31,16 +37,14 @@ public class ControllerTest {
 		return "presentationprojet";
 	}
 	
-//	@Autowired
-//	IAmbientPowerDao dao_ap;
+
 	@RequestMapping("/presentationambientpower")
 	public String presentationambientpower(Model model, HttpServletRequest request)
 	{	
-//		AmbientPower ap = dao_ap.findByIdambientpower(32);
-//		System.out.println(" ///////////////////////////////");
-//		System.out.println(ap.getDatecreation());
+//		AmbientPower ap =(AmbientPower) request.getAttribute("idambientpower");
+//
 //		model.addAttribute("idambientpower", ap);
-		
+
 		return "presentationambientpower";
 	}
 	
@@ -125,7 +129,6 @@ public class ControllerTest {
 		Users usr = (Users) request.getSession().getAttribute("user");
 
 	model.addAttribute("users", usr);
-
 
 		return "monprofil";
 	}

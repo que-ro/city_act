@@ -30,6 +30,14 @@
 
  <div class="nav-gap"></div>
  
+  
+  <div id="bread" class="container-fluid" >
+ <ul class="breadcrumb">
+  <li><a id="bc" href="map" >Carte</a></li>
+   <li class="active">Présentation Signalement</li>
+</ul>
+</div>
+ 
  <div id="mapform" class="container-fluid">
 <div class="row">
 
@@ -214,14 +222,26 @@
 <div class="row">
 <div class="col-md-3">
 
-<i id="voteyes"class="fas fa-plus-circle fa-5x"></i>
-<a class="votepro">J'ai constaté le même problème</a> 
+<button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()"> 
+<span id="voteyes"class="fas fa-plus-circle fa-5x"></span></button>
+<a class="votepro">J'ai constaté le même problème</a><p class="idstyle" id="àvoté"></p> 
 </div>
-<div class="col-md-3">
-<i id="voteno"class="far fa-check-circle fa-5x"></i>
-<a class="votepro">J'ai constaté le traitement du signalement</a> 
 
+<div class="col-md-3">
+<button class="btn-no" type="submit" onclick="constat()" onsubmit="disable()"> 
+<i id="voteno"class="far fa-check-circle fa-5x"></i></button>
+<a class="votepro">J'ai constaté le traitement du signalement</a><p class="idstyle1" id="constat"></p>  
 </div>
+
+<script> function voted() { 
+	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
+	
+	function constat() {
+	document.getElementById("constat").innerHTML = "Votre constat à été pris en compte";
+	}</script>
+	
+	<script> function disable() { var btn = document.getElementById('btn-yes');
+btn.disabled = true;}</script>
 
 <div class="col-md-6">
  <div class="form-group">
@@ -232,9 +252,9 @@
   </div>
 </div> </div>
 
-<h5> Commentaires</h5>
+<h4 id="hcom"> Commentaires</h4>
 <hr class="pg-titl-bdr-btm">
-
+<br>
 <div id="afficheavis" class="container-fluid" >
 <!-- <form th:object="${idComment}"> <a > et afficher le pseduo de l'auteur, et la date du commentaire</a> style="border: 2px solid black" -->
 <div class="media border -3">

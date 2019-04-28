@@ -1,7 +1,13 @@
-p,h3, #team{ text-align:center;}
-h3,#slogan{ color: teal;}
-  p{color: brown; }
-  
+.nav-gap{padding-top:80px;}
+
+#slogan{color:#400040;  text-align:center;}
+#team{  margin-top:50px; text-align:center; color:#400040; font-family:verdana;
+text-transform:uppercase; letter-spacing:1px;margin-bottom:20px;}
+
+  .pg-titl-bdr-btm {
+    width: 600px;
+    height: 2px;
+    background-color: #28b57c;}
    /* Three columns side by side */
 .column {
   float: left;
@@ -34,12 +40,14 @@ h3,#slogan{ color: teal;}
   clear: both;
   display: table;
 }
- 
-.title {
+.card-img-top{margin-left:20%; }
+.card-title {
   color: grey;
+  text-align:center;
 }
-
-.button {
+.card-text {
+text-align:center;}
+.contactbutton {
   border: none;
   outline: 0;
   display: inline-block;
@@ -47,10 +55,11 @@ h3,#slogan{ color: teal;}
   color: white;
   background-color: #400040 ;
   text-align: center;
-  cursor: pointer;
-  width: 100%;
+    width: 100%;
 }
 
-.button:hover {
+.contactbutton:hover {
   background-color: #555;
 } 
+
+.footer-gap{padding-top: 70px;}

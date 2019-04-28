@@ -30,6 +30,12 @@
 
  <div class="nav-gap"></div>
  
+   <div id="bread" class="container-fluid" >
+ <ul class="breadcrumb">
+  <li><a id="bc" href="map" >Carte</a></li>
+   <li class="active">Présentation proposition d'aménagement</li>
+</ul>
+</div>
 
 <div id="mapform" class="container-fluid">
 <div class="row">
@@ -226,14 +232,29 @@
 <div class="row">
 <div class="col-md-3">
 
-<i id="voteyes"class="far fa-check-circle fa-6x"></i>
-<a class="votepro"><b>Vote favorable au projet</b></a> 
+<button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()">
+<span id="voteyes"class="far fa-check-circle fa-6x"></span></button>
+<a class="votepro"><b>Vote favorable au projet</b></a><p class="idstyle" id="àvoté"></p>
 </div>
-<div class="col-md-3">
-<i id="voteno"class="far fa-times-circle fa-6x"></i> 
-<a class="votepro"><b>Vote défavorable au projet</b></a> 
 
+<div class="col-md-3">
+<button class="btn-no" type="submit" onclick="contrevote()" onsubmit="disable()">
+<span id="voteno"class="far fa-times-circle fa-6x"></span> </button>
+<a class="votepro"><b>Vote défavorable au projet</b></a> <p class="idstyle1" id="contrevote"></p>
 </div>
+
+
+<script> function voted() { 
+	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
+	
+	function contrevote() {
+	document.getElementById("contrevote").innerHTML = "Votre avis à été pris en compte";
+	}</script>
+
+<script> function disable() { var btn = document.getElementById('btn-yes');
+btn.disabled = true;}</script>
+
+
 
 <div class="col-md-6">
  <div class="form-group">
@@ -244,10 +265,13 @@
   </div>
 </div> </div>
 
-<div id="afficheavis" class="container-fluid" >
-<!-- <form th:object="${idComment}"> <a > et afficher le pseduo de l'auteur, et la date du commentaire</a> style="border: 2px solid black" -->
-<h5> Commentaires</h5>
+
+<h4 id="hcom"> Commentaires</h4>
 <hr class="pg-titl-bdr-btm">
+<br>
+<div id="afficheavis" class="container-fluid" >
+<!-- <form th:object="${idComment}"> <a > et afficher le pseudo de l'auteur, et la date du commentaire</a> style="border: 2px solid black" -->
+
 <div class="media border -3">
   <img src="/pictures/quentin.jpg" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
   <div class="media-body">
