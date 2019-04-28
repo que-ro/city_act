@@ -53,6 +53,18 @@ public class ControllerTest {
 			return "presentationsignalement";
 	}
 	
+	@RequestMapping("/map_nv")
+	public String map_nv(Model model)
+	{	
+		return "map_nv";
+	}
+	
+	@RequestMapping("/map_nvtodelete")
+	public String map_nvtodelete(Model model)
+	{	
+		return "map_nvtodelete";
+	}
+	
 	@RequestMapping("/mesprojetstest")
 	public String mesprojetstest(Model model)
 	{	
