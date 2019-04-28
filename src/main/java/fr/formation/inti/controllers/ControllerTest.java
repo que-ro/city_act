@@ -32,7 +32,7 @@ public class ControllerTest {
 	IUrbanPlanningDao dao_up;
 	@RequestMapping("/presentationprojet")
 	public String presentationprojet(Model model)
-	{	UrbanPlanning up = dao_up.findByIdplanningproposal(11);
+	{	UrbanPlanning up = dao_up.findById(11);
 	model.addAttribute("idprojet", up);
 		return "presentationprojet";
 	}
@@ -52,7 +52,7 @@ public class ControllerTest {
 	ISignalementDao dao_sig;
 	@RequestMapping("/presentationsignalement")
 	public String presentationsignalement(Model model)
-	{	Signalement sig = dao_sig.findByIdsignalement(21);
+	{	Signalement sig = dao_sig.findById(21);
 	model.addAttribute("idsignalement", sig);
 			return "presentationsignalement";
 	}
@@ -63,12 +63,7 @@ public class ControllerTest {
 		return "map_nv";
 	}
 	
-	@RequestMapping("/map_nvtodelete")
-	public String map_nvtodelete(Model model)
-	{	
-		return "map_nvtodelete";
-}
-	
+
 	@RequestMapping("/mesprojetstest")
 	public String mesprojetstest(Model model)
 	{	
@@ -108,11 +103,11 @@ public class ControllerTest {
 		return "faq";
 	}
 	
-	@RequestMapping("/forgottenpsd")
-	public String forgottenpsd(Model model)
-	{	
-		return "forgottenpsd";
-	}
+//	@RequestMapping("/forgottenpsd")
+//	public String forgottenpsd(Model model)
+//	{	
+//		return "forgottenpsd";
+//	}
 	
 	@RequestMapping("/map")
 	public String map(Model model)
@@ -174,6 +169,7 @@ public class ControllerTest {
 	@RequestMapping("/formprojets")
 	public String formprojets(Model model)
 	{	
+		model.addAttribute("urbanPlanning", new UrbanPlanning());
 		return "formprojets";
 	}
 	
@@ -188,6 +184,7 @@ public class ControllerTest {
 	@RequestMapping("/formsignalement")
 	public String formsignalement(Model model)
 	{	
+		model.addAttribute("signalement", new Signalement());
 		return "formsignalement";
 	}
 	

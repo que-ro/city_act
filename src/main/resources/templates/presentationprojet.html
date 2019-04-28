@@ -42,7 +42,7 @@
 
 <div class="col-md-6">
 
-<form th:object="${idprojet}"id="formAB" method="GET" >
+<form th:object="${projet}"id="formAB" method="GET" >
 
 
 <h5 id="ABtitre">-Projet d'aménagement-</h5>
@@ -50,7 +50,7 @@
    <div class="form-row" > 
    <div class="form-group col-md-8" >
       <label for="inputTSAB"><b>Référence ambient power</b></label>
-      <input type="text" class="form-control" id="Idplanningproposal" disabled th:value="*{idplanningproposal}">
+      <input type="text" class="form-control" id="Idplanningproposal" disabled th:value="*{id}">
     </div>
     <div class="form-group col-md-8" >
       <label for="inputTSAB"><b>Date du dépôt du constat</b></label>

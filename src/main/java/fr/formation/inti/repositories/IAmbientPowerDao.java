@@ -9,7 +9,7 @@ import fr.formation.inti.entities.AmbientPower;
 
 public interface IAmbientPowerDao extends Repository<AmbientPower, Integer> {
 
-	public AmbientPower findByIdambientpower(Integer i);
+	public AmbientPower findById(Integer i);
 
 	public void save(AmbientPower ap);
 

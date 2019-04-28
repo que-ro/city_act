@@ -44,6 +44,7 @@
 <div class="col-md-6">
 
 <form th:object="${idambientpower}"id="formAB" method="GET">
+<form th:object="${ambientpower}"id="formAB" method="POST">
 
 <h5 id="ABtitre">-Ambient Power-</h5>
 
@@ -51,7 +52,7 @@
     <div class="form-row" > 
    <div class="form-group col-md-8" >
       <label for="inputTSAB"><b>Référence ambient power</b></label>
-      <input type="text" class="form-control" id="Idambientpower" disabled th:value="*{idambientpower}">
+      <input type="text" class="form-control" id="Idambientpower" disabled th:value="*{id}">
     </div>
     <div class="form-group col-md-8" >
       <label for="inputTSAB"><b>Date du dépôt du constat</b></label>
@@ -93,6 +94,7 @@
   <!-- <div class="form-group offset-md-9 col-md-3"> -->
 <!-- <button id="ABbtn" class="btn btn-primary " type="submit">Projet suivant </button> -->
 <!-- 	</div> -->
+<input type="submit" action="#" hidden/>
 
 </form>
 
@@ -218,7 +220,7 @@
 </div>
 
 
-<div  id="postcommentvote" class="container-fluid">
+<div id="postcommentvote" class="container-fluid">
 <div class="row">
 <div class="col-md-6">
 
@@ -236,16 +238,19 @@ btn.disabled = true;}</script>
 
 
 <div class="col-md-6">
+<form th:object="${ambientpower}" th:action="'/goto_ambienpower_presentation/'+ ${ambientpower.id} +'/formap_post_comment'" method="POST">
  <div class="form-group">
-  <label for="comment"><b>Commenter le projet</b></label>
-  <textarea class="form-control" rows="5" id="comment"></textarea>
+  <label for="comment"><b>Commenter le projet </b></label>
+  <textarea class="form-control " rows="5" id="comment" name="comment_text"></textarea>
    <button id="publibtn" class="btn btn-success" type="submit">Publier mon commentaire</button>
   </div>
+    </form>
   </div>
+ 
 </div> </div>
 
 
-<h4 id="hcom"> Commentaires</h4>
+<h5> Commentaires</h5>
 <hr class="pg-titl-bdr-btm">
 <br>
 <div id="afficheavis" class="container-fluid" >
