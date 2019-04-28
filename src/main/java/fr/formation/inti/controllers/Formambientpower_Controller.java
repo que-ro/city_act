@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import fr.formation.inti.entities.AmbientPower;
+import fr.formation.inti.entities.Users;
 import fr.formation.inti.repositories.IAmbientPowerDao;
 
 @Controller
@@ -45,11 +46,11 @@ public class Formambientpower_Controller {
 			//Pour donc mettre le bon id la procédure suivante cherche le max id, enlève son 3, l'incrémente
 			//et l'associe au nouvel objet Ambient Power.
 			Integer newId = Integer.parseInt(((maxId.toString()).substring(1))) + 1;
-			ambientPower.setIdambientpower(newId);
+			ambientPower.setId(newId);
 		}
 		else
 		{
-			ambientPower.setIdambientpower(1);
+			ambientPower.setId(1);
 		}
 		//Maintenant on enregistre l'image dans C/ext_folder/pictures en prenant le nom origin du fichier avec l'id du projet
 		//On enregistre ensuite le path de l'image dans l'objet ambientPower
@@ -59,7 +60,7 @@ public class Formambientpower_Controller {
 		else
 		{
 			//Le 3 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
-			String path = EXTERNAL_FOLDER + "3" + ambientPower.getIdambientpower()+ "_" + picture.getOriginalFilename();
+			String path = EXTERNAL_FOLDER + "3" + ambientPower.getId()+ "_" + picture.getOriginalFilename();
 			File upl = new File(path);
 		    upl.createNewFile();
 		    FileOutputStream fout = new FileOutputStream(upl);
@@ -67,6 +68,8 @@ public class Formambientpower_Controller {
 		    fout.close();
 		    ambientPower.setPhotopath(path);
 		}
+		Users user = (Users) request.getSession().getAttribute("user");
+		ambientPower.setUsers(user);
 		dao_ap.save(ambientPower);
 		return "formambientpower";
 	}

@@ -1,7 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,9 +26,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "ambient_power", catalog = "urbanproject")
-public class AmbientPower implements java.io.Serializable, IAllTypeEntities {
+public class AmbientPower implements java.io.Serializable {
 
-	private Integer idambientpower;
+	private int id;
+	private Users users;
 	@NotEmpty
 	private String latitude;
 	@NotEmpty
@@ -53,7 +54,10 @@ public class AmbientPower implements java.io.Serializable, IAllTypeEntities {
 	public AmbientPower() {
 	}
 
-	public AmbientPower(String latitude, String longitude, Date datecreation, String titre, String descriptif) {
+	public AmbientPower(int id, Users users, String latitude, String longitude, Date datecreation, String titre,
+			String descriptif) {
+		this.id = id;
+		this.users = users;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.datecreation = datecreation;
@@ -61,9 +65,11 @@ public class AmbientPower implements java.io.Serializable, IAllTypeEntities {
 		this.descriptif = descriptif;
 	}
 
-	public AmbientPower(String latitude, String longitude, Date datecreation, Integer votepos, Integer voteneg,
-			String titre, String descriptif, String photopath, String ref, String ideeamelioration,
+	public AmbientPower(int id, Users users, String latitude, String longitude, Date datecreation, Integer votepos,
+			Integer voteneg, String titre, String descriptif, String photopath, String ref, String ideeamelioration,
 			Integer intensiteressentie, Set<Comment> comments) {
+		this.id = id;
+		this.users = users;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.datecreation = datecreation;
@@ -80,13 +86,23 @@ public class AmbientPower implements java.io.Serializable, IAllTypeEntities {
 
 	@Id
 
-	@Column(name = "idambientpower", unique = true, nullable = false)
-	public Integer getIdambientpower() {
-		return this.idambientpower;
+	@Column(name = "id", unique = true, nullable = false)
+	public int getId() {
+		return this.id;
 	}
 
-	public void setIdambientpower(Integer idambientpower) {
-		this.idambientpower = idambientpower;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "users_idusers", nullable = false)
+	public Users getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
 	@Column(name = "latitude", nullable = false, length = 45)

@@ -25,7 +25,7 @@ IAmbientPowerDao dao_ap;
 @RequestMapping(value="/presentationambientpower_method", method = RequestMethod.GET)
 
 public String presentationprojet(Model model,  @ModelAttribute @Valid AmbientPower ambientPower, BindingResult bindingResult)
-{	AmbientPower ap = dao_ap.findByIdambientpower(38);
+{	AmbientPower ap = dao_ap.findById(38);
 
 model.addAttribute("idambientpower", ap);
 

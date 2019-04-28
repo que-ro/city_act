@@ -9,12 +9,12 @@ import fr.formation.inti.entities.AmbientPower;
 
 public interface IAmbientPowerDao extends Repository<AmbientPower, Integer> {
 
-	public AmbientPower findByIdambientpower(Integer i);
+	public AmbientPower findById(Integer i);
 
 	public void save(AmbientPower ap);
 
 	public List<AmbientPower> findAll();
 	
-	@Query("SELECT max(ap.idambientpower) FROM AmbientPower ap")
+	@Query("SELECT max(ap.id) FROM AmbientPower ap")
 	Integer getMaxId();
 }

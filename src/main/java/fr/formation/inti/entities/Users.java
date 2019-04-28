@@ -1,30 +1,27 @@
 package fr.formation.inti.entities;
-
+// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
-
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -84,6 +81,9 @@ public class Users implements java.io.Serializable {
 	private String lastname;
 	@JsonIgnore
 	private Set<Comment> comments = new HashSet<Comment>(0);
+	private Set<AmbientPower> ambientPowers = new HashSet<AmbientPower>(0);
+	private Set<UrbanPlanning> urbanPlannings = new HashSet<UrbanPlanning>(0);
+	private Set<Signalement> signalements = new HashSet<Signalement>(0);
 
 	public Users() {
 	}
@@ -94,7 +94,8 @@ public class Users implements java.io.Serializable {
 	}
 
 	public Users(String mail, String pseudo, String password, String street, String city, Integer zipcode,
-			String country, Date birthdate, String firstname, String lastname, Set<Comment> comments) {
+			String country, Date birthdate, String firstname, String lastname, Set<AmbientPower> ambientPowers,
+			Set<UrbanPlanning> urbanPlannings, Set<Comment> comments, Set<Signalement> signalements) {
 		this.mail = mail;
 		this.pseudo = pseudo;
 		this.password = password;
@@ -105,7 +106,10 @@ public class Users implements java.io.Serializable {
 		this.birthdate = birthdate;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.ambientPowers = ambientPowers;
+		this.urbanPlannings = urbanPlannings;
 		this.comments = comments;
+		this.signalements = signalements;
 	}
 
 	@Id
@@ -212,12 +216,39 @@ public class Users implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+	public Set<AmbientPower> getAmbientPowers() {
+		return this.ambientPowers;
+	}
+
+	public void setAmbientPowers(Set<AmbientPower> ambientPowers) {
+		this.ambientPowers = ambientPowers;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+	public Set<UrbanPlanning> getUrbanPlannings() {
+		return this.urbanPlannings;
+	}
+
+	public void setUrbanPlannings(Set<UrbanPlanning> urbanPlannings) {
+		this.urbanPlannings = urbanPlannings;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
 	public Set<Comment> getComments() {
 		return this.comments;
 	}
 
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+	public Set<Signalement> getSignalements() {
+		return this.signalements;
+	}
+
+	public void setSignalements(Set<Signalement> signalements) {
+		this.signalements = signalements;
 	}
 
 }

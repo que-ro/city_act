@@ -26,7 +26,7 @@ public class ControllerTest {
 	IUrbanPlanningDao dao_up;
 	@RequestMapping("/presentationprojet")
 	public String presentationprojet(Model model)
-	{	UrbanPlanning up = dao_up.findByIdplanningproposal(11);
+	{	UrbanPlanning up = dao_up.findById(11);
 	model.addAttribute("idprojet", up);
 		return "presentationprojet";
 	}
@@ -48,7 +48,7 @@ public class ControllerTest {
 	ISignalementDao dao_sig;
 	@RequestMapping("/presentationsignalement")
 	public String presentationsignalement(Model model)
-	{	Signalement sig = dao_sig.findByIdsignalement(21);
+	{	Signalement sig = dao_sig.findById(21);
 	model.addAttribute("idsignalement", sig);
 			return "presentationsignalement";
 	}

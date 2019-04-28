@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 25 avr. 2019 14:28:46 by Hibernate Tools 5.1.10.Final
+// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -7,9 +7,9 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -22,9 +22,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "signalement", catalog = "urbanproject")
-public class Signalement implements java.io.Serializable, IAllTypeEntities { 
+public class Signalement implements java.io.Serializable {
 
-	private Integer idsignalement;
+	private int id;
+	private Users users;
 	private String latitude;
 	private String longitude;
 	private Date datecreation;
@@ -43,8 +44,10 @@ public class Signalement implements java.io.Serializable, IAllTypeEntities {
 	public Signalement() {
 	}
 
-	public Signalement(String latitude, String longitude, Date datecreation, String titre, String descriptif,
-			String photopath, String category) {
+	public Signalement(int id, Users users, String latitude, String longitude, Date datecreation, String titre,
+			String descriptif, String photopath, String category) {
+		this.id = id;
+		this.users = users;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.datecreation = datecreation;
@@ -54,9 +57,11 @@ public class Signalement implements java.io.Serializable, IAllTypeEntities {
 		this.category = category;
 	}
 
-	public Signalement(String latitude, String longitude, Date datecreation, String titre, String descriptif,
-			String photopath, String state, String priority, String category, Integer compteurpopularite,
-			Integer compteurconstat, String ref, Set<Comment> comments) {
+	public Signalement(int id, Users users, String latitude, String longitude, Date datecreation, String titre,
+			String descriptif, String photopath, String state, String priority, String category,
+			Integer compteurpopularite, Integer compteurconstat, String ref, Set<Comment> comments) {
+		this.id = id;
+		this.users = users;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.datecreation = datecreation;
@@ -74,52 +79,42 @@ public class Signalement implements java.io.Serializable, IAllTypeEntities {
 
 	@Id
 
-	@Column(name = "idsignalement", unique = true, nullable = false)
-	public Integer getIdsignalement() {
-		return this.idsignalement;
+	@Column(name = "id", unique = true, nullable = false)
+	public int getId() {
+		return this.id;
 	}
 
-	public void setIdsignalement(Integer idsignalement) {
-		this.idsignalement = idsignalement;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#getLatitude()
-	 */
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "users_idusers", nullable = false)
+	public Users getUsers() {
+		return this.users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
 
 	@Column(name = "latitude", nullable = false, length = 45)
 	public String getLatitude() {
 		return this.latitude;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#setLatitude(java.lang.String)
-	 */
-
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
-
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#getLongitude()
-	 */
 
 	@Column(name = "longitude", nullable = false, length = 45)
 	public String getLongitude() {
 		return this.longitude;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#setLongitude(java.lang.String)
-	 */
-
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
-
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#getDatecreation()
-	 */
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "datecreation", nullable = false, length = 10)
@@ -127,43 +122,23 @@ public class Signalement implements java.io.Serializable, IAllTypeEntities {
 		return this.datecreation;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#setDatecreation(java.util.Date)
-	 */
-
 	public void setDatecreation(Date datecreation) {
 		this.datecreation = datecreation;
 	}
-
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#getTitre()
-	 */
 
 	@Column(name = "titre", nullable = false)
 	public String getTitre() {
 		return this.titre;
 	}
 
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#setTitre(java.lang.String)
-	 */
-
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
-
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#getDescriptif()
-	 */
 
 	@Column(name = "descriptif", nullable = false, length = 16777215)
 	public String getDescriptif() {
 		return this.descriptif;
 	}
-
-	/* (non-Javadoc)
-	 * @see fr.formation.inti.entities.IAllTypeEntities#setDescriptif(java.lang.String)
-	 */
 
 	public void setDescriptif(String descriptif) {
 		this.descriptif = descriptif;
@@ -204,7 +179,7 @@ public class Signalement implements java.io.Serializable, IAllTypeEntities {
 	public void setCategory(String category) {
 		this.category = category;
 	}
- 
+
 	@Column(name = "compteurpopularite")
 	public Integer getCompteurpopularite() {
 		return this.compteurpopularite;
@@ -240,9 +215,5 @@ public class Signalement implements java.io.Serializable, IAllTypeEntities {
 	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
-
-
-
-	
 
 }
