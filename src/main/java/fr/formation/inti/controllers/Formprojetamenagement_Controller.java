@@ -59,13 +59,22 @@ public class Formprojetamenagement_Controller {
 		else
 		{
 			//Le 1 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
-			String path = EXTERNAL_FOLDER + "1" + urbanPlanning.getId()+ "_" + picture.getOriginalFilename();
-			File upl = new File(path);
-		    upl.createNewFile();
-		    FileOutputStream fout = new FileOutputStream(upl);
+//			String path = EXTERNAL_FOLDER + "1" + urbanPlanning.getId()+ "_" + picture.getOriginalFilename();
+//			File upl = new File(path);
+//		    upl.createNewFile();
+//		    FileOutputStream fout = new FileOutputStream(upl);
+//		    fout.write(picture.getBytes());
+//		    fout.close();
+//		    urbanPlanning.setPhotopath(path);
+		    
+		    String path ="src/main/resources/static/pictures/projects/" + "1" + urbanPlanning.getId()+ "_" + picture.getOriginalFilename();
+		    File upl = new File(path);
+			upl.createNewFile();
+			FileOutputStream fout = new FileOutputStream(upl);
 		    fout.write(picture.getBytes());
 		    fout.close();
-		    urbanPlanning.setPhotopath(path);
+		    urbanPlanning.setPhotopath("/pictures/projects/" + "1" + urbanPlanning.getId()+ "_" + picture.getOriginalFilename());
+		    
 		}
 		Users user = (Users) request.getSession().getAttribute("user");
 		urbanPlanning.setUsers(user);

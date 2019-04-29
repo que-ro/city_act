@@ -62,6 +62,10 @@ public class Map_Controller {
 		AmbientPower ap = dao_ap.findById(id);
 		model.addAttribute("ambientpower", ap);
 		List<Comment> comments = dao_com.findByAmbientPower(ap);
+		for(Comment comment: comments)
+		{
+			comment.getUsers();
+		}
 		model.addAttribute("comments", comments);
 		return "presentationambientpower";
 		
@@ -73,6 +77,12 @@ public class Map_Controller {
 	{	
 		Signalement sig = dao_sig.findById(id);
 		model.addAttribute("signalement", sig);
+		List<Comment> comments = dao_com.findBySignalement(sig);
+		for(Comment comment: comments)
+		{
+			comment.getUsers();
+		}
+		model.addAttribute("comments", comments);
 		return "presentationsignalement";
 		
 	}
@@ -83,7 +93,12 @@ public class Map_Controller {
 	{	
 		UrbanPlanning up = dao_up.findById(id);
 		model.addAttribute("projet", up);
-		
+		List<Comment> comments = dao_com.findByUrbanPlanning(up);
+		for(Comment comment: comments)
+		{
+			comment.getUsers();
+		}
+		model.addAttribute("comments", comments);
 		return "presentationprojet";
 		
 	}

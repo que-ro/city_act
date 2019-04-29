@@ -99,212 +99,27 @@
 <!--     <h2>Bootstrap Horizontal Scrolling with Flexbox</h2> -->
     <div class="row flex-row flex-nowrap">
     
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="project: ${usr_projects}">
             <div class="card card-block">	
             <div class="row  proj" >
 	<div class="col-md-4">
-	<img src="/pictures/quentin.jpg" alt="" class="img-thumbnail">
+	<img th:src="${project.photopath}" alt="" class="img-thumbnail">
 	</div>
 	<div class="col-md-8" >
-	<h6>Titre : Trou dans la chaussée</h6>
-	<h6><b>Signalement</b>: Voirie</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
+	<h6>
+		<a  th:if="${project.ref}==A" th:href="'/goto_ambienpower_presentation/' + ${project.id}" th:utext="${project.titre}"></a>
+		<a th:if="${project.ref}==S" th:href="'/goto_signalement_presentation/' + ${project.id}" th:utext="${project.titre}"></a>
+		<a th:if="${project.ref}==P" th:href="'/goto_projet_presentation/' + ${project.id}" th:utext="${project.titre}"></a>
+		: <span th:if="${project.ref}==S" th:utext="${project.category}" ></span>
+		  <span th:if="${project.ref}==P" th:utext="${project.temporalite}" ></span>
+	</h6>
+	<p th:utext="${project.descriptif}"></p>
 	</div>
 	
 	</div></div>
-        </div>
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block">	<div class="row  proj" >
-	<div class="col-md-4">
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Projets d'aménagements dans le centre</h6>
-	<h6><b>Catégorie</b> :sous-catégorie</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8">
-	<h6>Titre : Projets d'aménagements dans le centre</h6>
-	<h6><b>Projets</b> :sous-catégorie</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Sentiment d'insécurité dû à un éclairage manquant</h6>
-	<h6><b>Ambient Power</b>: éclairage</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Tunnel sombre et peu engageant</h6>
-	<h6><b>Ambient Power</b>: environnement bâti</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Encombrant devant maison</h6>
-	<h6><b>Signalement</b>: encombrants</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Sentiment d'insécurité dû à un éclairage manquant</h6>
-	<h6><b>Ambient Power</b>: éclairage</h6>
-	<p>With no dorm and no dancing, Stallman's social universe imploded. 
-	Like an astronaut experiencing the aftereffects of zero-gravity, Stallman found that his ability to interact 
-	with nonhackers, especially female nonhackers, had atrophied significantly. After 16 weeks in the AI Lab, the self confidence he'd been quietly accumulating during his 4 years at Harvard was virtually gone.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre: éclairage manquant</h6>
-	<h6><b>Ambient Power</b>: éclairage</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Banc dégradé</h6>
-	<h6><b>Signalement</b>: mobilier urbain</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Sentiment d'insécurité dû à un éclairage manquant</h6>
-	<h6><b>Ambient Power</b>: éclairage</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Sentiment d'insécurité dû à un éclairage manquant</h6>
-	<h6><b>Ambient Power</b>: éclairage</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Sentiment d'insécurité dû à un éclairage manquant</h6>
-	<h6><b>Ambient Power</b>: éclairage</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h6>Titre : Sentiment d'insécurité dû à un éclairage manquant</h6>
-	<h6><b>Ambient Power</b>: éclairage</h6>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
+        </div>	
+    
+
         
         
         
@@ -319,204 +134,27 @@
 
     <div class="row flex-row flex-nowrap">
     
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block">	
-            <div class="row  proj" >
-	<div class="col-md-4">
-	<img src="/pictures/henry.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-	<p>Like an astronaut experiencing the aftereffects of zero-gravity, Stallman found that his ability to interact 
-	with nonhackers, especially female nonhackers, had atrophied significantly. After 16 weeks in the AI Lab,
-	 the self confidence he'd been quietly accumulating during his 4 years at Harvard was virtually gone.</p>
-	</div>
-	
-	</div></div>
-        </div>
+    
+    
         
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="comment: ${comments}">
             <div class="card card-block">	<div class="row  proj">
 	<div class="col-md-4">
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
+	<img src="/pictures/iconfinder_JD-18_2246807.png" alt="" class="img-thumbnail">
 	</div>
 	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-	<p>Like an astronaut experiencing the aftereffects of zero-gravity, Stallman found that his ability to interact 
-	with nonhackers, especially female nonhackers, had atrophied significantly. After 16 weeks in the AI Lab,
-	 the self confidence he'd been quietly accumulating during his 4 years at Harvard was virtually gone.</p>
+	<a th:if="${comment.urbanPlanning != null}" th:href="'/goto_projet_presentation/' + ${comment.urbanPlanning.id}"><h5 th:utext="${comment.urbanPlanning.titre}"></h5></a>
+	<a th:if="${comment.signalement != null}" th:href="'/goto_signalement_presentation/' + ${comment.signalement.id}"><h5 th:utext="${comment.signalement.titre}"></h5></a>
+	<a th:if="${comment.ambientPower != null}" th:href="'/goto_ambienpower_presentation/' + ${comment.ambientPower.id}"><h5 th:utext="${comment.ambientPower.titre}"></h5></a>
+
+	
+	<p th:utext="${comment.text}"></p>
 	</div>
 	
 	</div></div>
         </div>
         
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8">
-	<h5>Commentaire</h5>
-	<p>Like an astronaut experiencing the aftereffects of zero-gravity, Stallman found that his ability to interact 
-	with nonhackers, especially female nonhackers, had atrophied significantly. After 16 weeks in the AI Lab,
-	 the self confidence he'd been quietly accumulating during his 4 years at Harvard was virtually gone.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-	<p>Like an astronaut experiencing the aftereffects of zero-gravity, Stallman found that his ability to interact 
-	with nonhackers, especially female nonhackers, had atrophied significantly. After 16 weeks in the AI Lab,
-	 the self confidence he'd been quietly accumulating during his 4 years at Harvard was virtually gone.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-	<p>Like an astronaut experiencing the aftereffects of zero-gravity, Stallman found that his ability to interact 
-	with nonhackers, especially female nonhackers, had atrophied significantly. After 16 weeks in the AI Lab,
-	 the self confidence he'd been quietly accumulating during his 4 years at Harvard was virtually gone.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-	<p>Like an astronaut experiencing the aftereffects of zero-gravity, Stallman found that his ability to interact 
-	with nonhackers, especially female nonhackers, had atrophied significantly. After 16 weeks in the AI Lab,
-	 the self confidence he'd been quietly accumulating during his 4 years at Harvard was virtually gone.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-		<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-	<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-		<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj" >
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-		<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-		<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
-        
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card card-block"><div class="row  proj">
-	<div class="col-md-4" >
-	<img src="resources/images/persagotiere3-2_915.jpg" alt="" class="img-thumbnail">
-	</div>
-	<div class="col-md-8" >
-	<h5>Commentaire</h5>
-		<p>aaaaaa Nulla quisturpis rhoncus sem hendrerit tincidunt eleifend non
-						felis. Donec iaculis quis lorem non luctus. In hachabitasse platea dictumst.</p>
-	</div>
-	
-	</div></div>
-        </div>
+
 </div>
 </div>
 

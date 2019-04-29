@@ -1,11 +1,10 @@
 package fr.formation.inti.entities;
-// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
+// Generated 29 avr. 2019 09:45:24 by Hibernate Tools 5.1.10.Final
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

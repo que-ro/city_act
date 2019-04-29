@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
+// Generated 29 avr. 2019 09:45:24 by Hibernate Tools 5.1.10.Final
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -84,6 +84,8 @@ public class Users implements java.io.Serializable {
 	private Set<AmbientPower> ambientPowers = new HashSet<AmbientPower>(0);
 	private Set<UrbanPlanning> urbanPlannings = new HashSet<UrbanPlanning>(0);
 	private Set<Signalement> signalements = new HashSet<Signalement>(0);
+	
+	private String resettoken;
 
 	public Users() {
 	}
@@ -213,6 +215,17 @@ public class Users implements java.io.Serializable {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+	
+	@Column(name="resettoken")
+	public String getResettoken()
+	{
+		return this.resettoken;
+	}
+	
+	public void setResettoken(String resettoken)
+	{
+		this.resettoken = resettoken;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")

@@ -6,10 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
 import fr.formation.inti.entities.AmbientPower;
+import fr.formation.inti.entities.Users;
 
 public interface IAmbientPowerDao extends Repository<AmbientPower, Integer> {
 
 	public AmbientPower findById(Integer i);
+	
+	public AmbientPower findByUsers(Users usr);
 
 	public void save(AmbientPower ap);
 
