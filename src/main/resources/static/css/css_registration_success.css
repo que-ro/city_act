@@ -56,7 +56,7 @@ color: #400040; }
 .masthead {
   height: 85vh;
   min-height: 500px;
-  background-image: /pictures/chuck-kleber.jpg;
+  background-image: url("https://pbs.twimg.com/media/DeObCuWXkAEwceI.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
