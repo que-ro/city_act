@@ -13,20 +13,121 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" type="text/css" href="/css/css_navbar.css" >
-<link rel="stylesheet" type="text/css" href="/css/css_falselogin.css" >
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="css/css_resetmp.css">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 </head>
+ 
+<div th:insert="~{CityAct::notConnectedNavbar}"></div>
+ <div class="nav-gap"></div>
 
-</html>
+
+<div class="container-fluid" >
+	<div class="row">
+	<div class="col-md-3"></div>
+		<div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <h3><i class="fa fa-lock fa-4x"></i></h3>
+                  <h2 class="text-center">Formulaire de réinitialisation de mot de passe</h2>
+                  <p>Remplissez les champs ci-dessous.</p>
+                  <div class="panel-body2">
+                  
+                   <form id="register-form" role="form" action="/resetmp" method="POST">
+                  
+                  <div class="form-group">
+                  
+                        <div class="input-group">
+
+			    	<input type="password" class="form-control" id="validationCustom05" placeholder="Nouveau mot de passe" name="pwd" required  > 
+			    	</div>
+			    	<div class="input-group">
+			    	<input type="checkbox" onclick="showpwd()" > Voir MP
+			    	</div>
+			    	
+			    			    	                       
+                         <div class="input-group">
+<!--                        <label for="validationCustom06"><b>Répéter le mot de passe</b></label>  -->
+   			 <input type="password" class="form-control" id="validationCustom06" placeholder="Répéter le mot de passe" name="repeated_pwd" required> 
+                        </div>
+                                              </div>
+                                              
+                     <div class="form-group" id="my_token">
+			    	</div>
+
+			    	
+			    	<script th:inline="javascript">
+			    	
+			    	/*<![CDATA[*/
+			    		var token = /*[[${#request.getParameter('token')}]]*/
+			    		console.log(token);
+			    	
+			    	var div = document.getElementById('my_token');
+			    	var input_token = document.createElement('input');
+ 			    	input_token.setAttribute('hidden', 'true');
+			    	input_token.setAttribute('name', 'token');
+			    	input_token.setAttribute('placeholder', token);
+			    	input_token.setAttribute('value', token);
+			    	input_token.setAttribute('type', 'text');
+			    	input_token.setAttribute('class', 'form-control');
+			    	div.appendChild(input_token);
+
+			    			/*]]>*/
+					</script>
+
+                                              
+                                              
+                      <div class="form-group">
+                   <input id="ABbtn" name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Soumettre le nouveau mot de passe " type="submit"></input> 
+                      </div>
+                      
+<!--                       <input type="hidden" class="hide" name="token" id="token" value="">  -->
+                    </form>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+	</div>
+</div>
+ 
+ <script>  
+  function showpwd() {
+  var x = document.getElementById("validationCustom05");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password"; }
+}           
+  </script>   
+
+
+
+<!-- <div class="row ml-2 "> -->
+<!-- <div class="col-md-9  mb-3"> -->
+<!--  <label for="validationCustom05"><b>Mot de passe</b></label> -->
+<!--     <input type="password" class="form-control" id="validationCustom05"placeholder="Mot de passe" name="psw" required> -->
+
+<!--       </div> -->
+<!--       </div> -->
+      
+<!--       <div class="row ml-2"> -->
+<!--       <div class="col-md-9  mb-3"> -->
+<!--  <label for="validationCustom06"><b>Répéter le mot de passe</b></label> -->
+<!--     <input type="password" class="form-control" id="validationCustom06" placeholder="Répéter le mot de passe" name="psw-repeat" required> -->
+
+<!--     </div> -->
+    
+<!--     <div class="form-group offset-md-9 col-md-3"> -->
+<!-- 	<button id="ABbtn" class="btn btn-primary" type="submit">Soumettre le nouveau mot de passe </button> -->
+<!-- 	</div> -->
+<!--  </div> -->
+<!-- </form> -->
+
+<div class="footer-gap"></div>
+<div th:insert="~{footer::footer}"></div>
+

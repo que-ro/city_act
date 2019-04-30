@@ -103,11 +103,11 @@ public class ControllerTest {
 		return "faq";
 	}
 	
-//	@RequestMapping("/forgottenpsd")
-//	public String forgottenpsd(Model model)
-//	{	
-//		return "forgottenpsd";
-//	}
+	@RequestMapping("/forgottenpsd")
+	public String forgottenpsd(Model model)
+	{	
+		return "forgottenpsd";
+	}
 	
 	@RequestMapping("/map")
 	public String map(Model model)

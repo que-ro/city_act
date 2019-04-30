@@ -12,5 +12,6 @@ public interface IUsersDao extends Repository<Users, Integer> {
 	public Users findByIdusers(Integer i);
 	public void save(Users usr);
 	public List<Users> findAll();
+	public Users findUserByResetToken(String token);
 
 }
