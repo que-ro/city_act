@@ -15,7 +15,7 @@ public class PictureFolderConfig implements WebMvcConfigurer{
         registry.addResourceHandler("/project_pictures/**")
                 .addResourceLocations("/static/pictures/projects");
     }
-    
+      
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
        // LogInterceptor apply to all URLs.
