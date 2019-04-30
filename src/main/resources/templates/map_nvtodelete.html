@@ -592,45 +592,7 @@
 						<div class="row">
 							<div class="list-group col-sm-12"
 								id="div_all_marqueurs_overflowscroll">
-								<ul class="list-group" id="ul_list_projects">
-
-
-									<li class="list-group-item li_descri_marqueur">
-										<div class="row">
-											<div class="col-sm-12 div_descriyimage_marqueur"  id="test_link">
-												<div class="row">
-													<div
-														class="col-sm-3 d-flex justify-content-center align-items-center div_img_of_marqueur">
-														<img src="/pictures/tunnelaubervilliers.jpg" alt=""
-															class="img-thumbnail">
-													</div>
-													<div class="col-sm-9 pt-1 div_descri_of_marqueur">
-														<div class="row">
-															<div class="col-sm-12 div_titre_marqueur">
-																<h6><a class="h_titre_marqueur" th:href="@{	r_method}"> Titre : Tunnel peu engageant</a></h6>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-sm-12 pt-2">
-																<h5 class="h_category_y_souscategory">Ambient Power </h5>
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-sm-12 text-justify px-3">
-																<p class="p_marqueur_description">aaaaaa Nulla quis
-																	turpis rhoncus sem hendrerit tincidunt eleifend non
-																	felis. Donec iaculis quis lorem non luctus. In hac
-																	habitasse platea dictumst.</p>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</li>
-									
-									
-									
+								<ul class="list-group" id="ul_list_projects">							
 									
 
 										<li th:each="project: ${allProjects}" class="list-group-item li_descri_marqueur" th:id="'li_' + ${project.id}">

@@ -79,15 +79,13 @@ public class Users implements java.io.Serializable {
 	@Size(min=1, message="Veuillez indiquer un nom de famille")
 
 	private String lastname;
-	
-
-	private String resettoken;
-	
 	@JsonIgnore
 	private Set<Comment> comments = new HashSet<Comment>(0);
 	private Set<AmbientPower> ambientPowers = new HashSet<AmbientPower>(0);
 	private Set<UrbanPlanning> urbanPlannings = new HashSet<UrbanPlanning>(0);
 	private Set<Signalement> signalements = new HashSet<Signalement>(0);
+	
+	private String resettoken;
 
 	public Users() {
 	}
@@ -98,7 +96,7 @@ public class Users implements java.io.Serializable {
 	}
 
 	public Users(String mail, String pseudo, String password, String street, String city, Integer zipcode,
-			String country, Date birthdate, String firstname, String lastname, String resettoken, Set<AmbientPower> ambientPowers,
+			String country, Date birthdate, String firstname, String lastname, Set<AmbientPower> ambientPowers,
 			Set<UrbanPlanning> urbanPlannings, Set<Comment> comments, Set<Signalement> signalements) {
 		this.mail = mail;
 		this.pseudo = pseudo;
@@ -110,7 +108,6 @@ public class Users implements java.io.Serializable {
 		this.birthdate = birthdate;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.resettoken = resettoken;
 		this.ambientPowers = ambientPowers;
 		this.urbanPlannings = urbanPlannings;
 		this.comments = comments;
@@ -220,16 +217,16 @@ public class Users implements java.io.Serializable {
 		this.lastname = lastname;
 	}
 	
-	@Column(name = "resettoken")
-	public String getResetToken() {
+	@Column(name="resettoken")
+	public String getResetToken()
+	{
 		return this.resettoken;
 	}
-
-	public void setResetToken(String resettoken) {
+	
+	public void setResetToken(String resettoken)
+	{
 		this.resettoken = resettoken;
 	}
-	
-	
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
 	public Set<AmbientPower> getAmbientPowers() {
@@ -267,7 +264,4 @@ public class Users implements java.io.Serializable {
 		this.signalements = signalements;
 	}
 
-
 }
-
-

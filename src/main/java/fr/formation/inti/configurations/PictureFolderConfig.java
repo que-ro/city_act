@@ -9,8 +9,8 @@ public class PictureFolderConfig implements WebMvcConfigurer{
 	
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/ext_pictures/**")
-                .addResourceLocations("C:/cityact_externalfolder/");
+        registry.addResourceHandler("/project_pictures/**")
+                .addResourceLocations("/static/pictures/projects");
     }
 
 }

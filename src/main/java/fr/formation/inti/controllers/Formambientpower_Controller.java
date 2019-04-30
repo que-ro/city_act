@@ -60,13 +60,23 @@ public class Formambientpower_Controller {
 		else
 		{
 			//Le 3 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
-			String path = EXTERNAL_FOLDER + "3" + ambientPower.getId()+ "_" + picture.getOriginalFilename();
-			File upl = new File(path);
-		    upl.createNewFile();
-		    FileOutputStream fout = new FileOutputStream(upl);
+//			String path = EXTERNAL_FOLDER + "3" + ambientPower.getId()+ "_" + picture.getOriginalFilename();
+//			File upl = new File(path);
+//		    upl.createNewFile();
+//		    FileOutputStream fout = new FileOutputStream(upl);
+//		    fout.write(picture.getBytes());
+//		    fout.close();
+//		    ambientPower.setPhotopath(path);
+//		    
+//		    ///pictures
+//		    
+		    String path ="src/main/resources/static/pictures/projects/" + "3" + ambientPower.getId()+ "_" + picture.getOriginalFilename();
+		    File upl = new File(path);
+			upl.createNewFile();
+			FileOutputStream fout = new FileOutputStream(upl);
 		    fout.write(picture.getBytes());
 		    fout.close();
-		    ambientPower.setPhotopath(path);
+		    ambientPower.setPhotopath("/pictures/projects/" + "3" + ambientPower.getId()+ "_" + picture.getOriginalFilename());
 		}
 		Users user = (Users) request.getSession().getAttribute("user");
 		ambientPower.setUsers(user);

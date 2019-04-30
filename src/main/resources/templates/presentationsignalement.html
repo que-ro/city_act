@@ -105,7 +105,7 @@
 
 </div>
 <!-- end row-md-6 -->
-<script>
+<script th:inline="javascript">
 						var map, infoWindow, pos;
 
 						function CenterControl(controlDiv, map) {
@@ -170,11 +170,13 @@
 														lng : position.coords.longitude
 													};
 
-													infoWindow.setPosition(pos);
-													infoWindow
-															.setContent('Location found.');
-													infoWindow.open(map);
-													map.setCenter(pos);
+													var marker_mapos = new google.maps.Marker({
+														position: pos,
+														title:"Vous êtes ici",
+														icon:"http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png"
+													})
+													marker_mapos.setMap(map);
+													
 												}, function() {
 													handleLocationError(true,
 															infoWindow,
@@ -185,6 +187,22 @@
 								handleLocationError(false, infoWindow, map
 										.getCenter());
 							}
+							
+							/*<![CDATA[*/
+							var latitude = /*[[${signalement.latitude}]]*/
+							var longitude = /*[[${signalement.longitude}]]*/
+							marker_project = new google.maps.Marker({
+						         position: new google.maps.LatLng(latitude, longitude),
+						         map: map
+						});
+							var icon = {
+								    url: "http://maps.google.com/mapfiles/kml/paddle/pink-blank.png", // url
+								    scaledSize: new google.maps.Size(40, 40), // scaled size
+								};
+							marker_project.setIcon(icon);
+							map.setCenter(marker_project.position);
+							
+							/*]]>*/
 
 							// Create the DIV to hold the control and call the CenterControl()
 							// constructor passing in this DIV.
@@ -244,12 +262,15 @@
 btn.disabled = true;}</script>
 
 <div class="col-md-6">
+<form th:object="${signalement}" th:action="'/goto_signalement_presentation/'+ ${signalement.id} +'/formap_post_comment'" method="POST">
  <div class="form-group">
-  <label for="comment"><b>Commenter le projet</b></label>
-  <textarea class="form-control" rows="5" id="comment"></textarea>
+  <label for="comment"><b>Commenter le projet </b></label>
+  <textarea class="form-control " rows="5" id="comment" name="comment_text"></textarea>
    <button id="publibtn" class="btn btn-success" type="submit">Publier mon commentaire</button>
   </div>
+    </form>
   </div>
+ 
 </div> </div>
 
 <h4 id="hcom"> Commentaires</h4>
@@ -257,21 +278,14 @@ btn.disabled = true;}</script>
 <br>
 <div id="afficheavis" class="container-fluid" >
 <!-- <form th:object="${idComment}"> <a > et afficher le pseduo de l'auteur, et la date du commentaire</a> style="border: 2px solid black" -->
-<div class="media border -3">
-  <img src="/pictures/quentin.jpg" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
-  <div class="media-body">
-    <h4>Quentin R <small><i>Posted on February 19, 2019</i></small></h4>
-    <p>Lorem ipsum...</p>
-  </div>
-</div>
 
-<div class="media">
-  <img src="/pictures/henry.jpg" class="align-self-start mr-3" style="width:60px">
-  <div class="media-body">
-    <h4>Henry B says</h4>
-    <p>Lorem ipsum...</p>
-  </div>
-</div>
+	<div class="media border -3" th:each="comment: ${comments}">
+	<img src="/pictures/iconfinder_JD-18_2246807.png" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
+	<div class="media-body">
+	<h4><span th:utext='${comment.users.pseudo}'></span><small><i>Posted on <span th:utext="${comment.date}"></span></i></small></h4>
+    <p th:utext='${comment.text}'></p>
+	</div>
+	</div>
 
 </div>
 

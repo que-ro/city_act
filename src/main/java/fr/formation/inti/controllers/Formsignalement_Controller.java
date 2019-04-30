@@ -60,13 +60,20 @@ public class Formsignalement_Controller {
 		else
 		{
 			//Le 2 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
-			String path ="src/main/resources/static/pictures/projects/" + "2" + signalement.getId()+ "" + picture.getOriginalFilename();
+			//			String path = EXTERNAL_FOLDER + "2" + signalement.getId()+ "_" + picture.getOriginalFilename();
+//			File upl = new File(path);
+//		    upl.createNewFile();
+//		    FileOutputStream fout = new FileOutputStream(upl);
+//		    fout.write(picture.getBytes());
+//		    fout.close();
+//		    signalement.setPhotopath(path);
+			String path ="src/main/resources/static/pictures/projects/" + "2" + signalement.getId()+ "_" + picture.getOriginalFilename();
             File upl = new File(path);
             upl.createNewFile();
             FileOutputStream fout = new FileOutputStream(upl);
             fout.write(picture.getBytes());
             fout.close();
-            signalement.setPhotopath("/pictures/projects/" + "2" + signalement.getId()+ "" + picture.getOriginalFilename());
+            signalement.setPhotopath("/pictures/projects/" + "2" + signalement.getId()+ "_" + picture.getOriginalFilename());
         }
         Users user = (Users) request.getSession().getAttribute("user");
         signalement.setUsers(user);
