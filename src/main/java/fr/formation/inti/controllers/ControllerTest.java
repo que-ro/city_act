@@ -19,7 +19,7 @@ import fr.formation.inti.entities.UrbanPlanning;
 import fr.formation.inti.entities.Users;
 import fr.formation.inti.repositories.IAmbientPowerDao;
 import fr.formation.inti.repositories.ICommentDao;
-//import fr.formation.inti.repositories.ICommentDao;
+
 import fr.formation.inti.repositories.ISignalementDao;
 import fr.formation.inti.repositories.IUrbanPlanningDao;
 import fr.formation.inti.repositories.IUsersDao;
@@ -68,6 +68,7 @@ public class ControllerTest {
 			return "presentationsignalement";
 	}
 	
+
 	
 
 	@RequestMapping("/mesprojetstest")
@@ -115,6 +116,7 @@ public class ControllerTest {
 		return "forgottenpsd";
 	}
 	
+
 	
 	@RequestMapping("/mesalertes")
 	public String mesalertes(Model model)
@@ -195,6 +197,7 @@ public class ControllerTest {
 		model.addAttribute("users", new Users());
 		return "signup_nv";
 	}
+
 
 
 	@RequestMapping("/filterconnection")

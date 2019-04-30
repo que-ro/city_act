@@ -9,7 +9,7 @@ import fr.formation.inti.interceptors.LoggedInterceptor;
 
 @Configuration
 public class PictureFolderConfig implements WebMvcConfigurer{
-	
+
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/project_pictures/**")
@@ -21,6 +21,8 @@ public class PictureFolderConfig implements WebMvcConfigurer{
        // LogInterceptor apply to all URLs.
        registry.addInterceptor(new LoggedInterceptor())
        .addPathPatterns("/modifiermoncompte" , "/monprofil", "/signalementform_method", "/ambientpowerform_method", "/projetamenagementform_method", "/goto_projet_presentation/{id}/formap_post_comment", "/mesalertes");
+
     }
+
 
 }

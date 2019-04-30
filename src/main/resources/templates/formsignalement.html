@@ -131,19 +131,19 @@
 <div class="form-group col-md-auto">
       <label for="inputTSAB"><b>Priorité (de 1 à 10)</b></label>
       <select type="text" id="inputTSAB" class="custom-select my-1 mr-sm-2" placeholder="Une valeur de 1 à 10" th:field="*{priority}" required>
-      <option th:value="'1'" th:text="1"></option>
-    <option th:value="'2'" th:text="2"></option>
-    <option th:value="'3'" th:text="3"></option>
-    <option th:value="'4'" th:text="4"></option>
-    <option th:value="'5'" th:text="5"></option>
-    <option th:value="'6'" th:text="6"></option>
-    <option th:value="'7'" th:text="7"></option>
-     <option th:value="'8'" th:text="8"></option>
-      <option th:value="'9'" th:text="9"></option>
-       <option th:value="'10'" th:text="10"></option>
+      <option id="op" th:value="'1'" th:text="1"></option>
+    <option id="op" th:value="'2'" th:text="2"></option>
+    <option id="op" th:value="'3'" th:text="3"></option>
+    <option id="opo" th:value="'4'" th:text="4"></option>
+    <option id="opo" th:value="'5'" th:text="5"></option>
+    <option id="opo" th:value="'6'" th:text="6"></option>
+    <option  id="opo" th:value="'7'" th:text="7"></option>
+     <option id="opr" th:value="'8'" th:text="8"></option>
+      <option id="opr" th:value="'9'" th:text="9"></option>
+       <option id="opr" th:value="'10'" th:text="10"></option>
 
     </select>
-    </div>>
+    </div>
   
   
   
@@ -157,9 +157,10 @@
 <button id="ABbtn" class="btn btn-primary " type="submit">Soumettre le formulaire </button>
 	</div>
 	
+	</form>
 	</div>
 
-</form>
+
 
 
 <!-- end of col-md-6 -->

@@ -14,7 +14,9 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" type="text/css" href="css/css_presentationprojet.css" th:href="@{/css/css_presentationprojet.css}">
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/css_presentationprojet.css}">
+
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
@@ -74,36 +76,28 @@
       <input class="form-control" id="Descriptif"  rows="3" disabled th:value="*{descriptif}"></input>
     </div>
     
- <div class="form-row photos" > 
-    <div class="form-group col-md-auto"></div>
- </div>
-
+ 
 <!--   <div class="form-group col-md-auto"> -->
 <!--       <label for="inputTSAB"><b>Inspirations | Benchmarking - Parangonnage</b></label> -->
 <!--        <input class="form-control" id="benchmark"   disabled th:value="*{benchmark}"></input> -->
       
 <!--     </div> -->
     
-    <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Nombre de vote pour le projet</b></label>
-       <input class="form-control" id="votepos"  disabled th:value="*{votepos}"></input>
-          </div>
+<!--     <div class="form-group col-md-auto"> -->
+<!--       <label for="inputTSAB"><b>Nombre de vote pour le projet</b></label> -->
+<!--        <input class="form-control" id="votepos"  disabled th:value="*{votepos}"></input> -->
+<!--           </div> -->
  
-    <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Nombre de vote contre le projet</b></label>
-       <input class="form-control" id="voteneg"  disabled th:value="*{voteneg}"></input>
-          </div>
+<!--     <div class="form-group col-md-auto"> -->
+<!--       <label for="inputTSAB"><b>Nombre de vote contre le projet</b></label> -->
+<!--        <input class="form-control" id="voteneg"  disabled th:value="*{voteneg}"></input> -->
+<!--           </div> -->
   
-<!-- <div class="form-group col-md-auto"> -->
-<!-- <label for="fileupload"><b>Choisissez une photo à ajouter</b></label> -->
-<!-- <input type="file" name="fileupload" value="fileupload" id="fileupload2" required> -->
-<!-- </div> -->
-
-<!-- <div class="form-group col-md-auto"> -->
-<!-- <label for="fileupload"><b>Choisissez une photo à ajouter</b></label> -->
-<!-- <input type="file" name="fileupload" value="fileupload" id="fileupload2" required> -->
-<!-- </div> -->
-
+<div class="form-row photos" > 
+    <div class="form-group col-md-auto">
+	<img th:src="*{photopath}" alt="Photo lieu du projet" id="pouce" class="img-thumbnail">
+	</div>
+  </div> 
 
 </form>
 
@@ -248,31 +242,31 @@
 
 <div id="postcommentvote" class="container-fluid" >
 <div class="row">
-<div class="col-md-3">
+<div class="col-md-6">
 
-<button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()">
-<span id="voteyes"class="far fa-check-circle fa-6x"></span></button>
-<a class="votepro"><b>Vote favorable au projet</b></a><p class="idstyle" id="àvoté"></p>
-</div>
+<!-- <button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()"> -->
+<!-- <span id="voteyes"class="far fa-check-circle fa-6x"></span></button> -->
+<!-- <a class="votepro"><b>Vote favorable au projet</b></a><p class="idstyle" id="àvoté"></p> -->
+<!-- </div> -->
 
-<div class="col-md-3">
-<button class="btn-no" type="submit" onclick="contrevote()" onsubmit="disable()">
-<span id="voteno"class="far fa-times-circle fa-6x"></span> </button>
-<a class="votepro"><b>Vote défavorable au projet</b></a> <p class="idstyle1" id="contrevote"></p>
-</div>
+<!-- <div class="col-md-3"> -->
+<!-- <button class="btn-no" type="submit" onclick="contrevote()" onsubmit="disable()"> -->
+<!-- <span id="voteno"class="far fa-times-circle fa-6x"></span> </button> -->
+<!-- <a class="votepro"><b>Vote défavorable au projet</b></a> <p class="idstyle1" id="contrevote"></p> -->
+<!-- </div> -->
 
 
-<script> function voted() { 
-	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
+<!-- <script> function voted() {  -->
+<!--  // 	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
 	
-	function contrevote() {
-	document.getElementById("contrevote").innerHTML = "Votre avis à été pris en compte";
-	}</script>
+// 	function contrevote() {
+// 	document.getElementById("contrevote").innerHTML = "Votre avis à été pris en compte";
+<!-- 	}</script> -->
 
-<script> function disable() { var btn = document.getElementById('btn-yes');
-btn.disabled = true;}</script>
+<!-- <script> function disable() { var btn = document.getElementById('btn-yes'); -->
+<!-- btn.disabled = true;}</script> -->
 
-
+</div>
 
 <div class="col-md-6">
 <form th:object="${projet}" th:action="'/goto_projet_presentation/'+ ${projet.id} +'/formap_post_comment'" method="POST">
@@ -289,17 +283,18 @@ btn.disabled = true;}</script>
 
 <h4 id="hcom"> Commentaires</h4>
 <hr class="pg-titl-bdr-btm">
-
+<br>
+<div id="afficheavis" class="container-fluid" >
 
 	<div class="media border -3" th:each="comment: ${comments}">
 	<img src="/pictures/iconfinder_JD-18_2246807.png" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
 	<div class="media-body">
-	<h4><span th:utext='${comment.users.pseudo}'></span><small><i>Posted on <span th:utext="${comment.date}"></span></i></small></h4>
+	<h4><span th:utext='${comment.users.pseudo}'></span><small><i id="w">Posted on <span th:utext="${comment.date}"></span></i></small></h4>
     <p th:utext='${comment.text}'></p>
 	</div>
 	</div>
 
-
+</div>
 
 
 

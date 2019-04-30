@@ -18,8 +18,9 @@ font-family:verdana; text-align:justify; border:2px inset darkcyan; margin-botto
 
 .form-row{padding-left: 1.5%;}
 
-#map{height:50em; width: 50em;}
-.footer-gap{padding-top: 200px;}
+#map{height:60em; width: 50em;}
+#pouce{border:1px solid purple; max-width:550px; max-height:600px; }
+#hcom{margin-top:50px;}
 
 ul.breadcrumb {font-size:0.9em; background:none;font-family:verdana; letter-spacing: 1px; color: #400040;}
 ul.breadcrumb li+li:before {
@@ -31,3 +32,5 @@ text-decoration: none !important;
   
   #bc{text-decoration:none !important; color:#400040;}
 .active:hover{color: #28b57c;}
+
+.footer-gap{padding-top: 200px;}

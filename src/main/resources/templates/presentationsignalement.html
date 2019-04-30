@@ -9,12 +9,14 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-	crossorigin="anonymous">
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" -->
+<!-- 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" -->
+<!-- 	crossorigin="anonymous"> -->
 
-<link rel="stylesheet" type="text/css" href="css/css_presentationsignalement.css" th:href="@{/css/css_presentationsignalement.css}">
+
+<link rel="stylesheet" th:href="@{/css/css_presentationsignalement.css}">
+
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
@@ -74,25 +76,27 @@
       <input class="form-control" id="Descriptif"  disabled th:value="*{descriptif}">
     </div>
  
-  <div class="form-row photos" > 
-    <div class="form-group col-md-auto"></div>
- </div>
  
  <div class="form-group col-md-auto">
       <label for="inputTSAB"><b>Priorité </b></label>
       <input type="text" class="form-control" id="priority" disabled th:value="*{priority}"></input>
     </div>
   
-  <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Nombre de vote d'appui au signalement </b></label>
-       <input class="form-control" id="votepos"  disabled th:value="*{compteurpopularite}"></input>
-          </div>
+<!--   <div class="form-group col-md-auto"> -->
+<!--       <label for="inputTSAB"><b>Nombre de vote d'appui au signalement </b></label> -->
+<!--        <input class="form-control" id="votepos"  disabled th:value="*{compteurpopularite}"></input> -->
+<!--           </div> -->
  
+<!--     <div class="form-group col-md-auto"> -->
+<!--       <label for="inputTSAB"><b>Nombre de personnes ayant constaté le traitement du signalement</b></label> -->
+<!--        <input class="form-control" id="voteneg"  disabled th:value="*{compteurconstat}"></input> -->
+<!--           </div> -->
+          
+   <div class="form-row photos" > 
     <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Nombre de personnes ayant constaté le traitement du signalement</b></label>
-       <input class="form-control" id="voteneg"  disabled th:value="*{compteurconstat}"></input>
-          </div>
-  
+	<img th:src="*{photopath}" alt="Image signalement" id="pouce" class="img-thumbnail">
+	</div>
+  </div>
 
 </form>
 
@@ -238,28 +242,30 @@
 
 <div id="postcommentvote" class="container-fluid" >
 <div class="row">
-<div class="col-md-3">
+<div class="col-md-6">
 
-<button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()"> 
-<span id="voteyes"class="fas fa-plus-circle fa-5x"></span></button>
-<a class="votepro">J'ai constaté le même problème</a><p class="idstyle" id="àvoté"></p> 
-</div>
+<!-- <button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()">  -->
+<!-- <span id="voteyes"class="fas fa-plus-circle fa-5x"></span></button> -->
+<!-- <a class="votepro">J'ai constaté le même problème</a><p class="idstyle" id="àvoté"></p>  -->
+<!-- </div> -->
 
-<div class="col-md-3">
-<button class="btn-no" type="submit" onclick="constat()" onsubmit="disable()"> 
-<i id="voteno"class="far fa-check-circle fa-5x"></i></button>
-<a class="votepro">J'ai constaté le traitement du signalement</a><p class="idstyle1" id="constat"></p>  
-</div>
+<!-- <div class="col-md-3"> -->
+<!-- <button class="btn-no" type="submit" onclick="constat()" onsubmit="disable()">  -->
+<!-- <i id="voteno"class="far fa-check-circle fa-5x"></i></button> -->
+<!-- <a class="votepro">J'ai constaté le traitement du signalement</a><p class="idstyle1" id="constat"></p>   -->
+<!-- </div> -->
 
-<script> function voted() { 
-	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
+<!-- <script> function voted() {  -->
+<!--// 	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
 	
-	function constat() {
-	document.getElementById("constat").innerHTML = "Votre constat à été pris en compte";
-	}</script>
+// 	function constat() {
+// 	document.getElementById("constat").innerHTML = "Votre constat à été pris en compte";
+<!-- 	}</script> -->
 	
-	<script> function disable() { var btn = document.getElementById('btn-yes');
-btn.disabled = true;}</script>
+<!-- 	<script> function disable() { var btn = document.getElementById('btn-yes'); -->
+<!-- btn.disabled = true;}</script> -->
+
+</div>
 
 <div class="col-md-6">
 <form th:object="${signalement}" th:action="'/goto_signalement_presentation/'+ ${signalement.id} +'/formap_post_comment'" method="POST">
@@ -282,7 +288,7 @@ btn.disabled = true;}</script>
 	<div class="media border -3" th:each="comment: ${comments}">
 	<img src="/pictures/iconfinder_JD-18_2246807.png" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
 	<div class="media-body">
-	<h4><span th:utext='${comment.users.pseudo}'></span><small><i>Posted on <span th:utext="${comment.date}"></span></i></small></h4>
+	<h4><span th:utext='${comment.users.pseudo}'></span><small><i id="w">Posted on <span th:utext="${comment.date}"></span></i></small></h4>
     <p th:utext='${comment.text}'></p>
 	</div>
 	</div>
@@ -295,4 +301,5 @@ btn.disabled = true;}</script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDXFTORjfXpPSkt7ZEuotSXE4UtvZk0T8&callback=initMap"
 async defer></script>
- </html>
+
+</html>
