@@ -35,8 +35,8 @@ padding-top: 5px; border: 2px inset darkcyan; height: 40px;}
 .form-row{padding-left: 1.5%;}
 
 #map{height:50em; width: 50em;}
-
-#hcom{margin-top:70px;}
+#pouce{border:1px solid purple; max-width:550px; max-height:600px; }
+#hcom{margin-top:50px;}
 
 .pg-titl-bdr-btm {
 	float:left;
@@ -79,7 +79,7 @@ font-family: verdana; color:#DC143C;
 .votepro{color:#400040;
 font-family: verdana; }
 #w{margin-left:10px; font-size: 0.8em;}
-#postcommentvote{height: 250px; margin-top:70px;}
+#postcommentvote{height: 250px; margin-top:20px;}
 #afficheavis{margin-top:70px;}
 .footer-gap{padding-top: 200px;}
 

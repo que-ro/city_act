@@ -82,17 +82,16 @@
       <input class="form-control" id="Descriptif"  rows="3" disabled th:value="*{descriptif}"></input>
     </div>
     
-  <div class="form-row photos" > 
     <div class="form-group col-md-auto">
-	<img th:src="*{photopath}" alt="" class="img-thumbnail">
-	</div>
-  </div> 
- 
-  <div class="form-group col-md-auto">
       <label for="inputTSAB"><b>Idées d'améliorations?</b></label>
        <input class="form-control" id="Idées d'améliorations"  rows="3" disabled th:value="*{ideeamelioration}"></input>
-      
-    </div>
+          </div>
+          
+          <div class="form-row photos" > 
+    <div class="form-group col-md-auto">
+	<img th:object="${ambientpower}" th:src="*{photopath}" alt="Photo du lieu" id="pouce" class="img-thumbnail">
+	</div>
+  </div> 
  
   <!-- <div class="form-group offset-md-9 col-md-3"> -->
 <!-- <button id="ABbtn" class="btn btn-primary " type="submit">Projet suivant </button> -->
@@ -242,20 +241,19 @@
 
 <div id="postcommentvote" class="container-fluid">
 <div class="row">
-<div class="col-md-6">
+<div  class="col-md-6">
 
+<!-- <button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()"><span id="voteyes"class="fas fa-plus-circle fa-6x"></span></button> -->
+<!-- <a class="votepro"> <b>Vote d'appui à la déclaration</b></a> <p class="idstyle" id="àvoté"></p> -->
 
-<button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()"><span id="voteyes"class="fas fa-plus-circle fa-6x"></span></button>
-<a class="votepro"> <b>Vote d'appui à la déclaration</b></a> <p class="idstyle" id="àvoté"></p>
+<!-- </div> -->
 
-</div>
-
-<script> function voted() { 
-		document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";} </script>
+<!-- <script> function voted() {  -->
+<!-- 		document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";} </script> -->
 		
-<script> function disable() { var btn = document.getElementById('btn-yes');
-btn.disabled = true;}</script>
-
+<!-- <script> function disable() { var btn = document.getElementById('btn-yes'); -->
+<!-- btn.disabled = true;}</script> -->
+</div>
 
 <div class="col-md-6">
 <form th:object="${ambientpower}" th:action="'/goto_ambienpower_presentation/'+ ${ambientpower.id} +'/formap_post_comment'" method="POST">
@@ -270,11 +268,10 @@ btn.disabled = true;}</script>
 </div> </div>
 
 
-<h5> Commentaires</h5>
+<h4 id="hcom"> Commentaires</h4>
 <hr class="pg-titl-bdr-btm">
 <br>
 <div id="afficheavis" class="container-fluid" >
-<!-- <form th:object="${idComment}"> <a > et afficher le pseduo de l'auteur, et la date du commentaire</a> style="border: 2px solid black" -->
 
 
 	<div class="media border -3" th:each="comment: ${comments}">

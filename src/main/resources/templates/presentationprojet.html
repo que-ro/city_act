@@ -74,29 +74,26 @@
       <input class="form-control" id="Descriptif"  rows="3" disabled th:value="*{descriptif}"></input>
     </div>
     
- <div class="form-row photos" > 
-    <div class="form-group col-md-auto"></div>
- </div>
-
+ 
 <!--   <div class="form-group col-md-auto"> -->
 <!--       <label for="inputTSAB"><b>Inspirations | Benchmarking - Parangonnage</b></label> -->
 <!--        <input class="form-control" id="benchmark"   disabled th:value="*{benchmark}"></input> -->
       
 <!--     </div> -->
     
-    <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Nombre de vote pour le projet</b></label>
-       <input class="form-control" id="votepos"  disabled th:value="*{votepos}"></input>
-          </div>
+<!--     <div class="form-group col-md-auto"> -->
+<!--       <label for="inputTSAB"><b>Nombre de vote pour le projet</b></label> -->
+<!--        <input class="form-control" id="votepos"  disabled th:value="*{votepos}"></input> -->
+<!--           </div> -->
  
-    <div class="form-group col-md-auto">
-      <label for="inputTSAB"><b>Nombre de vote contre le projet</b></label>
-       <input class="form-control" id="voteneg"  disabled th:value="*{voteneg}"></input>
-          </div>
+<!--     <div class="form-group col-md-auto"> -->
+<!--       <label for="inputTSAB"><b>Nombre de vote contre le projet</b></label> -->
+<!--        <input class="form-control" id="voteneg"  disabled th:value="*{voteneg}"></input> -->
+<!--           </div> -->
   
 <div class="form-row photos" > 
     <div class="form-group col-md-auto">
-	<img th:src="*{photopath}" alt="" class="img-thumbnail">
+	<img th:src="*{photopath}" alt="Photo lieu du projet" id="pouce" class="img-thumbnail">
 	</div>
   </div> 
 
@@ -243,31 +240,31 @@
 
 <div id="postcommentvote" class="container-fluid" >
 <div class="row">
-<div class="col-md-3">
+<div class="col-md-6">
 
-<button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()">
-<span id="voteyes"class="far fa-check-circle fa-6x"></span></button>
-<a class="votepro"><b>Vote favorable au projet</b></a><p class="idstyle" id="àvoté"></p>
-</div>
+<!-- <button class="btn-yes" type="submit" onclick="voted()" onsubmit="disable()"> -->
+<!-- <span id="voteyes"class="far fa-check-circle fa-6x"></span></button> -->
+<!-- <a class="votepro"><b>Vote favorable au projet</b></a><p class="idstyle" id="àvoté"></p> -->
+<!-- </div> -->
 
-<div class="col-md-3">
-<button class="btn-no" type="submit" onclick="contrevote()" onsubmit="disable()">
-<span id="voteno"class="far fa-times-circle fa-6x"></span> </button>
-<a class="votepro"><b>Vote défavorable au projet</b></a> <p class="idstyle1" id="contrevote"></p>
-</div>
+<!-- <div class="col-md-3"> -->
+<!-- <button class="btn-no" type="submit" onclick="contrevote()" onsubmit="disable()"> -->
+<!-- <span id="voteno"class="far fa-times-circle fa-6x"></span> </button> -->
+<!-- <a class="votepro"><b>Vote défavorable au projet</b></a> <p class="idstyle1" id="contrevote"></p> -->
+<!-- </div> -->
 
 
-<script> function voted() { 
-	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
+<!-- <script> function voted() {  -->
+<!--  // 	document.getElementById("àvoté").innerHTML = "Votre vote à été pris en compte";}
 	
-	function contrevote() {
-	document.getElementById("contrevote").innerHTML = "Votre avis à été pris en compte";
-	}</script>
+// 	function contrevote() {
+// 	document.getElementById("contrevote").innerHTML = "Votre avis à été pris en compte";
+<!-- 	}</script> -->
 
-<script> function disable() { var btn = document.getElementById('btn-yes');
-btn.disabled = true;}</script>
+<!-- <script> function disable() { var btn = document.getElementById('btn-yes'); -->
+<!-- btn.disabled = true;}</script> -->
 
-
+</div>
 
 <div class="col-md-6">
 <form th:object="${projet}" th:action="'/goto_projet_presentation/'+ ${projet.id} +'/formap_post_comment'" method="POST">

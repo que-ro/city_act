@@ -185,6 +185,11 @@ public class ControllerTest {
 		return "signup_nv";
 	}
 
+	@RequestMapping("/anonono")
+	public String anonono(Model model)
+	{
+		return "a_nonono";
+}
 
 	@RequestMapping("/filterconnection")
 	public String filterconnection(Model model)
