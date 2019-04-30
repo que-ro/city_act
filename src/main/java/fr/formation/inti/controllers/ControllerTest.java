@@ -42,6 +42,12 @@ public class ControllerTest {
 		return "presentationprojet";
 	}
 	
+	@RequestMapping("/anonono")
+	public String anonono(Model model)
+	{
+		return "a_nonono";
+	}
+	
 
 	@RequestMapping("/presentationambientpower")
 	public String presentationambientpower(Model model, HttpServletRequest request)
