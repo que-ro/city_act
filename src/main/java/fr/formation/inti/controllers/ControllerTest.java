@@ -104,6 +104,7 @@ public class ControllerTest {
 	@RequestMapping("/signup_nv")
 	public String signup_nv(Model model)
 	{	
+		model.addAttribute("users", new Users());
 		return "signup_nv";
 	}
 

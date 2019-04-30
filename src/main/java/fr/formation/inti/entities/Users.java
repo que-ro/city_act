@@ -42,7 +42,7 @@ public class Users implements java.io.Serializable {
     @Size(min=8, message="Votre mot de passe doit contenir au moins 8 caractères")
 	private String password;
 	@NotNull
-	@Size(min=1, message="Veuillez indiquer une adresse")
+	@Size(min=1, message="Veuillez indiquer un numéro et une rue")
 	private String street;
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer une ville")
@@ -55,8 +55,8 @@ public class Users implements java.io.Serializable {
 	@NotNull(message = "Veuillez indiquer une date de naissance")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthdate;
-	@Size(min=1, message="Veuillez indiquer un prénom")
 	@NotNull
+	@Size(min=1, message="Veuillez indiquer un prénom")
 	private String firstname;
 	@NotNull
 	@Size(min=1, message="Veuillez indiquer un nom de famille")

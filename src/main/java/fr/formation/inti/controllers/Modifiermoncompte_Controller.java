@@ -37,7 +37,7 @@ public class Modifiermoncompte_Controller {
 		{
 			if(!user.getPassword().equals(repeated_pwd))
 			{
-				model.addAttribute("error_repeated_pwd_modifcompte", "Le mot de passe de confirmation ne correspond pas au mot de passe");
+				model.addAttribute("error_repeated_pwd_modifcompte", "Vos mots de passe sont différents");
 				return "modifiermoncompte";
 			}
 			else

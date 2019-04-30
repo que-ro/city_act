@@ -2,7 +2,7 @@
 <!DOCTYPE html >
 <html class="ink">
 <head>
-<title>Sign Up | Inscription </title>
+<title>Sign Up | Inscription</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,123 +36,153 @@
 <br>
 <br>
 
-<div id="container_singup" class="container pb-3" style="border: inset 2px darkcyan; margin-top:5em; margin-bottom:14em;">
+<div id="container_singup" class="container pb-3"
+	style="border: inset 2px darkcyan; margin-top: 5em; margin-bottom: 14em;">
 	<div class="row">
 		<div class="col-md-12  mt-3">
 			<div class="row">
-			<div class="col-md-7">
-			<form id="form_register" action="/register_method" method="POST">
-			<div th:if="${errors != null}">
-				<div class="col-md-12 text-center my-3" th:each="error : ${errors}" style="border: 1px solid red; color:red"><div th:utext="${error}"></div></div>
-			</div>
-			<div class="row ml-2">	
-   				<div class="col-md-4 mb-3 ">
-      				<label for="validationCustom01"><b>Prénom</b></label>
-      				<input type="text" class="form-control" name="firstname" id="validationCustom01" placeholder="Prénom" required>
-    			</div>
-    			<div class="col-md-4 mb-3  ">
-      				<label for="validationCustom02"><b>Nom</b></label>
-      				<input type="text" class="form-control" name="lastname" id="validationCustom02" placeholder="Nom de famille" required>
+				<div class="col-md-7">
+					<form id="form_register" th:object="${users}"
+						action="/register_method" method="POST">
+						<div th:if="${errors != null}">
+							<div class="col-md-12 text-center my-3"
+								th:each="error : ${errors}"
+								style="border: 1px solid red; color: red">
+								<div th:utext="${error}"></div>
+							</div>
+						</div>
+						<div class="row ml-2">
+							<div class="col-md-4 mb-3 ">
+								<label for="validationCustom01"><b>Prénom</b></label> <input
+									type="text" class="form-control" name="firstname"
+									th:field="*{firstname}" id="validationCustom01"
+									placeholder="Prénom" required>
+									<span th:if="${#fields.hasErrors('firstname')}"
+									th:errors="*{firstname}">NameError</span>
+							</div>
+							<div class="col-md-4 mb-3  ">
+								<label for="validationCustom02"><b>Nom</b></label> <input
+									type="text" class="form-control" name="lastname"
+									th:field="*{lastname}" id="validationCustom02"
+									placeholder="Nom de famille" required>
+									<span th:if="${#fields.hasErrors('lastname')}"
+									th:errors="*{lastname}">NameError</span>
+							</div>
+							<div class="col-md-4 mb-3">
+								<label for="validationCustom03"><b>Pseudo</b></label> <input
+									type="text" class="form-control" name="pseudo"
+									th:field="*{pseudo}" id="validationCustom03"
+									placeholder="Pseudo" required>
+									<span th:if="${#fields.hasErrors('pseudo')}"
+									th:errors="*{pseudo}">NameError</span>
+							</div>
+						</div>
+						<div class="row ml-2">
+							<div class="col-md-6  mb-3 ">
+								<label for="validationCustomEmail"><b>Email</b></label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="inputGroupPrepend">@</span>
+									</div>
+									<input type="email" class="form-control" name="mail"
+										th:field="*{mail}" id="validationCustomEmail"
+										placeholder="Email" aria-describedby="inputGroupPrepend"
+										required>
+								</div>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="validationCustom04"><b>Date de naissance</b></label>
+								<input type="date" class="form-control" th:field="*{birthdate}"
+									name="birthdate" id="validationCustom04"
+									placeholder="Date de naissance" required>
+									<span th:if="${#fields.hasErrors('birthdate')}"
+									th:errors="*{birthdate}">NameError</span>
+							</div>
+						</div>
+						<div class="row ml-2">
+							<div class="col-md-6  mb-3">
+								<label for="validationCustom05"><b>Mot de passe</b></label> 
+								<input
+									type="password" class="form-control"
+									id="validationCustom05" name="password" th:field="*{password}"
+									placeholder="Mot de passe" required>
+								<span th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}">NameError</span>
 
-       			</div>
-       			<div class="col-md-4 mb-3">
-      				<label for="validationCustom03"><b>Pseudo</b></label>
-      				<input type="text" class="form-control" name="pseudo" id="validationCustom03" placeholder="Pseudo" required>
-    			</div>
-       		</div>
-       		<div class="row ml-2">	
-       		    <div class="col-md-6  mb-3 ">
-      				<label for="validationCustomEmail"><b>Email</b></label>
-      				<div class="input-group">
-        				<div class="input-group-prepend">
-          					<span class="input-group-text" id="inputGroupPrepend">@</span>
-       					</div>
-        				<input type="email" class="form-control" name="mail" id="validationCustomEmail" placeholder="Email" aria-describedby="inputGroupPrepend" required>        
-      				</div>
-    			</div>
-    			<div class="col-md-6 mb-3">
-					<label for="validationCustom04"><b>Date de naissance</b></label>
-					<input type="date" class="form-control" name="birthdate" id="validationCustom04" placeholder="Date de naissance" required>
+							</div>
+							<div class="col-md-6  mb-3">
+								<label for="validationCustom06"><b>Répéter le mot de
+										passe</b></label> 
+										<input type="password" class="form-control"
+									name="repeated_pwd"
+									id="validationCustom06" placeholder="Répéter le mot de passe"
+									required>
+							</div>
+						</div>
+						<div class="row ml-2">
+							<div class="col-md-6 mb-3  ">
+								<label for="validationCustom07"><b>Numéro et Rue</b></label> <input
+									type="text" class="form-control" name="street"
+									id="validationCustom07" placeholder="Adresse" th:field="*{street}"  required>
+									<span th:if="${#fields.hasErrors('street')}"
+									th:errors="*{street}">NameError</span>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="validationCustom08"><b>Ville</b></label> <input
+									type="text" class="form-control" name="city" 
+									id="validationCustom08" placeholder="Ville" th:field="*{city}" required>
+									<span th:if="${#fields.hasErrors('city')}"
+									th:errors="*{city}">NameError</span>
+							</div>
+						</div>
+						<div class="row ml-2">
+							<div class="col-md-6 mb-3">
+								<label for="validationCustom10"><b>Code postal</b></label> <input
+									type="text" class="form-control" name="zipcode"
+									 id="validationCustom10" placeholder="CP" th:field="*{zipcode}"
+									required>
+									<span th:if="${#fields.hasErrors('zipcode')}"
+									th:errors="*{zipcode}">NameError</span>
+							</div>
+							<div class="col-md-6 mb-4">
+								<label for="validationCustom09"><b>Pays</b></label> <input
+									type="text" class="form-control" name="country" 
+									id="validationCustom09"
+									placeholder="Pays" th:field="*{country}" required>
+									<span th:if="${#fields.hasErrors('country')}"
+									th:errors="*{country}">NameError</span>
+									
+							</div>
+						</div>
+						<div class="row ml-2">
+							<div class="col-md-12 mb-2">
+								<div class="form-check">
+									<input class="form-check-input" name="terms_and_conditions"
+										type="checkbox" value="" id="invalidCheck" required> <label
+										class="form-check-label" for="invalidCheck"> Accepter
+										les termes et conditions </label>
+								</div>
+							</div>
+						</div>
+						<div class="row ml-2">
+							<div class="col-md-12">
+								<button class="btn btn-primary offset-md-3 col-md-6"
+									type="submit">Soumettre le formulaire</button>
+								<br>
+							</div>
+						</div>
+					</form>
+				</div>
 
-    			</div>
-    		</div>
-    		<div class="row ml-2">
-       			<div class="col-md-6  mb-3">
- 					<label for="validationCustom05"><b>Mot de passe</b></label>
-    				<input type="password" class="form-control" name="pwd" id="validationCustom05"placeholder="Mot de passe" required>
-      			</div>
-      			<div class="col-md-6  mb-3">
- 					<label for="validationCustom06"><b>Répéter le mot de passe</b></label>
-    				<input type="password" class="form-control" name="repeated_pwd" id="validationCustom06" placeholder="Répéter le mot de passe" required>
-    			</div>
-       		</div>
-       		<div class="row ml-2">
-       			<div class="col-md-6 mb-3  ">
-      				<label for="validationCustom07"><b>Adresse</b></label>
-      				<input type="text" class="form-control" name="adress" id="validationCustom07" placeholder="Adresse" required>
-   				</div>
-   				<div class="col-md-6 mb-3">
-      				<label for="validationCustom08"><b>Ville</b></label>
-      				<input type="text" class="form-control" name="city" id="validationCustom08" placeholder="Ville" required>
-   				</div>
-       		</div>
-       		<div class="row ml-2">
-       			<div class="col-md-6 mb-3">
-      				<label for="validationCustom10"><b>Code postal</b></label>
-      				<input type="text" class="form-control" name="postal_code" id="validationCustom10" placeholder="CP" required>
-    			</div>
-    			<div class="col-md-6 mb-4">
-      				<label for="validationCustom09"><b>Pays</b></label>
-      				<input type="text" class="form-control" name="country" id="validationCustom09" placeholder="Pays" required>
-    			</div>
-       		</div>
-       		<div class="row ml-2">
-       			<div class="col-md-12 mb-2">
-    				<div class="form-check">
-      					<input class="form-check-input" name="terms_and_conditions" type="checkbox" value="" id="invalidCheck" required>
-      					<label class="form-check-label" for="invalidCheck">
-        					Accepter les termes et conditions
-      					</label>
-    				</div>
-  				</div>
-  			</div>
-  			<div class="row ml-2">
-  				<div class="col-md-12">
-  					<button class="btn btn-primary offset-md-3 col-md-6" type="submit">Soumettre le formulaire </button>
-  					<br>
-       		</div>
-       		</div>
-       		</form>
-       		</div>
-       		
-       			
-       		
-       		<div class="col-md-5"> <br> 
-   				<img class="img-fluid" src="/pictures/clipboard.jpg"/>
-			</div>
+
+
+				<div class="col-md-5">
+					<br> <img class="img-fluid" src="/pictures/clipboard.jpg" />
+				</div>
 			</div>
 		</div>
-    </div>
-
+	</div>
 </div>
 
 
 <div th:insert="~{footer::footer}"></div>
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
