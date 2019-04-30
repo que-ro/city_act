@@ -94,16 +94,11 @@
        <input class="form-control" id="voteneg"  disabled th:value="*{voteneg}"></input>
           </div>
   
-<!-- <div class="form-group col-md-auto"> -->
-<!-- <label for="fileupload"><b>Choisissez une photo à ajouter</b></label> -->
-<!-- <input type="file" name="fileupload" value="fileupload" id="fileupload2" required> -->
-<!-- </div> -->
-
-<!-- <div class="form-group col-md-auto"> -->
-<!-- <label for="fileupload"><b>Choisissez une photo à ajouter</b></label> -->
-<!-- <input type="file" name="fileupload" value="fileupload" id="fileupload2" required> -->
-<!-- </div> -->
-
+<div class="form-row photos" > 
+    <div class="form-group col-md-auto">
+	<img th:src="*{photopath}" alt="" class="img-thumbnail">
+	</div>
+  </div> 
 
 </form>
 
