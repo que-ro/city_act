@@ -176,6 +176,12 @@ public class ControllerTest {
 		return "Qui_sommes_nous";
 	}
 	
+	@RequestMapping("/registration_success")
+	public String registration_success(Model model)
+	{	
+		return "registration_success";
+	}
+	
 	@RequestMapping("/signup")
 	public String signup(Model model)
 	{	
@@ -186,6 +192,7 @@ public class ControllerTest {
 	@RequestMapping("/signup_nv")
 	public String signup_nv(Model model)
 	{	
+		model.addAttribute("users", new Users());
 		return "signup_nv";
 	}
 
