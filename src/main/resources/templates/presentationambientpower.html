@@ -14,7 +14,8 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" type="text/css" href="css/css_presentationambientpower.css">
+<link rel="stylesheet"  th:href="@{/css/css_presentationambientpower.css}">
+
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
@@ -277,7 +278,7 @@ btn.disabled = true;}</script>
 	<div class="media border -3" th:each="comment: ${comments}">
 	<img src="/pictures/iconfinder_JD-18_2246807.png" alt="John Doe" class="align-self-start mr-3  rounded-circle" style="width:60px;">
 	<div class="media-body">
-	<h4><span th:utext='${comment.users.pseudo}'></span><small><i>Posted on <span th:utext="${comment.date}"></span></i></small></h4>
+	<h4><span th:utext='${comment.users.pseudo}'></span><small><i id= "w"> Posted on <span th:utext="${comment.date}"></span></i></small></h4>
     <p th:utext='${comment.text}'></p>
 	</div>
 	</div>

@@ -78,7 +78,7 @@ font-family: verdana; color:#DC143C;
 
 .votepro{color:#400040;
 font-family: verdana; }
-
+#w{margin-left:10px; font-size: 0.8em;}
 #postcommentvote{height: 250px; margin-top:70px;}
 #afficheavis{margin-top:70px;}
 .footer-gap{padding-top: 200px;}
