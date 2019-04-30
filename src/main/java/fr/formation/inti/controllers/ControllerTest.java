@@ -27,6 +27,12 @@ import fr.formation.inti.repositories.IUsersDao;
 @Controller
 public class ControllerTest {
 	
+	@RequestMapping("/testflip")
+	public String testflip(Model model)
+	{	
+		return "testflip";
+	}
+	
 	@Autowired
 	IUrbanPlanningDao dao_up;
 	@RequestMapping("/presentationprojet")
@@ -36,16 +42,14 @@ public class ControllerTest {
 		return "presentationprojet";
 	}
 	
-//	@Autowired
-//	IAmbientPowerDao dao_ap;
+
 	@RequestMapping("/presentationambientpower")
 	public String presentationambientpower(Model model, HttpServletRequest request)
 	{	
-//		AmbientPower ap = dao_ap.findByIdambientpower(32);
-//		System.out.println(" ///////////////////////////////");
-//		System.out.println(ap.getDatecreation());
+//		AmbientPower ap =(AmbientPower) request.getAttribute("idambientpower");
+//
 //		model.addAttribute("idambientpower", ap);
-		
+
 		return "presentationambientpower";
 	}
 	
@@ -58,12 +62,8 @@ public class ControllerTest {
 			return "presentationsignalement";
 	}
 	
-	@RequestMapping("/map_nv")
-	public String map_nv(Model model)
-	{	
-		return "map_nv";
-	}
 	
+
 	@RequestMapping("/mesprojetstest")
 	public String mesprojetstest(Model model)
 	{	
@@ -108,7 +108,7 @@ public class ControllerTest {
 	{	
 		return "forgottenpsd";
 	}
-
+	
 	
 	@RequestMapping("/mesalertes")
 	public String mesalertes(Model model)
@@ -160,7 +160,6 @@ public class ControllerTest {
 		model.addAttribute("comments", comments);
 		model.addAttribute("usr_projects", listAll);
 		model.addAttribute("users", usr);
-
 
 		return "monprofil";
 	}

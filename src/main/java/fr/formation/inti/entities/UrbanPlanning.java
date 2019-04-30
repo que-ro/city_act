@@ -1,5 +1,5 @@
 package fr.formation.inti.entities;
-// Generated 29 avr. 2019 09:45:24 by Hibernate Tools 5.1.10.Final
+
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class UrbanPlanning implements java.io.Serializable, IAllTypeEntities {
 
 	private int id;
+
 	@JsonIgnore
+
 	private Users users;
 	private String latitude;
 	private String longitude;

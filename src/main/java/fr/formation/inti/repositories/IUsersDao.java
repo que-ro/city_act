@@ -17,4 +17,6 @@ public interface IUsersDao extends Repository<Users, Integer> {
 	@Query("select count(u)>0 from Users u where u.mail = ?1")
 	public boolean existByMail(String mail);
 
+	public Users findUserByResetToken(String token);
+
 }

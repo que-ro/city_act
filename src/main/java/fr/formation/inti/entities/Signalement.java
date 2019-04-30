@@ -26,7 +26,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Signalement implements java.io.Serializable, IAllTypeEntities {
 
 	private int id;
+
 	@JsonIgnore
+
 	private Users users;
 	private String latitude;
 	private String longitude;

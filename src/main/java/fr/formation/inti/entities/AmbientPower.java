@@ -29,7 +29,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class AmbientPower implements java.io.Serializable, IAllTypeEntities {
 
 	private int id;
+
 	@JsonIgnore
+
 	private Users users;
 	@NotEmpty
 	private String latitude;

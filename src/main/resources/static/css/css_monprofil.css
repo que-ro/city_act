@@ -2,9 +2,17 @@
     padding-top: 100px;
 }
 
-#Monprofil{letter-spacing:1px;
-font-family:Verdana;}
 
+#Monprofil{letter-spacing:1px;
+font-family:Verdana; }
+
+.pg-titl-bdr-btm1{  
+	float:left;
+	width: 490px;
+    height: 2px;
+    background-color: #28b57c; 
+    margin-bottom:50px;}
+    
 form{ 
 color:#400040;
 left:27%;
@@ -12,18 +20,16 @@ top:15%;
 font-family:  Verdana,"arial black", "Poppins";
 }
 
-#Mesprojets{letter-spacing:1px;
+#Mesprojets{margin-top:50px;letter-spacing:1px;
 font-family:Verdana;
-margin-bottom:70px;}
-
-
-.form-gap{padding-top:100px;}
-
-.card-block {
-    min-height: 220px;
 }
 
-.row.proj{margin-left:1%}
+.pg-titl-bdr-btm{  
+	float:left;
+	width: 490px;
+    height: 2px;
+    background-color: #28b57c;}
+
 
 #mesprojetscont{overflow-x:auto;}
 
@@ -31,19 +37,19 @@ margin-bottom:70px;}
 font-family:Verdana;
 }
 
-#comms{overflow-x:auto;}
-
 .pg-titl-bdr-btm.2{
 	float:left;
-	width: 300px;
+	width: 490px;
     height: 2px;
     background-color: #28b57c; margin-bottom:70px; }
-    
-.pg-titl-bdr-btm{  
-	float:left;
-	width: 300px;
-    height: 2px;
-    background-color: #28b57c;}
+
+#comms{overflow-x:auto;}
+
+.card-block {
+    min-height: 220px;
+}
+
+.row.proj{margin-left:1%; font-family:verdana;}
 
 .footer-gap{padding-top: 70px;}
 .section{display:inline;}

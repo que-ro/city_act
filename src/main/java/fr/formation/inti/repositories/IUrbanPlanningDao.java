@@ -16,7 +16,7 @@ public interface IUrbanPlanningDao extends Repository<UrbanPlanning, Integer>  {
 	public void save(UrbanPlanning up);
 
 	public List<UrbanPlanning> findAll();
-	
+
 	@Query("SELECT max(up.id) FROM UrbanPlanning up")
 	Integer getMaxId();
 

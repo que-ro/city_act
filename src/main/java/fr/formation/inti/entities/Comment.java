@@ -1,12 +1,22 @@
 package fr.formation.inti.entities;
-// Generated 29 avr. 2019 09:45:24 by Hibernate Tools 5.1.10.Final
+
+
+// Generated 28 avr. 2019 12:04:06 by Hibernate Tools 5.1.10.Final
+
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+
 
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
+
+
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -47,6 +57,7 @@ public class Comment implements java.io.Serializable {
 	}
 
 	@Id
+
 	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "id_comment", unique = true, nullable = false)
