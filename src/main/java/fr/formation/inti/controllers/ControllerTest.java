@@ -42,8 +42,10 @@ public class ControllerTest {
 		return "test";
 	}
 	
-	@RequestMapping("/accueil")
-	public String accueil(Model model, HttpServletRequest request)
+
+	@RequestMapping({"/","/accueil"})
+	public String accueil(Model model)
+
 	{	
 		return "accueil";
 	}
@@ -91,6 +93,7 @@ public class ControllerTest {
 	@RequestMapping("/Qui_sommes_nous")
 	public String quisommesnous(Model model)
 	{	
+		model.addAttribute("titre", "example Spring Boot");
 		return "Qui_sommes_nous";
 	}
 	

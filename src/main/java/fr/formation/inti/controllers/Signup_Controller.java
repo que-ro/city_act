@@ -81,7 +81,7 @@ public class Signup_Controller {
 				usr.setStreet(street);
 				usr.setZipcode(Integer.parseInt(zipcode));
 				dao_usr.save(usr);
-				return "accueil";
+				return "registration_success";
 			}
 			
 		}
