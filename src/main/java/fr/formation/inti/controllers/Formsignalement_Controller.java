@@ -79,7 +79,7 @@ public class Formsignalement_Controller {
 		Users user = (Users) request.getSession().getAttribute("user");
 		signalement.setUsers(user);
 		dao_ap.save(signalement);
-		return "formsignalement";
+		return "redirect:/map";
 	}
 
 }

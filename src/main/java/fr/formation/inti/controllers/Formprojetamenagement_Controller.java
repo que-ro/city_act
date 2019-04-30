@@ -80,7 +80,7 @@ public class Formprojetamenagement_Controller {
 		urbanPlanning.setUsers(user);
 		dao_up.save(urbanPlanning);
 		
-		return "formprojets";
+		return "redirect:/map";
 	}
 
 }

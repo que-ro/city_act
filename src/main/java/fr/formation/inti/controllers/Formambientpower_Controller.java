@@ -81,7 +81,7 @@ public class Formambientpower_Controller {
 		Users user = (Users) request.getSession().getAttribute("user");
 		ambientPower.setUsers(user);
 		dao_ap.save(ambientPower);
-		return "formambientpower";
+		return "redirect:/map";
 	}
 
 
