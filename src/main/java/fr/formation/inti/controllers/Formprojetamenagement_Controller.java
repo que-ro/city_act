@@ -8,6 +8,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ import fr.formation.inti.repositories.IUrbanPlanningDao;
 @Controller
 public class Formprojetamenagement_Controller {
 	
-	private static String EXTERNAL_FOLDER = "C:/cityact_externalfolder/pictures/";
+	Logger logger = LoggerFactory.getLogger(Formprojetamenagement_Controller.class);
 	
 	@Autowired
 	IUrbanPlanningDao dao_up;
@@ -33,12 +35,14 @@ public class Formprojetamenagement_Controller {
 	@RequestMapping(value = "/projetamenagementform_method", method = RequestMethod.POST)
 	public String projetamenagementform_method(@RequestParam("picture") MultipartFile picture, HttpServletRequest request, Model model, @ModelAttribute @Valid UrbanPlanning urbanPlanning, BindingResult bindingResult) throws IOException
 	{	
+		logger.info("fr.formation.inti.controllers.Formprojetamenagement_Controller.java - method projetamenagementform_method");
 		if(bindingResult.hasErrors())
 		{
 			return "formurbanPlanning";
 		}
 		urbanPlanning.setDatecreation(new Date());
 		Integer maxId = dao_up.getMaxId();
+		logger.info("fr.formation.inti.controllers.Formambientpower_Controller.java - method projetamenagementform_method : max Id of urban planning : "+maxId);
 		if(maxId != null)
 		{
 			//En base de donnée un trigger mets un 1 devant les projets ambient power à des fins de reconnaissance
@@ -54,18 +58,12 @@ public class Formprojetamenagement_Controller {
 		//Maintenant on enregistre l'image dans C/ext_folder/pictures en prenant le nom origin du fichier avec l'id du projet
 		//On enregistre ensuite le path de l'image dans l'objet urbanPlanning
 		if (picture.isEmpty()) {
+			logger.info("fr.formation.inti.controllers.Formambientpower_Controller.java - method projetamenagementform_method : picture file is undefined ");
             return "a_nonono";
         }
 		else
 		{
 			//Le 1 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
-//			String path = EXTERNAL_FOLDER + "1" + urbanPlanning.getId()+ "_" + picture.getOriginalFilename();
-//			File upl = new File(path);
-//		    upl.createNewFile();
-//		    FileOutputStream fout = new FileOutputStream(upl);
-//		    fout.write(picture.getBytes());
-//		    fout.close();
-//		    urbanPlanning.setPhotopath(path);
 		    
 		    String path ="src/main/resources/static/pictures/projects/" + "1" + urbanPlanning.getId()+ "_" + picture.getOriginalFilename();
 		    File upl = new File(path);
@@ -79,7 +77,7 @@ public class Formprojetamenagement_Controller {
 		Users user = (Users) request.getSession().getAttribute("user");
 		urbanPlanning.setUsers(user);
 		dao_up.save(urbanPlanning);
-		
+		logger.info("fr.formation.inti.controllers.Formambientpower_Controller.java - method projetamenagementform_method : new urban planning saved ");
 		return "redirect:/map";
 	}
 

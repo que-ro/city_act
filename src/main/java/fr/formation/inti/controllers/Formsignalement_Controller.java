@@ -8,6 +8,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ import fr.formation.inti.repositories.ISignalementDao;
 @Controller
 public class Formsignalement_Controller {
 	
-	private static String EXTERNAL_FOLDER = "C:/cityact_externalfolder/pictures/";
+	Logger logger = LoggerFactory.getLogger(Formsignalement_Controller.class);
 	
 	@Autowired
 	ISignalementDao dao_ap;
@@ -33,13 +35,14 @@ public class Formsignalement_Controller {
 	@RequestMapping(value = "/signalementform_method", method = RequestMethod.POST)
 	public String signalementform_method(@RequestParam("picture") MultipartFile picture, HttpServletRequest request, Model model, @ModelAttribute @Valid Signalement signalement, BindingResult bindingResult) throws IOException
 	{	
-		
+		logger.info("fr.formation.inti.controllers.Formsignalement_Controller.java - method signalementform_method");
 		if(bindingResult.hasErrors())
 		{
 			return "formsignalement";
 		}
 		signalement.setDatecreation(new Date());
 		Integer maxId = dao_ap.getMaxId();
+		logger.info("fr.formation.inti.controllers.Formsignalement_Controller.java - method signalementform_method : max Id of signalement : "+maxId);
 		if(maxId != null)
 		{
 			//En base de donnée un trigger mets un 2 devant les projets ambient power à des fins de reconnaissance
@@ -55,20 +58,14 @@ public class Formsignalement_Controller {
 		//Maintenant on enregistre l'image dans C/ext_folder/pictures en prenant le nom origin du fichier avec l'id du projet
 		//On enregistre ensuite le path de l'image dans l'objet signalement
 		if (picture.isEmpty()) {
+			logger.info("fr.formation.inti.controllers.Formsignalement_Controller.java - method signalementform_method : picture file is undefined ");
             return "a_nonono";
         }
 		else
 		{
 			//Le 2 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
 			//			String path = EXTERNAL_FOLDER + "2" + signalement.getId()+ "_" + picture.getOriginalFilename();
-//			File upl = new File(path);
-//		    upl.createNewFile();
-//		    FileOutputStream fout = new FileOutputStream(upl);
-//		    fout.write(picture.getBytes());
-//		    fout.close();
-//		    signalement.setPhotopath(path);
-
-		    
+			
 		    String path ="src/main/resources/static/pictures/projects/" + "2" + signalement.getId()+ "_" + picture.getOriginalFilename();
 		    File upl = new File(path);
 			upl.createNewFile();
@@ -80,6 +77,7 @@ public class Formsignalement_Controller {
 		Users user = (Users) request.getSession().getAttribute("user");
 		signalement.setUsers(user);
 		dao_ap.save(signalement);
+		logger.info("fr.formation.inti.controllers.Formsignalement_Controller.java - method signalementform_method : new signalement saved ");
 		return "redirect:/map";
 	}
 

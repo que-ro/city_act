@@ -8,6 +8,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ import fr.formation.inti.repositories.IAmbientPowerDao;
 @Controller
 public class Formambientpower_Controller {
 	
-	private static String EXTERNAL_FOLDER = "C:/cityact_externalfolder/pictures/";
+	Logger logger = LoggerFactory.getLogger(Formambientpower_Controller.class);
 	
 	@Autowired
 	IAmbientPowerDao dao_ap;
@@ -33,13 +35,14 @@ public class Formambientpower_Controller {
 	@RequestMapping(value = "/ambientpowerform_method", method = RequestMethod.POST)
 	public String ambientpowerform_method(@RequestParam("picture") MultipartFile picture, HttpServletRequest request, Model model, @ModelAttribute @Valid AmbientPower ambientPower, BindingResult bindingResult) throws IOException
 	{	
-		
+		logger.info("fr.formation.inti.controllers.Formambientpower_Controller.java - method ambientpowerform_method");
 		if(bindingResult.hasErrors())
 		{
 			return "formambientpower";
 		}
 		ambientPower.setDatecreation(new Date());
 		Integer maxId = dao_ap.getMaxId();
+		logger.info("fr.formation.inti.controllers.Formambientpower_Controller.java - method ambientpowerform_method : max Id of Ambient power : "+maxId);
 		if(maxId != null)
 		{
 			//En base de donnée un trigger mets un 3 devant les projets ambient power à des fins de reconnaissance
@@ -55,21 +58,12 @@ public class Formambientpower_Controller {
 		//Maintenant on enregistre l'image dans C/ext_folder/pictures en prenant le nom origin du fichier avec l'id du projet
 		//On enregistre ensuite le path de l'image dans l'objet ambientPower
 		if (picture.isEmpty()) {
+			logger.info("fr.formation.inti.controllers.Formambientpower_Controller.java - method ambientpowerform_method : picture file is undefined ");
             return "a_nonono";
         }
 		else
 		{
 			//Le 3 va être ajouté par le trigger de la bdd, pour différencier les trois types de projet, il faut donc l'ajouter dans le nom
-//			String path = EXTERNAL_FOLDER + "3" + ambientPower.getId()+ "_" + picture.getOriginalFilename();
-//			File upl = new File(path);
-//		    upl.createNewFile();
-//		    FileOutputStream fout = new FileOutputStream(upl);
-//		    fout.write(picture.getBytes());
-//		    fout.close();
-//		    ambientPower.setPhotopath(path);
-//		    
-//		    ///pictures
-//		    
 		    String path ="src/main/resources/static/pictures/projects/" + "3" + ambientPower.getId()+ "_" + picture.getOriginalFilename();
 		    File upl = new File(path);
 			upl.createNewFile();
@@ -81,6 +75,7 @@ public class Formambientpower_Controller {
 		Users user = (Users) request.getSession().getAttribute("user");
 		ambientPower.setUsers(user);
 		dao_ap.save(ambientPower);
+		logger.info("fr.formation.inti.controllers.Formambientpower_Controller.java - method ambientpowerform_method : new ambient power saved ");
 		return "redirect:/map";
 	}
 

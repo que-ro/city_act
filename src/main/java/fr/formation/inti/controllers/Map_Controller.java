@@ -4,6 +4,8 @@ package fr.formation.inti.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,8 @@ import fr.formation.inti.repositories.IUrbanPlanningDao;
 @Controller
 public class Map_Controller {
 	
+	Logger logger = LoggerFactory.getLogger(Map_Controller.class);
+	
 	@Autowired
 	IUrbanPlanningDao dao_up;
 	@Autowired
@@ -37,6 +41,7 @@ public class Map_Controller {
 	@RequestMapping("/map")
 	public String map_nv(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method map");
 		List<UrbanPlanning> list_up = dao_up.findAll();
 		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
 		for(UrbanPlanning up : list_up)
@@ -61,6 +66,7 @@ public class Map_Controller {
 
 	public String goto_ambienpower_presentation(Model model, @PathVariable Integer id)
 	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method /goto_ambienpower_presentation/{"+id+"}");
 		AmbientPower ap = dao_ap.findById(id);
 		model.addAttribute("ambientpower", ap);
 		List<Comment> comments = dao_com.findByAmbientPower(ap);
@@ -77,6 +83,7 @@ public class Map_Controller {
 
 	public String goto_signalement_presentation(Model model, @PathVariable Integer id)
 	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method /goto_signalement_presentation/{"+id+"}");
 		Signalement sig = dao_sig.findById(id);
 		model.addAttribute("signalement", sig);
 		List<Comment> comments = dao_com.findBySignalement(sig);
@@ -93,6 +100,7 @@ public class Map_Controller {
 
 	public String goto_projet_presentation(Model model, @PathVariable Integer id)
 	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method /goto_projet_presentation/{"+id+"}");
 		UrbanPlanning up = dao_up.findById(id);
 		model.addAttribute("projet", up);
 		List<Comment> comments = dao_com.findByUrbanPlanning(up);
@@ -108,9 +116,7 @@ public class Map_Controller {
 	@RequestMapping(value="/filter_map", method = RequestMethod.POST)
 	public String filter_map(Model model, @RequestParam(name="checkbox_filtersig", defaultValue="false") Boolean checkbox_filtersig, @RequestParam(name="checkbox_filterap", defaultValue="false") Boolean checkbox_filterap, @RequestParam(name="checkbox_filterup", defaultValue="false") Boolean checkbox_filterup)
 	{	
-		System.out.println("On est dans la méthode filter_map " + checkbox_filtersig +" - "+ checkbox_filterap + " - " + checkbox_filterup);
-		
-		
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method filter_map");
 		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
 		
 		if(checkbox_filterup) {

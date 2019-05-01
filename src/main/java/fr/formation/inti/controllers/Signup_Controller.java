@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,8 @@ import fr.formation.inti.utils.Login_Utils;
 
 @Controller
 public class Signup_Controller {
+	
+	Logger logger = LoggerFactory.getLogger(Signup_Controller.class);
 
 	@Autowired
 	IUsersDao dao_usr;
@@ -37,21 +41,18 @@ public class Signup_Controller {
 			@RequestParam(name="city") String city, @RequestParam(name="zipcode") String zipcode, @RequestParam(name="country") String country)
 	{	
 		
-		System.out.println(password + " == " + repeated_pwd);
+		logger.info("fr.formation.inti.controllers.Signup_Controller.java - method register_method");
 		ArrayList<String> listErrors = new ArrayList<String>();
 		
 		if(bindingResult.hasErrors())
 		{
-			for(Object object  :bindingResult.getAllErrors())				
-			{
-				FieldError field = (FieldError) object;
-				System.out.println(field.getCode());
-			}
+			logger.info("fr.formation.inti.controllers.Signup_Controller.java - method register_method: binding results contain errors");
 			return "signup_nv";
 			
 		}
 		if(dao_usr.findByMail(mail) != null)
 		{
+			logger.info("fr.formation.inti.controllers.Signup_Controller.java - mail is already registered for mail: "+mail);
 			listErrors.add("Le mail est déjà enregistré dans notre base de données");
 			System.out.println("Ce mail est déjà utilisé, il faut en prendre un autre");
 			model.addAttribute("errors", listErrors);
@@ -61,7 +62,7 @@ public class Signup_Controller {
 		{
 			if(!password.equals(repeated_pwd))
 			{
-				System.out.println("Le password et le password de confirmation ne corresponde pas");
+				logger.info("fr.formation.inti.controllers.Signup_Controller.java - method register_method: password don't correspond to repeated");
 				listErrors.add("Le password et le password de confirmation ne corresponde pas");
 				model.addAttribute("errors", listErrors);
 				return "signup_nv";
@@ -80,6 +81,7 @@ public class Signup_Controller {
 				usr.setStreet(street);
 				usr.setZipcode(Integer.parseInt(zipcode));
 				dao_usr.save(usr);
+				logger.info("fr.formation.inti.controllers.Signup_Controller.java - method register_method: new user saved with the id: " + usr.getIdusers());
 				return "registration_success";
 			}
 			

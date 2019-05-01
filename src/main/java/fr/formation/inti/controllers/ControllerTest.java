@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +21,6 @@ import fr.formation.inti.entities.UrbanPlanning;
 import fr.formation.inti.entities.Users;
 import fr.formation.inti.repositories.IAmbientPowerDao;
 import fr.formation.inti.repositories.ICommentDao;
-
 import fr.formation.inti.repositories.ISignalementDao;
 import fr.formation.inti.repositories.IUrbanPlanningDao;
 import fr.formation.inti.repositories.IUsersDao;
@@ -27,9 +28,12 @@ import fr.formation.inti.repositories.IUsersDao;
 @Controller
 public class ControllerTest {
 	
+	Logger logger = LoggerFactory.getLogger(ControllerTest.class);
+	
 	@RequestMapping("/testflip")
 	public String testflip(Model model)
 	{	
+		logger.info("An INFO Message");
 		return "testflip";
 	}
 	
@@ -101,18 +105,21 @@ public class ControllerTest {
 	@RequestMapping("/accueil")
 	public String accueil(Model model, HttpServletRequest request)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method accueil");
 		return "accueil";
 	}
 	
 	@RequestMapping("/faq")
 	public String faq(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method faq");
 		return "faq";
 	}
 	
 	@RequestMapping("/forgottenpsd")
 	public String forgottenpsd(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method forgottenpsd");
 		return "forgottenpsd";
 	}
 	
@@ -121,12 +128,14 @@ public class ControllerTest {
 	@RequestMapping("/mesalertes")
 	public String mesalertes(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method mesalertes");
 		return "mesalertes";
 	}
 	
 	@RequestMapping("/modifiermoncompte")
 	public String modifiermoncompte(Model model, HttpServletRequest request)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method modifiermoncompte");
 		Users usr = (Users) request.getSession().getAttribute("user");
 		model.addAttribute("users", usr);
 		return "modifiermoncompte";
@@ -141,6 +150,7 @@ public class ControllerTest {
 	public String monprofil(Model model, HttpServletRequest request)
 
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method monprofil");
 		Users usr = dao_usr.findByIdusers(((Users) request.getSession().getAttribute("user")).getIdusers());
 		
 		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
@@ -174,18 +184,21 @@ public class ControllerTest {
 	@RequestMapping("/Qui_sommes_nous")
 	public String quisommesnous(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method Qui_sommes_nous");
 		return "Qui_sommes_nous";
 	}
 	
 	@RequestMapping("/registration_success")
 	public String registration_success(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method registration_success");
 		return "registration_success";
 	}
 	
 	@RequestMapping("/signup")
 	public String signup(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method signup");
 		return "signup";
 	}
 	
@@ -193,6 +206,7 @@ public class ControllerTest {
 	@RequestMapping("/signup_nv")
 	public String signup_nv(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method signup_nv");
 		model.addAttribute("users", new Users());
 		return "signup_nv";
 	}
@@ -202,12 +216,14 @@ public class ControllerTest {
 	@RequestMapping("/filterconnection")
 	public String filterconnection(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.ControllerTest.java - method filterconnection");
 		return "filterconnection";
 	}
 	
 	@RequestMapping("/formprojets")
 	public String formprojets(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formprojets");
 		model.addAttribute("urbanPlanning", new UrbanPlanning());
 		return "formprojets";
 	}
@@ -215,6 +231,7 @@ public class ControllerTest {
 	@RequestMapping("/formambientpower")
 	public String formambientpower(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formambientpower");
 		model.addAttribute("ambientPower", new AmbientPower());
 
 		return "formambientpower";
@@ -223,6 +240,7 @@ public class ControllerTest {
 	@RequestMapping("/formsignalement")
 	public String formsignalement(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formsignalement");
 		model.addAttribute("signalement", new Signalement());
 		return "formsignalement";
 	}
@@ -230,6 +248,7 @@ public class ControllerTest {
 	@RequestMapping("/falselogin")
 	public String falselogin(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method falselogin");
 		return "falselogin";
 	}
 	
