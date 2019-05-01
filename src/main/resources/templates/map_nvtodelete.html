@@ -41,6 +41,8 @@
 							<div class="col-sm-12" id="div_filtersofmap">
 
 								<div class="row my-auto" id="row_filters">
+								
+								
 									<!-- 							<form class="form-inline col-sm-2">
 								<div class="input-group input-group-btn mx-auto">
           							<input class="form-control py-2" type="search" placeholder="Où chercher?" id="pac-input">
@@ -52,21 +54,21 @@
         						</div>
 							</form> -->
 
-									<form class="form-inline col-sm-8">
-										<div class="dropdown col-sm-4">
+									<form class="form-inline col-sm-8" th:action="@{/filter_map}" method="POST">
+										<div class="col-sm-6">
 											<button
 												class="btn btn-secondary dropdown-toggle btn-block btn_dropdown"
 												type="button" id="btn_category" data-toggle="dropdown"
 												aria-haspopup="true" aria-expanded="false">
 												Catégorie</button>
-											<div class="dropdown-menu" aria-labelledby="btn_category">
+											<div class="dropdown-menu dropdown" aria-labelledby="btn_category">
 												<div class="list-group">
 													<div
 														class="dropdown_checkbox checkbox list-group-item col-12 py-1">
 														<div class="row">
 															<input class="form-check-input col-2 my-auto"
-																id="input_category_signalement" type="checkbox" value=""
-																> <label
+																id="input_category_signalement" type="checkbox" th:checked="${checkbox_filtersig}"
+																name="checkbox_filtersig"> <label
 																class="col-9 label_of_filterscheckbox"
 																for="input_category_signalement">Signalements</label>
 														</div>
@@ -77,7 +79,7 @@
 														<div class="row">
 															<input class="form-check-input col-2 my-auto"
 																id="input_category_ambientpower" type="checkbox"
-																value=""> <label
+																th:checked="${checkbox_filterap}" name="checkbox_filterap"> <label
 																class="col-9 label_of_filterscheckbox"
 																for="input_category_ambientpower">Ambient Power</label>
 														</div>
@@ -88,7 +90,7 @@
 														<div class="row">
 															<input class="form-check-input col-2 my-auto"
 																id="input_category_propamenagement" type="checkbox"
-																value=""> <label
+																th:checked="${checkbox_filterup}" name="checkbox_filterup"> <label
 																class="col-9 label_of_filterscheckbox"
 																for="input_category_propamenagement">Proposition
 																d'aménagements</label>
@@ -103,124 +105,20 @@
 
 
 
-
-
-										<div class="dropdown col-sm-4">
-											<button
-												class="btn btn-secondary dropdown-toggle btn-block btn_dropdown"
-												type="button" id="btn_souscategory" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false">
-												Sous-Catégories</button>
-											<div class="dropdown-menu" aria-labelledby="btn_souscategory">
-												<div class="list-group">
-													<div class="list-group-item">
-														<h3 class="list-group-item-heading col-12">Signalements</h3>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_moburbain" type="checkbox"
-																	value=""> <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_moburbain">Mobilier
-																	urbain</label>
-															</div>
-														</div>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_voirie" type="checkbox" value=""
-																	> <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_voirie">Voirie</label>
-															</div>
-														</div>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_degradation" type="checkbox"
-																	value=""> <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_degradation">Dégradations</label>
-															</div>
-														</div>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_objabandaonnes" type="checkbox"
-																	value=""> <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_objabandaonnes">Objets
-																	abandonnés</label>
-															</div>
-														</div>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_signautre" type="checkbox"
-																	value=""> <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_signautre">Signalements
-																	autres</label>
-															</div>
-														</div>
-													</div>
-
-
-													<div class="list-group-item">
-														<h3 class="list-group-item-heading col-12">Proposition
-															d'aménagements</h3>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_temporaire" type="checkbox"
-																	value=""> <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_temporaire">Temporaire</label>
-															</div>
-														</div>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_permanent" type="checkbox"
-																	value=""> <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_permanent">Permanent</label>
-															</div>
-														</div>
-													</div>
-
-													<div class="list-group-item">
-														<h3 class="list-group-item-heading col-12">Ambient
-															Power</h3>
-														<div class="checkbox col-12 py-1">
-															<div class="row">
-																<input class="form-check-input col-2 my-auto"
-																	id="input_souscategory_ambientpower" type="checkbox"
-																	value="" > <label
-																	class="col-9 label_of_filterscheckbox"
-																	for="input_souscategory_ambientpower">Aucune
-																	sous-catégorie</label>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="col-sm-4">
+										<div class=" col-sm-6">
 											<button type="submit" class="btn btn-primary btn-block"
 												id="btn_filtre">Filtrez</button>
 										</div>
 
 									</form>
 
-									<form class="form-inline col-sm-3">
+									<form class="form-inline col-sm-4">
 										<button
 											class="btn btn-secondary dropdown-toggle btn-block btn_dropdown"
 											type="button" id="btn_ajout" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">Ajoutez
 											un marqueur !</button>
-										<div class="dropdown-menu" aria-labelledby="btn_ajout">
+										<div class="dropdown-menu dropdown" aria-labelledby="btn_ajout">
 										
 											<a
 												class="col-12 list-group-item btn btn-primary btn-block btn_of_btn_ajout" href="formsignalement">Signalements</a>
@@ -249,8 +147,12 @@
 						</div>
 					</div>
 
-					<script>
+					<script th:inline="javascript">
 						var map, infoWindow, pos;
+
+						
+						
+						
 
 						function CenterControl(controlDiv, map) {
 
@@ -295,19 +197,45 @@
 								zoom : 14
 							});
 							
-							
-							
-							
+						
+							/*<![CDATA[*/
+							var checkbox_filtersig = /*[[${checkbox_filtersig}]]*/
+							var checkbox_filterap = /*[[${checkbox_filterap}]]*/
+							var checkbox_filterup = /*[[${checkbox_filterup}]]*/
+							/*]]>*/
+
+							var list_url = [];
+							if((checkbox_filtersig == null && checkbox_filterap == null && checkbox_filterup == null) || (checkbox_filtersig == false && checkbox_filterap == false && checkbox_filterup == false))
+							{
+								list_url.push("http://localhost:8080/jsonAllProjects/projects/");
+							}
+							else
+							{
+								if(checkbox_filtersig)
+								{
+									list_url.push("http://localhost:8080/jsonAllProjects/projects/sig");
+								}
+								if(checkbox_filterap)
+								{
+									list_url.push("http://localhost:8080/jsonAllProjects/projects/ap");
+								}
+								if(checkbox_filterup)
+								{
+									list_url.push("http://localhost:8080/jsonAllProjects/projects/up");
+								}
+							}
 							
 							
 							  function f_jsonprojects(callback) {
-								    $.getJSON('http://localhost:8080/jsonAllProjects/projects/', function (projects) {
-								      callback(projects);								      
-								    });
+								  for (let i = 0; i < list_url.length; i++){
+									  $.getJSON(list_url[i], function (projects) {
+									      callback(projects);								      
+									    });
+									  }
+								    
 								  }
 							  
 							  f_jsonprojects(function (projects) {
-								    console.log(projects);
 								    list = projects;
 								    for (var i = 0; i < list.length; i++) {
 										  marker = new google.maps.Marker({
@@ -426,8 +354,8 @@
 									
 // 								  });
 							  
-							var div_list = document.getElementById("ul_list_projects");
-							console.log(div_list);
+// 							var div_list = document.getElementById("ul_list_projects");
+// 							console.log(div_list);
 							  
 							  
 							

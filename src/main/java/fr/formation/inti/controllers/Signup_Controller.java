@@ -42,7 +42,6 @@ public class Signup_Controller {
 		
 		if(bindingResult.hasErrors())
 		{
-			System.out.println(bindingResult.hasErrors() + "))))))))))))))))))))))))" );
 			for(Object object  :bindingResult.getAllErrors())				
 			{
 				FieldError field = (FieldError) object;

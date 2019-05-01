@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.formation.inti.entities.AmbientPower;
 import fr.formation.inti.entities.Comment;
@@ -101,6 +102,44 @@ public class Map_Controller {
 		}
 		model.addAttribute("comments", comments);
 		return "presentationprojet";
+		
+	}
+	
+	@RequestMapping(value="/filter_map", method = RequestMethod.POST)
+	public String filter_map(Model model, @RequestParam(name="checkbox_filtersig", defaultValue="false") Boolean checkbox_filtersig, @RequestParam(name="checkbox_filterap", defaultValue="false") Boolean checkbox_filterap, @RequestParam(name="checkbox_filterup", defaultValue="false") Boolean checkbox_filterup)
+	{	
+		System.out.println("On est dans la méthode filter_map " + checkbox_filtersig +" - "+ checkbox_filterap + " - " + checkbox_filterup);
+		
+		
+		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
+		
+		if(checkbox_filterup) {
+			List<UrbanPlanning> list_up = dao_up.findAll();
+			for(UrbanPlanning up : list_up)
+			{
+				listAll.add((IAllTypeEntities) up) ;
+			}
+		}
+		if(checkbox_filtersig) {
+			List<Signalement> list_sig = dao_sig.findAll();
+			for(Signalement sig : list_sig) 
+			{
+				listAll.add((IAllTypeEntities) sig) ;
+			}
+		}
+		if(checkbox_filterap) {
+			List<AmbientPower> list_ap = dao_ap.findAll();
+			for(AmbientPower ap : list_ap)
+			{
+				listAll.add((IAllTypeEntities) ap) ;
+			}
+		}	
+		model.addAttribute("allProjects", listAll);
+		
+		model.addAttribute("checkbox_filtersig", checkbox_filtersig);
+		model.addAttribute("checkbox_filterap", checkbox_filterap);
+		model.addAttribute("checkbox_filterup", checkbox_filterup);
+		return "map_nvtodelete";
 		
 	}
 

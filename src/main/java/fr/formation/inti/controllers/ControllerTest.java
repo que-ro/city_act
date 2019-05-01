@@ -164,7 +164,6 @@ public class ControllerTest {
 		
 		List<Comment> comments = dao_com.findByUsers(usr);
 		
-		System.out.println(comments.size() + "----------------------------------------------------");
 		model.addAttribute("comments", comments);
 		model.addAttribute("usr_projects", listAll);
 		model.addAttribute("users", usr);

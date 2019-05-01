@@ -54,6 +54,52 @@ public class AllProjects_RestController {
         }
         return new ResponseEntity<List<IAllTypeEntities>>(listAll, HttpStatus.OK);
     }
+	
+	@RequestMapping(value = "/projects/sig", method = RequestMethod.GET)
+    public ResponseEntity<List<IAllTypeEntities>> listSigProjects() {
+		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
+		List<Signalement> list_sig = dao_sig.findAll();
+		for(Signalement sig : list_sig) 
+		{
+			listAll.add((IAllTypeEntities) sig) ;
+		}
+		if (listAll.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<IAllTypeEntities>>(listAll, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value = "/projects/ap", method = RequestMethod.GET)
+    public ResponseEntity<List<IAllTypeEntities>> listApProjects() {
+
+		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
+		List<AmbientPower> list_ap = dao_ap.findAll();
+		for(AmbientPower ap : list_ap)
+		{
+			listAll.add((IAllTypeEntities) ap) ;
+		}
+		if (listAll.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<IAllTypeEntities>>(listAll, HttpStatus.OK);
+    }
+	
+	@RequestMapping(value = "/projects/up", method = RequestMethod.GET)
+    public ResponseEntity<List<IAllTypeEntities>> listUpProjects() {
+		List<UrbanPlanning> list_up = dao_up.findAll();
+		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
+		for(UrbanPlanning up : list_up)
+		{
+			listAll.add((IAllTypeEntities) up) ;
+		}
+		if (listAll.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<IAllTypeEntities>>(listAll, HttpStatus.OK);
+    }
 
 }
 
