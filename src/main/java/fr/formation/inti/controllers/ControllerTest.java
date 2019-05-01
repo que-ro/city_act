@@ -27,11 +27,7 @@ import fr.formation.inti.repositories.IUsersDao;
 @Controller
 public class ControllerTest {
 	
-	@RequestMapping("/testflip")
-	public String testflip(Model model)
-	{	
-		return "testflip";
-	}
+	
 	
 	@Autowired
 	IUrbanPlanningDao dao_up;
@@ -131,8 +127,8 @@ public class ControllerTest {
 	@Autowired
 	ICommentDao dao_com;
 	
-	@RequestMapping("/monprofil")
-	public String monprofil(Model model, HttpServletRequest request)
+	@RequestMapping("/monprofilnv")
+	public String monprofilnv(Model model, HttpServletRequest request)
 
 	{	
 		Users usr = dao_usr.findByIdusers(((Users) request.getSession().getAttribute("user")).getIdusers());
@@ -163,7 +159,7 @@ public class ControllerTest {
 		model.addAttribute("usr_projects", listAll);
 		model.addAttribute("users", usr);
 
-		return "monprofil";
+		return "monprofilnv";
 	}
 	
 	@RequestMapping("/Qui_sommes_nous")

@@ -1,0 +1,148 @@
+
+<!DOCTYPE html >
+<html class="ink">
+<head>
+<title>CityAct | Mon profil</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
+
+<link href="/css/css_monprofilnv.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+</head>
+<!-- Not connected -->
+<div th:if="${session.user == null}">
+    <div th:insert="~{CityAct::notConnectedNavbar}"></div>
+</div>
+<!-- Connected -->
+<div th:if="${session.user != null}">
+    <div th:insert="~{CityActConnectNavbar::connectedNavbar}"></div>
+</div>
+ <div class="form-gap"></div>
+ <h5 id="Monprofil">Mon profil</h5>
+ <hr class="pg-titl-bdr-btm 1">
+ <br>
+ 
+ <div id="prof" class="container-fluid">
+<div class="row">
+<div class="col-md-1"> </div>
+<form th:object="${users}">
+<div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="inputEmail4"><b>Prénom</b></label>
+      <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" disabled th:value="*{firstname}">
+    </div>
+   
+    
+    <div class="form-group col-sm-6">
+      <label for="inputnom"><b>Nom</b></label>
+      <input type="text"class="form-control" id="inputLastname" placeholder="Nom" disabled th:value="*{lastname}">
+    </div>
+ </div>
+
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label for="inputEmail4"><b>Email</b></label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" disabled th:value="*{mail}">
+    </div>
+    
+    <div class="form-group col-sm-6">
+      <label for="inputPassword4"><b>Pseudo</b></label>
+      <input type="text" class="form-control" id="inputPseudo" placeholder="Pseudo" disabled th:value="*{pseudo}">
+    </div>
+  </div>
+  
+    <div class="form-group">
+    <label for="inputBirthdate"><b>Date de naissance</b></label>
+    <input type="date" class="form-control" id="inputBirthdate" placeholder="dd/mm/yyyy" disabled th:value="*{birthdate}">
+  </div>
+  
+  <div class="form-group">
+    <label for="inputAddress"><b>Adresse</b></label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" disabled th:value="*{street}">
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-sm-4">
+      <label for="inputCity"><b>Ville</b></label>
+      <input type="text" class="form-control" id="inputCity" disabled th:value="*{city}">
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="inputState"><b>Pays</b></label>
+      <input type="text" id="inputState" class="form-control" disabled th:value="*{country}">
+        
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="inputCP"><b>Code Postal</b></label>
+      <input type="text" class="form-control" id="inputZip" disabled th:value="*{zipcode}">
+    </div>
+  </div>
+
+</form>
+<div class="col-md-3"> </div>
+</div>
+</div>
+<hr>
+
+<h5 id="Mesprojets" class="index-page--title">Mes projets</h5>
+<hr class="pg-titl-bdr-btm">
+<br><br>
+
+<article class="main-body--wrapper" >
+<section id="mesprojetscont" class="projects--wrapper">
+<div class="project--container" th:each="project: ${usr_projects}">
+
+<a id="color" th:if="${project.ref}==A"  th:href="'/goto_ambienpower_presentation/' + ${project.id}" th:utext="${project.titre}">  </a>
+<a  id="color" th:if="${project.ref}==S" th:href="'/goto_signalement_presentation/' + ${project.id}" th:utext="${project.titre}"> </a>
+<a id="color" th:if="${project.ref}==P"   th:href="'/goto_projet_presentation/' + ${project.id}" th:utext="${project.titre}"></a>
+
+<img class="picpro"  th:src="${project.photopath}" alt="photo" ></img>
+</div>
+
+</section>
+</article>
+
+<hr>
+<h5 id="Mescommentaires">Mes commentaires</h5>
+ <hr class="pg-titl-bdr-btm 2">
+
+<div  id="comms"class="container-fluid">
+
+    <div class="row flex-row flex-nowrap">
+    
+        
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" th:each="comment: ${comments}">
+            <div class="card card-block">	<div class="row  proj">
+	<div class="col-md-4">
+	<img src="/pictures/iconfinder_JD-18_2246807.png" alt="" class="img-thumbnail">
+	</div>
+	<div class="col-md-8" >
+	<a id="avisc" th:if="${comment.urbanPlanning != null}" th:href="'/goto_projet_presentation/' + ${comment.urbanPlanning.id}"><h5 th:utext="${comment.urbanPlanning.titre}"></h5></a>
+	<a id="avisc" th:if="${comment.signalement != null}" th:href="'/goto_signalement_presentation/' + ${comment.signalement.id}"><h5 th:utext="${comment.signalement.titre}"></h5></a>
+	<a id="avisc" th:if="${comment.ambientPower != null}" th:href="'/goto_ambienpower_presentation/' + ${comment.ambientPower.id}"><h5 th:utext="${comment.ambientPower.titre}"></h5></a>
+
+	
+	<p id="commenttext" th:utext="${comment.text}"></p>
+	</div>
+	
+	</div></div>
+        </div>
+        
+
+</div>
+</div>
+
+
+<div class="footer-gap"></div>
+<div th:insert="~{footer::footer}"></div>
+</html>
