@@ -148,5 +148,30 @@ public class Map_Controller {
 		return "map_nvtodelete";
 		
 	}
+	
+	@RequestMapping("/formprojets")
+	public String formprojets(Model model)
+	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formprojets");
+		model.addAttribute("urbanPlanning", new UrbanPlanning());
+		return "formprojets";
+	}
+	
+	@RequestMapping("/formambientpower")
+	public String formambientpower(Model model)
+	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formambientpower");
+		model.addAttribute("ambientPower", new AmbientPower());
+
+		return "formambientpower";
+	}
+
+	@RequestMapping("/formsignalement")
+	public String formsignalement(Model model)
+	{	
+		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formsignalement");
+		model.addAttribute("signalement", new Signalement());
+		return "formsignalement";
+	}
 
 }

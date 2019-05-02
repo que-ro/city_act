@@ -7,6 +7,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
@@ -19,12 +21,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.formation.inti.controllers.Map_Controller;
 import fr.formation.inti.entities.Users;
 import fr.formation.inti.repositories.IUsersDao;
 import fr.formation.inti.services.NotificationService;
 import fr.formation.inti.utils.Login_Utils;
 @Controller
 public class ResetPsd {
+	
+	Logger logger = LoggerFactory.getLogger(ResetPsd.class);
+	
 	@Autowired
 	private NotificationService notificationService;
 	
@@ -35,13 +41,14 @@ public class ResetPsd {
 		@RequestMapping(value="/mailcheck", method = RequestMethod.POST )
 		public String mailcheck(Model model, HttpServletRequest request,  @RequestParam(name="mail")String mail)
 		{	
+			logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method mailcheck");
 			ArrayList<String> listErrors = new ArrayList<String>();
 			if(dao_usr.findByMail(mail) == null)
 				
 
 			{
 				listErrors.add("Le mail renseigné n'est pas enregistré dans notre base de données");
-				System.out.println("Mail inexistant, veuillez recommencer");
+				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method mailcheck : Mail inexistant, veuillez recommencer");
 				model.addAttribute("errors", listErrors);
 				return "forgottenpsd";
 			}
@@ -62,8 +69,8 @@ public class ResetPsd {
 					
 			}catch (MailException e) {
 				//catch error
-				System.out.println("Error sending email" + e.getMessage());
-
+				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method mailcheck : Error sending emai " + e.getMessage());
+				
 				// Add success message to view
 				 model.addAttribute("successMessage", "Un lien de réinitialisation vient de vous être envoyer " + dao_usr.findByMail(mail));
 		}
@@ -76,12 +83,14 @@ public class ResetPsd {
 		@RequestMapping(value = "/resetmp", method = RequestMethod.GET)
 		public String displayResetmp(Model model, @RequestParam("token") String token) {
 			
+			logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method displayResetmp");
+			
 			Users user = dao_usr.findUserByResetToken(token);
 
 			if (user!= null) { // Token found in DB
 				model.addAttribute("resetToken", token);
 			} else { // Token not found in DB
-				System.out.println("Oops!  Ce lien de réinitialisation est invalide.");
+				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method displayResetmp : Oops!  Ce lien de réinitialisation est invalide.");
 				model.addAttribute("errorMessage", "Oops!  Ce lien de réinitialisation est invalide.");
 			}
 
@@ -91,21 +100,19 @@ public class ResetPsd {
 		// Process reset password form
 		@RequestMapping(value = "/resetmp", method = RequestMethod.POST)
 		public String setNewPassword(Model model,@RequestParam(name="pwd") String pwd, @RequestParam(name="token") String token, @RequestParam(name="repeated_pwd") String repeated_pwd, @RequestParam Map<String, String> requestParams, RedirectAttributes redir) {
+			logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword");
 			ArrayList<String> listErrors = new ArrayList<String>();
 			// Find the user associated with the reset token
 			Users user = dao_usr.findUserByResetToken(token);
-			//((Users)request.getSession().getAttribute("user")).getIdusers()
-			
-			System.out.println(pwd + " == " + repeated_pwd+ "    " + pwd.equals(repeated_pwd) + " users = "+ user + " token = "+ token);
 
 			// This should always be non-null but we check just in case
 			if (user!= null) { System.out.println("je suis là");
 				
-				Users resetUserpwd = user; //resetuserpdw devient le user findbyresettoken
+				Users resetUserpwd = user; 
 	            
 				if(!pwd.equals(repeated_pwd))
 				{
-					System.out.println("Le password et le password de confirmation ne corresponde pas");
+					logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword : Le password et le password de confirmation ne corresponde pas");
 					listErrors.add("Le password et le password de confirmation ne corresponde pas");
 					model.addAttribute("errors", listErrors);
 					return "resetmp";
@@ -124,14 +131,15 @@ public class ResetPsd {
 				// In order to set a model attribute on a redirect, we must use
 				// RedirectAttributes
 				redir.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
-				System.out.println("BRAVO");
+				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword : successfully reset your password for user = "+resetUserpwd.getIdusers());
 				return "accueil";
 				 }
-			} else {System.out.println("PROBLEME");
+			} else {
+				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword :  invalid password reset link.");
 				model.addAttribute("errorMessage", "Oops!  This is an invalid password reset link.");
 				
 			}
-			System.out.println("Fin méthode post, retour à l'accueil");
+			logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword : Fin méthode post, retour à l'accueil");
 			return "accueil";
 	   }
 	   
@@ -144,7 +152,6 @@ public class ResetPsd {
 
 }
 
-//Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'pwd' is not present]s
 		
 
 

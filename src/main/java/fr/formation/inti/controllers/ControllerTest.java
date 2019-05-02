@@ -27,237 +27,52 @@ import fr.formation.inti.repositories.IUsersDao;
 
 @Controller
 public class ControllerTest {
-	
+
 	Logger logger = LoggerFactory.getLogger(ControllerTest.class);
 	
-	@RequestMapping("/testflip")
-	public String testflip(Model model)
-	{	
-		logger.info("An INFO Message");
-		return "testflip";
-	}
-	
+
 	@Autowired
 	IUrbanPlanningDao dao_up;
-	@RequestMapping("/presentationprojet")
-	public String presentationprojet(Model model)
-	{	UrbanPlanning up = dao_up.findById(11);
-	model.addAttribute("idprojet", up);
-		return "presentationprojet";
-	}
+	@Autowired
+	ISignalementDao dao_sig;
+	@Autowired
+	IUsersDao dao_usr;
+	@Autowired
+	IAmbientPowerDao dao_ap;
+	@Autowired
+	ICommentDao dao_com;
+
 	
 	@RequestMapping("/anonono")
 	public String anonono(Model model)
 	{
+		logger.info("fr.formation.inti.controllers.ControllerTest.java - method anonono");
 		return "a_nonono";
 	}
 	
-
-	@RequestMapping("/presentationambientpower")
-	public String presentationambientpower(Model model, HttpServletRequest request)
-	{	
-//		AmbientPower ap =(AmbientPower) request.getAttribute("idambientpower");
-//
-//		model.addAttribute("idambientpower", ap);
-
-		return "presentationambientpower";
-	}
-	
-	@Autowired
-	ISignalementDao dao_sig;
-	@RequestMapping("/presentationsignalement")
-	public String presentationsignalement(Model model)
-	{	Signalement sig = dao_sig.findById(21);
-	model.addAttribute("idsignalement", sig);
-			return "presentationsignalement";
-	}
-	
-
-	
-
-	@RequestMapping("/mesprojetstest")
-	public String mesprojetstest(Model model)
-	{	
-		return "mesprojetstest";
-	}
 	
 	@RequestMapping("/CityAct")
 	public String CityAct(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.ControllerTest.java - method CityAct");
 		return "CityAct";
 	}
 	
 	@RequestMapping("/CityActConnectNavbar")
 	public String CityActConnectNavbar(Model model)
 	{	
+		logger.info("fr.formation.inti.controllers.ControllerTest.java - method CityActConnectNavbar");
 		return "CityActConnectNavbar";
 	}
 	
-	@Autowired
-	IUsersDao dao_usr;
-	
-	@RequestMapping("/test")
-	public String test(Model model, HttpServletRequest request)
-	{	
-		return "test";
-	}
-	
-	@RequestMapping("/accueil")
-	public String accueil(Model model, HttpServletRequest request)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method accueil");
-		return "accueil";
-	}
-	
-	@RequestMapping("/faq")
-	public String faq(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method faq");
-		return "faq";
-	}
-	
-	@RequestMapping("/forgottenpsd")
-	public String forgottenpsd(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method forgottenpsd");
-		return "forgottenpsd";
-	}
-	
-
-	
-	@RequestMapping("/mesalertes")
-	public String mesalertes(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method mesalertes");
-		return "mesalertes";
-	}
-	
-	@RequestMapping("/modifiermoncompte")
-	public String modifiermoncompte(Model model, HttpServletRequest request)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method modifiermoncompte");
-		Users usr = (Users) request.getSession().getAttribute("user");
-		model.addAttribute("users", usr);
-		return "modifiermoncompte";
-	}
-	
-	@Autowired
-	IAmbientPowerDao dao_ap;
-	@Autowired
-	ICommentDao dao_com;
-	
-	@RequestMapping("/monprofil")
-	public String monprofil(Model model, HttpServletRequest request)
-
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method monprofil");
-		Users usr = dao_usr.findByIdusers(((Users) request.getSession().getAttribute("user")).getIdusers());
-		
-		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
-		
-		Set<AmbientPower> list_ap = usr.getAmbientPowers();
-		Set<Signalement> list_sig = usr.getSignalements();
-		Set<UrbanPlanning> list_up = usr.getUrbanPlannings();
-		
-		for(UrbanPlanning up : list_up)
-		{
-			listAll.add((IAllTypeEntities) up) ;
-		}
-		for(Signalement sig : list_sig) 
-		{
-			listAll.add((IAllTypeEntities) sig) ;
-		}
-		for(AmbientPower ap : list_ap)
-		{
-			listAll.add((IAllTypeEntities) ap) ;
-		}
-		
-		List<Comment> comments = dao_com.findByUsers(usr);
-		
-		model.addAttribute("comments", comments);
-		model.addAttribute("usr_projects", listAll);
-		model.addAttribute("users", usr);
-
-		return "monprofil";
-	}
-	
-	@RequestMapping("/Qui_sommes_nous")
-	public String quisommesnous(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method Qui_sommes_nous");
-		return "Qui_sommes_nous";
-	}
-	
-	@RequestMapping("/registration_success")
-	public String registration_success(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method registration_success");
-		return "registration_success";
-	}
-	
-	@RequestMapping("/signup")
-	public String signup(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method signup");
-		return "signup";
-	}
-	
-
-	@RequestMapping("/signup_nv")
-	public String signup_nv(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method signup_nv");
-		model.addAttribute("users", new Users());
-		return "signup_nv";
-	}
-
-
 
 	@RequestMapping("/filterconnection")
 	public String filterconnection(Model model)
 	{	
-		logger.info("fr.formation.inti.controllers.ControllerTest.java - method filterconnection");
+		
 		return "filterconnection";
 	}
 	
-	@RequestMapping("/formprojets")
-	public String formprojets(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formprojets");
-		model.addAttribute("urbanPlanning", new UrbanPlanning());
-		return "formprojets";
-	}
-	
-	@RequestMapping("/formambientpower")
-	public String formambientpower(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formambientpower");
-		model.addAttribute("ambientPower", new AmbientPower());
 
-		return "formambientpower";
-	}
 
-	@RequestMapping("/formsignalement")
-	public String formsignalement(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Map_Controller.java - method formsignalement");
-		model.addAttribute("signalement", new Signalement());
-		return "formsignalement";
-	}
-	
-	@RequestMapping("/falselogin")
-	public String falselogin(Model model)
-	{	
-		logger.info("fr.formation.inti.controllers.Navbar_Controller.java - method falselogin");
-		return "falselogin";
-	}
-	
-//	@Autowired
-//	ICommentDao dao_com;
-//	@RequestMapping("/formcomment")
-//	
-//	public String formcomment(Model model)
-//	{	Signalement com = dao_sig.findByIdsignalement(21);
-//	model.addAttribute("idcomment", com);
-//	return "formcomment";}
 }

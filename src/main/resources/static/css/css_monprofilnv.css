@@ -1,0 +1,91 @@
+.form-gap {
+    padding-top: 100px;
+}
+
+
+#Monprofil{letter-spacing:1px;
+font-family:Verdana; }
+
+.pg-titl-bdr-btm1{  
+	float:left;
+	width: 490px;
+    height: 2px;
+    background-color: #28b57c; 
+    margin-bottom:50px;}
+    
+form{ 
+color:#400040;
+left:27%;
+top:15%;
+font-family:  Verdana,"arial black", "Poppins";
+}
+
+#Mesprojets{margin-top:50px;letter-spacing:1px;
+font-family:Verdana;
+}
+
+.pg-titl-bdr-btm{  
+	float:left;
+	width: 490px;
+    height: 2px;
+    background-color: #28b57c;
+    margin-bottom:70px;}
+
+
+#mesprojetscont{margin-top:50px; margin-left:5%;}
+
+#Mescommentaires{letter-spacing:1px;
+font-family:Verdana;
+}
+
+.pg-titl-bdr-btm.2{
+	float:left;
+	width: 490px;
+    height: 2px;
+    background-color: #28b57c; margin-bottom:70px; }
+
+#comms{overflow-x:auto; overflow-x:hidden; }
+#comms:hover{overflow-x:auto; }
+.card-block {
+    min-height: 220px;
+}
+
+
+.footer-gap{padding-top: 70px;}
+.section{display:inline;}
+
+
+/* CSS PROJETS */
+/* article {display: block;} */
+.project--container {
+    border: 1px solid #ddd;
+    display: inline-block;
+    width: 21.8%;
+    height: 340px;
+    margin: 0 .5% 20px;
+    vertical-align: top;
+    text-align: center;
+    padding: 30px 5%;
+    background-color: darkcyan;
+    color: white}
+    
+    .project--container:hover{ background-color:#400080;}
+    .picpro{margin-top:20px; max-width:100%; float:left}
+    
+    .main-body--wraper{ margin-top: 100px;
+margin-bottom: 100px; }
+    
+    .projects--wrapper {
+    margin-left: -.5%;
+}
+
+#color {color: white; text-decoration:none !important; font-weight :bold; text-transform:uppercase; letter-spacing:1px}
+#color:hover {color: white; text-decoration:none !important}
+
+#avisc{color:#400040;text-decoration:none !important; font-family:verdana;
+font-weight:bold; text-transform:uppercase; letter-spacing:1px}
+
+#commenttext{font-style:italic; font-family: verdana;}
+
+#avisc:hover{color: #400080;}
+
