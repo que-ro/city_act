@@ -72,7 +72,7 @@ public class ResetPsd {
 				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method mailcheck : Error sending emai " + e.getMessage());
 				
 				// Add success message to view
-				 model.addAttribute("successMessage", "Un lien de réinitialisation vient de vous être envoyer " + dao_usr.findByMail(mail));
+				 model.addAttribute("mailvalide", "Un lien de réinitialisation vient de vous être envoyer " + dao_usr.findByMail(mail));
 		}
 }
 			return"Accueil";
@@ -91,7 +91,7 @@ public class ResetPsd {
 				model.addAttribute("resetToken", token);
 			} else { // Token not found in DB
 				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method displayResetmp : Oops!  Ce lien de réinitialisation est invalide.");
-				model.addAttribute("errorMessage", "Oops!  Ce lien de réinitialisation est invalide.");
+				model.addAttribute("lieninvalide", "Oops!  Ce lien de réinitialisation est invalide.");
 			}
 
 						return "resetmp";
@@ -113,7 +113,7 @@ public class ResetPsd {
 				if(!pwd.equals(repeated_pwd))
 				{
 					logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword : Le password et le password de confirmation ne corresponde pas");
-					listErrors.add("Le password et le password de confirmation ne corresponde pas");
+					listErrors.add("Le mot de passe de confirmation ne correspond pas");
 					model.addAttribute("errors", listErrors);
 					return "resetmp";
 				}
@@ -130,20 +130,20 @@ public class ResetPsd {
 
 				// In order to set a model attribute on a redirect, we must use
 				// RedirectAttributes
-				redir.addFlashAttribute("successMessage", "You have successfully reset your password.  You may now login.");
+				redir.addFlashAttribute("successMessage", "Vous avez bien réinitialiser votre mot de passe. Vous pouvez maintenant vous connecter.");
 				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword : successfully reset your password for user = "+resetUserpwd.getIdusers());
 				return "accueil";
 				 }
 			} else {
 				logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword :  invalid password reset link.");
-				model.addAttribute("errorMessage", "Oops!  This is an invalid password reset link.");
+				model.addAttribute("invalidlink", "Oops!  This is an invalid password reset link.");
 				
 			}
 			logger.info("fr.formation.inti.restcontrollers.AllProjects_RestController.java - method setNewPassword : Fin méthode post, retour à l'accueil");
 			return "accueil";
 	   }
 	   
-	    // Going to reset page without a token redirects to login page
+	    // redirige page sans token vers forgottenpsd
 		@ExceptionHandler(MissingServletRequestParameterException.class)
 		public ModelAndView handleMissingParams(MissingServletRequestParameterException ex) {
 			return new ModelAndView("redirect:forgottenpsd");
