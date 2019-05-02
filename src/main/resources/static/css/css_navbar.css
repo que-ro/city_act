@@ -2,6 +2,15 @@
 
 .navbar-expand-sm{background-color:#408080CC;}
 
+@supports (-ms-ime-align:auto) {
+
+    .navbar-expand-sm{background-color:#408080; }
+    }
+@supports (-ms-ime-align:auto) {
+
+    .navbar-brand{color:white !important; font-size:1.4em;}
+    }
+
 #aC{color:white; letter-spacing: 2px!important;}
 #aC:hover{color:#400040; opacity:0.6;}
 .div,#center{
@@ -12,3 +21,9 @@
 
 .div,#right, nav-item{ text-align: right;}
 .div,#center, navbar-nav,nav-item {text-align: center;}
+
+@supports (-ms-ime-align:auto) {
+    .selector {
+        property: value;
+    }
+}

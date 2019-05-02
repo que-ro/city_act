@@ -20,8 +20,8 @@ public class PictureFolderConfig implements WebMvcConfigurer{
     public void addInterceptors(InterceptorRegistry registry) {
        // LogInterceptor apply to all URLs.
        registry.addInterceptor(new LoggedInterceptor())
-       .addPathPatterns("/modifiermoncompte" , "/monprofil", "/signalementform_method", "/ambientpowerform_method", "/projetamenagementform_method", "/goto_projet_presentation/{id}/formap_post_comment", "/mesalertes");
-
+       .addPathPatterns("/modifiermoncompte" , "/monprofilnv", "/signalementform_method", "/ambientpowerform_method", "/projetamenagementform_method", "/goto_projet_presentation/{id}/formap_post_comment", "/goto_signalement_presentation/{id}/formap_post_comment", "/goto_ambienpower_presentation/{id}/formap_post_comment", "/mesalertes");
+ 
     }
 
 

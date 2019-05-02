@@ -119,6 +119,13 @@ public class Map_Controller {
 		logger.info("fr.formation.inti.controllers.Map_Controller.java - method filter_map");
 		List<IAllTypeEntities> listAll = new ArrayList<IAllTypeEntities>();
 		
+		if(!checkbox_filterup && !checkbox_filtersig && !checkbox_filterap)
+		{
+			checkbox_filterup = true;
+			checkbox_filtersig = true;
+			checkbox_filterap = true;
+		}
+		
 		if(checkbox_filterup) {
 			List<UrbanPlanning> list_up = dao_up.findAll();
 			for(UrbanPlanning up : list_up)

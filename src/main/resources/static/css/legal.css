@@ -1,13 +1,16 @@
-#titre{text-align:center;
+#titre{margin-top:20px; text-align:center;
 font-family: verdana,impact;
 color: #400040; }
 
+  p, #subtitle{ color: teal; text-align:left; margin-left:80px;}
+  p{color: black; ; margin-left:120px }
 
+  .pg-titl-bdr-btm {
+    width: 500px;
+    height: 2px;
+    background-color: #28b57c;}
 
-p,h3, #subtitle{ color: teal;text-align:left;}
-  p{color: black; }
-  
-   /* Three columns side by side */
+   /* Three columns side by side /
 .column {
   float: left;
   width: 33.3%;
@@ -15,7 +18,7 @@ p,h3, #subtitle{ color: teal;text-align:left;}
   padding: 0 8px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
+/ Display the columns below each other instead of side by side on small screens /
 @media screen and (max-width: 650px) {
   .column {
     width: 70%;
@@ -23,17 +26,17 @@ p,h3, #subtitle{ color: teal;text-align:left;}
   }
 }
 
-/* Add some shadows to create a card effect */
+/ Add some shadows to create a card effect /
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Some left and right padding inside the container */
+/ Some left and right padding inside the container /
 .container {
   padding: 0 16px;
 }
 
-/* Clear floats */
+/ Clear floats */
 .container::after, .row::after {
   content: "";
   clear: both;
@@ -58,4 +61,4 @@ p,h3, #subtitle{ color: teal;text-align:left;}
 
 .button:hover {
   background-color: #555;
-} 
+}
